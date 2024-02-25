@@ -14,7 +14,6 @@ const jost = Jost({
   variable: '--font-heading',
   weight: 'variable',
   display: 'swap',
-  fallback: ['system-ui', 'sans-serif']
 });
 
 const space_grotesk = Space_Grotesk({
@@ -22,7 +21,6 @@ const space_grotesk = Space_Grotesk({
   weight: 'variable',
   variable: '--font-sans',
   display: 'swap',
-  fallback: ['system-ui', 'sans-serif']
 });
 
 const meta = {

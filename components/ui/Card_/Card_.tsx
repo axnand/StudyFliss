@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-export default function Card({ title, description, footer, children }: Props) {
+export default function Card_({ title, description, footer, children }: Props) {
   return (
     <div className="w-full border-2  rounded-xl p border-primary/10 hover:border-primary/30 shadow-[0_15px_40px_-15px_var(--primary)] shadow-primary/10 hover:shadow-primary/30 bg-background transition-all duration-500 ease-in-out-sine">
       <div className="px-10 py-8">

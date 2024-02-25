@@ -7,7 +7,7 @@ import {
   getDefaultSignInView,
   getRedirectMethod
 } from '@/utils/auth-helpers/settings';
-import Card from '@/components/ui/Card';
+import Card_ from '@/components/ui/Card_/Card_';
 import PasswordSignIn from '@/components/ui/AuthForms/PasswordSignIn';
 import EmailSignIn from '@/components/ui/AuthForms/EmailSignIn';
 import ForgotPassword from '@/components/ui/AuthForms/ForgotPassword';
@@ -54,7 +54,7 @@ export default async function SignIn({
   return (
     <div className="flex justify-center items-center">
       <div className="flex flex-col justify-between p-3 w-full md:max-w-sm ">
-        <Card
+        <Card_
           title={
             viewProp === 'forgot_password'
               ? 'Reset Password'
@@ -91,7 +91,7 @@ export default async function SignIn({
           {viewProp === 'signup' && (
             <SignUp allowEmail={allowEmail} redirectMethod={redirectMethod} />
           )}
-        </Card>
+        </Card_>
       </div>
     </div>
   );
