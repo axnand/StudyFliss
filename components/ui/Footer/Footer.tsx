@@ -5,7 +5,7 @@ import GitHub from '@/components/icons/GitHub';
 
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-[1920px] px-8 bg-background border-t-primary/10 border-t-2">
+    <footer className="mx-auto max-w-7xl px-8 bg-background border-t-primary/10 border-t-2">
       <div className="grid grid-cols-1 gap-8 py-12 text-foreground transition-colors duration-150 border-b lg:grid-cols-12 border-border bg-background">
         <div className="col-span-1 lg:col-span-3">
           <Link
@@ -14,7 +14,7 @@ export default function Footer() {
           >
             <div className='flex flex-row items-center gap-2'>
               <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
-              <h1 className="md:text-2xl text-xl  font-extrabold shadow-primary/90  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
+              <h1 className="md:text-2xl text-xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
                 Study<span className="text-primary/90">Fliss</span>
               </h1>
             </div>

@@ -68,7 +68,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <html
       lang="en"
       className={cn(
-        'bg-background loading dark ',
+        ' loading dark ',
         jost.variable,
         space_grotesk.variable
       )}
@@ -78,7 +78,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
           <Navbar />
           <main
             id="skip"
-            className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)]"
+            className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)] mt-32"
           >
             {children}
           </main>

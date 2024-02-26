@@ -13,6 +13,10 @@ import EmailSignIn from '@/components/ui/AuthForms/EmailSignIn';
 import ForgotPassword from '@/components/ui/AuthForms/ForgotPassword';
 import UpdatePassword from '@/components/ui/AuthForms/UpdatePassword';
 import SignUp from '@/components/ui/AuthForms/Signup';
+import Logo from '@/components/icons/Logo';
+import Image from 'next/image';
+import Link from 'next/link';
+import LottieAnimation from '@/components/ui/AuthForms/LottieAnimation';
 
 export default async function SignIn({
   params,
@@ -52,8 +56,18 @@ export default async function SignIn({
   }
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="flex flex-col justify-between p-3 w-full md:max-w-sm ">
+    <div className="flex lg:flex-row flex-col justify-center items-center py-12 pb-24 gap-8">
+      <div className="flex flex-col justify-center items-center p-3 gap-4 w-full md:max-w-md ">
+        {/* <Link
+          href="/"
+          className={'flex flex-row items-center gap-2 '}
+          aria-label="Logo"
+        >
+          <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl transition-all duration-300 ease-in-out-sine" />
+          <h1 className="md:text-3xl text-xl font-extrabold dark:shadow-primary/80 shadow-primary/30 sm:block hidden hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
+            Study<span className="text-primary/90">Fliss</span>
+          </h1>
+        </Link> */}
         <Card_
           title={
             viewProp === 'forgot_password'
@@ -93,6 +107,8 @@ export default async function SignIn({
           )}
         </Card_>
       </div>
+      <LottieAnimation className="md:max-w-lg w-[calc(100%-20px)] lg:block hidden h-full animate-pendulum-spin" />
+
     </div>
   );
 }
