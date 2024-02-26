@@ -24,9 +24,9 @@ const space_grotesk = Space_Grotesk({
 });
 
 const meta = {
-  title: 'Next.js Subscription Starter',
-  description: 'Brought to you by Vercel, Stripe, and Supabase.',
-  cardImage: '/og.png',
+  title: 'StudyFliss',
+  description: 'StudyFliss website description 3-4 lines.',
+  cardImage: '/logos/circle/svgexport-27.png',
   robots: 'follow, index',
   favicon: '/favicon.ico',
   url: getURL()
@@ -37,10 +37,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: meta.title,
     description: meta.description,
     referrer: 'origin-when-cross-origin',
-    keywords: ['Vercel', 'Supabase', 'Next.js', 'Stripe', 'Subscription'],
-    authors: [{ name: 'Vercel', url: 'https://vercel.com/' }],
-    creator: 'Vercel',
-    publisher: 'Vercel',
+    keywords: ['StudyFiss', 'StudyFliss website', 'IPU Notes', 'IPU', 'Notes'],
+    authors: [{ name: 'Harjot Singh', url: 'https://harjot.pro/' }],
+    creator: 'Harjot Singh',
+    publisher: 'Harjot Singh',
     robots: meta.robots,
     icons: { icon: meta.favicon },
     metadataBase: new URL(meta.url),
@@ -54,8 +54,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@Vercel',
-      creator: '@Vercel',
+      site: '@HarjjotSinghh',
+      creator: '@HarjjotSinghh',
       title: meta.title,
       description: meta.description,
       images: [meta.cardImage]
