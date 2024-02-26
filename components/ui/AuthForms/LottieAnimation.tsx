@@ -9,7 +9,6 @@ export default function LottieAnimation({ ...props }) {
       animationData={animationData}
       loop={true}
       autoplay={true}
-      speed={0.5}
       className={cn('w-full h-full', props.className)}
       {...props}
     />

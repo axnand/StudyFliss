@@ -4,26 +4,9 @@ import Button from '@/components/ui/Button';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
-import Card from '@/components/ui/Card';
-import { Tables } from '@/types_db';
+import Card_ from '@/components/ui/Card_';
 
-type Subscription = Tables<'subscriptions'>;
-type Price = Tables<'prices'>;
-type Product = Tables<'products'>;
-
-type SubscriptionWithPriceAndProduct = Subscription & {
-  prices:
-    | (Price & {
-        products: Product | null;
-      })
-    | null;
-};
-
-interface Props {
-  subscription: SubscriptionWithPriceAndProduct | null;
-}
-
-export default function CustomerPortalForm({ subscription }: Props) {
+export default function CustomerPortalForm({ subscription }: any) {
   const router = useRouter();
   const currentPath = usePathname();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +22,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
 
 
   return (
-    <Card
+    <Card_
       title="Your Plan"
       description={
         subscription
@@ -65,6 +48,6 @@ export default function CustomerPortalForm({ subscription }: Props) {
           <Link href="/">Choose your plan</Link>
         )}
       </div>
-    </Card>
+    </Card_>
   );
 }

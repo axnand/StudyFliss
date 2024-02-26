@@ -1,11 +1,12 @@
 'use client';
 
 import Button from '@/components/ui/Button';
-import Card from '@/components/ui/Card';
+import Card_ from '@/components/ui/Card_';
 import { updateName } from '@/utils/auth-helpers/server';
 import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Input from '../Input';
 
 export default function NameForm({ userName }: { userName: string }) {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function NameForm({ userName }: { userName: string }) {
   };
 
   return (
-    <Card
+    <Card_
       title="Your Name"
       description="Please enter your full name, or a display name you are comfortable with."
       footer={
@@ -53,6 +54,6 @@ export default function NameForm({ userName }: { userName: string }) {
           />
         </form>
       </div>
-    </Card>
+    </Card_>
   );
 }
