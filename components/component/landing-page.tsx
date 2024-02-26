@@ -164,10 +164,10 @@ export default function LandingPage() {
                 }),
               ]}
             >
-              <CarouselContent>
-                <CarouselItem className="flex justify-center items-stretch">
+              <CarouselContent className='-ml-16'>
+                <CarouselItem className="pl-16 flex justify-center items-stretch">
                   <Card className=" w-full border-primary/50 border-2">
-                    <CardContent className="flex flex-row gap-4 justify-center items-center h-[100%] w-full p-6">
+                    <CardContent className=" flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
                       <img
                         alt="Avatar"
                         className="rounded-full object-cover object-center"
@@ -179,9 +179,9 @@ export default function LandingPage() {
                         }}
                         width="150"
                       />
-                      <div className="space-y-1 col-span-2">
-                        <p className="text-lg font-semibold">John Doe</p>
-                        <p className="text-sm text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                      <div className="flex gap-0 flex-col lg:items-start items-center">
+                        <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">John Doe</p>
+                        <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
                           "StudyFliss has transformed my classroom. My students
                           are more engaged and enthusiastic about learning. The
                           interactive lessons and personalized feedback have
@@ -192,9 +192,9 @@ export default function LandingPage() {
                     </CardContent>
                   </Card>
                 </CarouselItem>
-                <CarouselItem className="flex justify-center items-stretch">
+                <CarouselItem className="pl-16 flex justify-center items-stretch">
                   <Card className=" w-full border-primary/50 border-2">
-                    <CardContent className="flex flex-row gap-4 justify-center items-center h-[100%] w-full p-6">
+                    <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
                       <img
                         alt="Avatar"
                         className="rounded-full object-cover object-center"
@@ -206,9 +206,9 @@ export default function LandingPage() {
                         }}
                         width="150"
                       />
-                      <div className="space-y-1 col-span-2">
-                        <p className="text-lg font-semibold">Jane Smith</p>
-                        <p className="text-sm text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                      <div className="flex gap-0 flex-col lg:items-start items-center">
+                        <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">Jane Smith</p>
+                        <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
                           "As an educator, I'm always looking for ways to make
                           learning more engaging and effective. StudyFliss has
                           been a game-changer in my classroom. The platform's
@@ -220,9 +220,9 @@ export default function LandingPage() {
                     </CardContent>
                   </Card>
                 </CarouselItem>
-                <CarouselItem className="flex justify-center items-stretch">
+                <CarouselItem className="pl-16 flex justify-center items-stretch">
                   <Card className=" w-full border-primary/50 border-2">
-                    <CardContent className="flex flex-row gap-4 justify-center items-center h-[100%] w-full p-6">
+                    <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
                       <img
                         alt="Avatar"
                         className="rounded-full object-cover object-center"
@@ -234,9 +234,9 @@ export default function LandingPage() {
                         }}
                         width="150"
                       />
-                      <div className="space-y-1 col-span-2">
-                        <p className="text-lg font-semibold">Emily Johnson</p>
-                        <p className="text-sm text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                      <div className="flex gap-0 flex-col lg:items-start items-center">
+                        <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">Emily Johnson</p>
+                        <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
                           "I've been using StudyFliss to help my students learn
                           and retain information more effectively. The
                           platform's interactive lessons and personalized
@@ -249,13 +249,11 @@ export default function LandingPage() {
                   </Card>
                 </CarouselItem>
               </CarouselContent>
-              <CarouselPrevious className="-left-6" />
-              <CarouselNext className="-right-6" />
             </Carousel>
           </div>
         </div>
       </section>
-      <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
+      {/* <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
         <div className="container grid items-center gap-16 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -349,7 +347,7 @@ export default function LandingPage() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

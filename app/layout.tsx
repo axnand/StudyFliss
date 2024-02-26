@@ -13,14 +13,14 @@ const jost = Jost({
   subsets: ['latin'],
   variable: '--font-heading',
   weight: 'variable',
-  display: 'swap',
+  display: 'swap'
 });
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: 'variable',
   variable: '--font-sans',
-  display: 'swap',
+  display: 'swap'
 });
 
 const meta = {
@@ -67,22 +67,19 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="en"
-      className={cn(
-        ' loading dark ',
-        jost.variable,
-        space_grotesk.variable
-      )}
+      className={cn(' loading dark ', jost.variable, space_grotesk.variable)}
     >
       <body className="font-sans transition-all duration-200 ease-in-out-sine">
         <Providers>
-          <Navbar />
           <main
             id="skip"
             className="min-h-[calc(100dvh-4rem)] md:min-h[calc(100dvh-5rem)] mt-32"
           >
+            <Navbar />
+
             {children}
+            <Footer />
           </main>
-          <Footer />
           <Suspense>
             <Toaster />
           </Suspense>
