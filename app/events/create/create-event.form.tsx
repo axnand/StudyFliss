@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Input from '@/components/ui/Input';
 import { TimePicker } from '@/components/ui/time-picker';
-import { Button } from '@/components/ui/button';
+import Button  from '@/components/ui/Button';
 import { TimeValue } from 'react-aria';
 import { createClient } from '@/utils/supabase/client';
 import { Tables } from '@/types_db';

@@ -1,11 +1,9 @@
 import React from 'react';
-import DatePickerForm from './form';
 import CreateEventForm from './create-event.form';
 import { createClient } from '@/utils/supabase/server';
 import { toast } from '@/components/ui/use-toast';
 import { redirect } from 'next/navigation';
 import { getErrorRedirect } from '@/utils/helpers';
-import { error } from 'console';
 
 export default async function CreateEventPage() {
     const supabase = createClient();
@@ -20,8 +18,6 @@ export default async function CreateEventPage() {
         )
     }
     const {data: userDetails, error: userError} = await supabase.from("users").select("*").eq("id", data.session.user.id).single();
-    // console.log(data.session.user.id)
-    // console.log(userDetails, userError)
     if (userError) {
         redirect(
             getErrorRedirect(
