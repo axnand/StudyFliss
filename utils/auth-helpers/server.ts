@@ -183,7 +183,14 @@ export async function signUp(formData: FormData) {
     email,
     password,
     options: {
-      emailRedirectTo: callbackURL
+      emailRedirectTo: callbackURL,
+      data: {
+        college: formData.get('college')?.toString().trim(),
+        semester: formData.get('semester')?.toString().trim(),
+        full_name: formData.get('full_name')?.toString().trim(),
+        branch: formData.get('branch')?.toString().trim(),
+        email: email
+      }
     }
   });
 

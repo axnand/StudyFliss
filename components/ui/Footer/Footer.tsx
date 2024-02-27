@@ -7,14 +7,14 @@ export default function Footer() {
   return (
     <footer className="mx-auto max-w-7xl px-8 bg-background border-t-primary/10 border-t-2 transition-all duration-300 ease-in-out-sine">
       <div className="grid grid-cols-1 gap-8 py-12 text-foreground border-b lg:grid-cols-12 border-border bg-background transition-all duration-300 ease-in-out-sine">
-        <div className="col-span-1 lg:col-span-3">
+        <div className="col-span-1 lg:col-span-4">
           <Link
             href="/"
             className="flex items-center flex-initial font-bold md:mr-24"
           >
             <div className='flex flex-row items-center gap-2'>
               <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
-              <h1 className="md:text-2xl text-xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
+              <h1 className="md:text-3xl text-2xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
                 Study<span className="text-primary/90">Fliss</span>
               </h1>
             </div>

@@ -58,7 +58,6 @@ export default function PasswordSignIn({
             </div>
           </div>
           <Button
-            variant="slim"
             type="submit"
             className="mt-1"
             disabled={isSubmitting}
