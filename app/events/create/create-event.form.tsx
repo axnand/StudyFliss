@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Form,
     FormControl,
@@ -15,11 +15,12 @@ import Input from '@/components/ui/Input';
 import { TimePicker } from '@/components/ui/time-picker';
 import Button from '@/components/ui/Button';
 import { TimeValue } from 'react-aria';
-import { createClient } from '@/utils/supabase/client';
 import { Tables } from '@/types_db';
 import { Textarea } from '@/components/ui/textarea';
 import { getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
+import { type Option } from '@/components/ui/mutiple-selector';
+import MultipleSelector from '@/components/ui/mutiple-selector';
 
 const eventSchema = z.object({
     title: z
@@ -35,16 +36,13 @@ const eventSchema = z.object({
         .min(100, 'Must be at least 100 characters.')
         .max(2000, 'Must be at most 2000 characters.'),
     registration_link: z.string().url('Must be a valid URL.'),
-    images: z.custom<File[]>()
+    images: z.custom<File[]>(),
+    tags: z.custom<Option[]>()
 });
 
-
 const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
-    const supabase = createClient();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const formRef = useRef<HTMLFormElement>();
-    let imagesLinks: string[] = [];
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
@@ -55,7 +53,8 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
             registration_link: '',
             images: [],
             host_data: user,
-            host_user_id: user.id
+            host_user_id: user.id,
+            tags: []
         }
     });
 
@@ -127,15 +126,16 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
             Array.from(values.images).forEach((file, index) => {
                 formData.set(`images[${index}]`, file);
             });
-            for (const [key, data] of Object.entries(values.host_data)) { 
-                formData.set(`host_data[${key}]`, data ? data.toString() : "");
+            Array.from(values.tags.values()).forEach((tag, index) => {
+                formData.set(`tags[${index}]`, tag.value);
+            });
+            for (const [key, data] of Object.entries(values.host_data)) {
+                formData.set(`host_data[${key}]`, data ? data.toString() : '');
             }
-
             const res = await fetch('/api/images/create', {
                 method: 'POST',
                 body: formData
             });
-
             // for (var key of formData.entries()) {
             //     console.log(key[0] + ', ' + key[1]);
             // }
@@ -332,6 +332,45 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                             const newFiles = dataTransfer.files;
                                             onChange(newFiles);
                                         }}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        );
+                    }}
+                />
+
+                <FormField
+                    control={form.control}
+                    name="tags"
+                    render={({ field }) => {
+                        const tags = form.watch('tags');
+                        return (
+                            <FormItem>
+                                <FormLabel className="text-base font-medium">
+                                    Tags
+                                </FormLabel>
+                                <FormControl>
+                                    <MultipleSelector
+                                        maxSelected={5}
+                                        onMaxSelected={(maxLimit) => {
+                                            router.push(
+                                                getErrorRedirect(
+                                                    window.location.toString(),
+                                                    'Maximum number of tags reached.',
+                                                    `You have reached the maximum number of tags. You can only select ${maxLimit} tags.`
+                                                )
+                                            );
+                                        }}
+                                        options={tags}
+                                        creatable
+                                        emptyIndicator={
+                                            <p className="text-center text-lg leading-4 text-foreground/70">
+                                                No tags found.
+                                            </p>
+                                        }
+                                        placeholder="Add Event Tags"
+                                        {...field}
                                     />
                                 </FormControl>
                                 <FormMessage />

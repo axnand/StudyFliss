@@ -20,7 +20,8 @@ const eventSchema = z.object({
         .min(100, 'Must be at least 100 characters.')
         .max(2000, 'Must be at most 2000 characters.'),
     registration_link: z.string().url('Must be a valid URL.'),
-    images: z.custom<File[]>()
+    images: z.custom<File[]>(),
+    tags: z.array(z.string()),
 });
 
 type event = z.infer<typeof eventSchema>
@@ -80,9 +81,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
         //     }
         // };
         // const formData: event = await formDataToObject(formDataEntries);
-        const formDataObject: any = { images: [] };
+        const formDataObject: any = { images: [], tags: [] };
 
         for (const [key, value] of formDataMap) {
+            if (key.startsWith("tags")) {
+                formDataObject.tags.push(value);
+            }
             if (key.startsWith("images")) {
                 formDataObject.images.push(value);
             }
@@ -100,7 +104,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     formDataObject[objKey][propKey] = value;
                 }
             } else {
-                if (!key.startsWith("images")) {
+                if (!key.startsWith("images") && !key.startsWith("tags")) {
                     if (key.startsWith("time")) {
                         formDataObject[key] = JSON.parse(value as string)
                     } else {
@@ -141,18 +145,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         if (error) {
             console.error(error);
-            return NextResponse.json({  success:false, error: 'Error creating event.', message: error.message });
+            return NextResponse.json({ success: false, error: 'Error creating event.', message: error.message });
         }
 
         return NextResponse.json({ success: true, message: 'Event created successfully.', event: eventData });
     } catch (error: any) {
         console.error(error);
-        return NextResponse.json({ success:false, error: 'Error creating event.', message: error.message });
+        return NextResponse.json({ success: false, error: 'Error creating event.', message: error.message });
     }
 }
 
 async function uploadFiles(images: File[]) {
-    // Similar AWS S3 setup as in the client code
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
     const ACCESS_KEY = process.env.AWS_S3_BUCKET_ACCESS_KEY!;
@@ -183,7 +186,6 @@ async function uploadFiles(images: File[]) {
             const uploadedImageUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${params.Key}`;
             return uploadedImageUrl;
         });
-
         const results = await Promise.all(uploadPromises);
         return results;
     } catch (error) {
