@@ -21,7 +21,7 @@ import {
 import { PersonIcon, RowsIcon } from '@radix-ui/react-icons';
 import { Tables } from '@/types_db';
 
-export default function Navlinks({ user }: { user: Tables<'users'> }) {
+export default function Navlinks({ user }: { user: Tables<'users'> | null}) {
     const router = getRedirectMethod() === 'client' ? useRouter() : null;
 
     return (
