@@ -58,7 +58,7 @@ html {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 6% 90%;
+    --border: var(--primary)/0.5;
     --input: 0 6% 83%;
     --ring: 0 24% 75%;
 
@@ -90,7 +90,7 @@ html {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 5% 12%;
+    --border: var(--primary)/0.5;
     --input: 0 4% 18%;
     --ring: 0 78% 40%;
   }

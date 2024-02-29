@@ -165,6 +165,12 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
             //     );
             if (res.ok) {
                 router.push(
+                    `/events/${values.title
+                        .toLowerCase()
+                        .replace(/ /g, '-')
+                        .replace(/[^\w-]+/g, '')}`
+                )
+                router.push(
                     getStatusRedirect(
                         window.location.toString(),
                         'Event created successfully.',

@@ -28,7 +28,7 @@ export const ThemeSwitcher = () => {
     return (
       <div className="w-fit ">
         <Button
-          className="md:px-4 md:py-7 px-4 py-6 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground transition-all duration-300 ease-in-out-sine hover:bg-primary/20"
+          className="md:px-4 md:py-7 px-4 py-6 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground hover:bg-primary/20"
           variant={'outline'}
           onClick={toggleTheme}
         >
@@ -40,7 +40,7 @@ export const ThemeSwitcher = () => {
   return (
     <div className="w-fit">
       <Button
-        className="md:px-4 md:py-7 px-4 py-6 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground transition-all duration-300 ease-in-out-sine hover:bg-primary/20"
+        className="md:px-4 md:py-7 px-4 py-6 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground hover:bg-primary/20"
         variant={'outline'}
         onClick={toggleTheme}
       >
