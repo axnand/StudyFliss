@@ -46,7 +46,7 @@ function MultiSelect({ options, selected, onChange, className, ...props }: Multi
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className={`w-full border-2 border-primary/50 bg-transparent hover:bg-primary/5 transition-all duration-300 ease-in-out-sine mx-auto max-w-2xl justify-between relative px-6 py-4 ${selected.length > 0 ? "h-full" : "h-14"}`}
+                    className={`w-full border-2 border-primary/50 bg-transparent hover:bg-primary/5 transition-all duration-300 ease-in-out-sine mx-auto justify-between rounded-2xl relative px-6 py-4 ${selected.length > 0 ? "h-full" : "h-14"}`}
                     onClick={() => setOpen(!open)}
                 >  
                     {!(selected.length > 0) && <div className='lg:text-base text-sm absolute inset-0 flex items-center justify-center'>

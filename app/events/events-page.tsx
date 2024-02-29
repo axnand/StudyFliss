@@ -204,64 +204,25 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                         value={selectedTags}
                         onChange={setSelectedTags}
                     /> */}
-                    <MultiSelect
-                        options={tagFilters}
-                        selected={selectedTags}
-                        onChange={(selected) => {
-                            // Convert selected to an array
-                            // const selectedArray = Array.from(
-                            //     selected as string[]
-                            // );
-                            // console.log(selectedArray);
-
-                            // Filter events based on the selected tags
-                            // const filteredEvents_ = events.filter((event) => {
-                            //     if (event.tags) {
-                            //         const lowerCaseEventTags = event.tags.map(
-                            //             (tag) => tag.toLowerCase()
-                            //         );
-                            //         const lowerCaseSelectedTags =
-                            //             selectedArray.map((tag) =>
-                            //                 tag.toLowerCase()
-                            //             );
-
-                            //         console.log(
-                            //             'Event Tags:',
-                            //             lowerCaseEventTags
-                            //         );
-                            //         console.log(
-                            //             'Selected Tags:',
-                            //             lowerCaseSelectedTags
-                            //         );
-                            //         console.log(
-                            //             'Tags Intersection:',
-                            //             lowerCaseEventTags.filter((tag) =>
-                            //                 lowerCaseSelectedTags.includes(tag)
-                            //             )
-                            //         );
-                            //         console.log(
-                            //             'Some Result:',
-                            //             lowerCaseEventTags.some((tag) =>
-                            //                 lowerCaseSelectedTags.includes(tag)
-                            //             )
-                            //         );
-                            //     }
-
-                            //     return (
-                            //         event.tags &&
-                            //         event.tags.some((tag) =>
-                            //             selectedArray.includes(tag)
-                            //         )
-                            //     );
-                            // });
-
-                            // setFilteredEvents(filteredEvents_);
-                            // console.log('Filtered Events:', filteredEvents_);
-                            // Update selected tags
-                            setSelectedTags(selected);
-                        }}
-                        className="w-full"
-                    />
+                    <div className='flex flex-row gap-8'>
+                        <MultiSelect
+                            options={tagFilters}
+                            selected={selectedTags}
+                            onChange={(selected) => {
+                                setSelectedTags(selected);
+                            }}
+                            className="w-full"
+                        />
+                        {/* <MultiSelect
+                            options={tagFilters}
+                            selected={selectedTags}
+                            onChange={(selected) => {
+                                setSelectedTags(selected);
+                            }}
+                            className="w-full"
+                        /> */}
+                    </div>
+                    
                     {/* <MultipleSelector
                         placeholder="Filter by Date"
                         options={tags.map((tag) => {
@@ -442,7 +403,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                             ))}
                     </div>
                     <Pagination>
-                        <PaginationContent className="gap-2">
+                        <PaginationContent className="gap-2 flex-row flex-wrap">
                             {currentPage > 1 && (
                                 <PaginationItem>
                                     <PaginationPrevious
