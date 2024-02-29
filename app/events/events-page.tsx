@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Tables } from '@/types_db';
 import { createClient } from '@/utils/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
@@ -14,6 +14,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import {
     Pagination,
     PaginationContent,
+    PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,
@@ -26,6 +27,9 @@ import { ClockIcon, EnvelopeOpenIcon } from '@radix-ui/react-icons';
 import { MdOutlineTimer } from 'react-icons/md';
 import { PersonIcon } from '@radix-ui/react-icons';
 import { TagIcon } from 'lucide-react';
+import Input from '@/components/ui/Input';
+import MultipleSelector, { Option } from '@/components/ui/mutiple-selector';
+import { MultiSelect } from '@/components/multiple-select-2';
 
 function formatDate(dateObject: Date) {
     const options = {
@@ -80,35 +84,91 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
         []
     );
     const [dateFilter, setDateFilter] = useState<string | null>(null);
-    const [tagFilter, setTagFilter] = useState<string | null>(null);
+    const [tagFilters, setTagFilters] = useState<Option[]>([]);
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 10;
-
     useEffect(() => {
-        // Apply filters
-        let filtered = [...events];
-
-        if (dateFilter) {
-            filtered = filtered.filter((event) => event.date === dateFilter);
+        const uniqueTags = Array.from(
+            new Set(
+                [...tagFilters, ...selectedTags].map((tag) =>
+                    typeof tag === 'string' ? tag : tag.value
+                )
+            )
+        ).map((value) => {
+            return { label: value, value } as Option;
+        });
+        setTagFilters(uniqueTags);
+    }, [selectedTags]);
+    useEffect(() => {
+        const tags = events.flatMap(
+            (event) =>
+                event.tags?.map(
+                    (tag: string) =>
+                        ({
+                            label: tag
+                                .split(' ')
+                                .map(function (s) {
+                                    return (
+                                        s.charAt(0).toUpperCase() +
+                                        s.substring(1)
+                                    );
+                                })
+                                .join(' '),
+                            value: tag
+                                .split(' ')
+                                .map(function (s) {
+                                    return (
+                                        s.charAt(0).toUpperCase() +
+                                        s.substring(1)
+                                    );
+                                })
+                                .join(' ')
+                        }) as Option
+                ) || []
+        );
+        const uniqueTags = Array.from(
+            new Set(tags.map((tag) => tag.value))
+        ).map((value) => {
+            return { label: value, value } as Option;
+        });
+        setTagFilters(uniqueTags);
+        if (selectedTags.length === 0) {
+            // If no tags selected, set filteredEvents to all events
+            setFilteredEvents(events);
+            return;
         }
+        const filteredEvents_ = events.filter((event) => {
+            if (event.tags) {
+                const lowerCaseEventTags = event.tags.map((tag) =>
+                    tag.toLowerCase()
+                );
+                const lowerCaseSelectedTags = selectedTags.map((tag) =>
+                    tag.toLowerCase()
+                );
+                return (
+                    event.tags &&
+                    event.tags.some((tag) =>
+                        lowerCaseSelectedTags.includes(tag)
+                    )
+                );
+            }
+            return false;
+        });
 
-        if (tagFilter) {
-            filtered = filtered.filter((event) =>
-                event.tags?.includes(tagFilter)
-            );
-        }
+        setFilteredEvents(filteredEvents_);
+        setCurrentPage(1); // Reset to the first page when changing filters
+        setFilteredEvents(filteredEvents_);
+    }, [events, selectedTags]);
 
-        setFilteredEvents(filtered);
-    }, [events, dateFilter, tagFilter]);
-
-    const handleDateFilterChange = (value: string) => {
-        setDateFilter(value);
+    const handleDateFilterChange = (value: ChangeEvent<HTMLInputElement>) => {
+        setDateFilter(value.currentTarget.value);
         setCurrentPage(1); // Reset to first page when changing filters
     };
 
-    const handleTagFilterChange = (value: string) => {
-        setTagFilter(value);
-        setCurrentPage(1); // Reset to first page when changing filters
+    const handleTagFiltersChange = (options: Option[]) => {
+        setTagFilters(options);
+        setCurrentPage(1); // Reset to the first page when changing filters
     };
 
     const handlePageChange = (page: number) => {
@@ -139,22 +199,81 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                     </div>
                 </section>
                 <section className="w-full py-12 md:py-2 max-w-7xl mx-auto px-8 flex flex-col gap-8">
+                    {/* <TagsInput
+                        data={tagsData} // this is like options
+                        value={selectedTags}
+                        onChange={setSelectedTags}
+                    /> */}
+                    <MultiSelect
+                        options={tagFilters}
+                        selected={selectedTags}
+                        onChange={(selected) => {
+                            // Convert selected to an array
+                            // const selectedArray = Array.from(
+                            //     selected as string[]
+                            // );
+                            // console.log(selectedArray);
+
+                            // Filter events based on the selected tags
+                            // const filteredEvents_ = events.filter((event) => {
+                            //     if (event.tags) {
+                            //         const lowerCaseEventTags = event.tags.map(
+                            //             (tag) => tag.toLowerCase()
+                            //         );
+                            //         const lowerCaseSelectedTags =
+                            //             selectedArray.map((tag) =>
+                            //                 tag.toLowerCase()
+                            //             );
+
+                            //         console.log(
+                            //             'Event Tags:',
+                            //             lowerCaseEventTags
+                            //         );
+                            //         console.log(
+                            //             'Selected Tags:',
+                            //             lowerCaseSelectedTags
+                            //         );
+                            //         console.log(
+                            //             'Tags Intersection:',
+                            //             lowerCaseEventTags.filter((tag) =>
+                            //                 lowerCaseSelectedTags.includes(tag)
+                            //             )
+                            //         );
+                            //         console.log(
+                            //             'Some Result:',
+                            //             lowerCaseEventTags.some((tag) =>
+                            //                 lowerCaseSelectedTags.includes(tag)
+                            //             )
+                            //         );
+                            //     }
+
+                            //     return (
+                            //         event.tags &&
+                            //         event.tags.some((tag) =>
+                            //             selectedArray.includes(tag)
+                            //         )
+                            //     );
+                            // });
+
+                            // setFilteredEvents(filteredEvents_);
+                            // console.log('Filtered Events:', filteredEvents_);
+                            // Update selected tags
+                            setSelectedTags(selected);
+                        }}
+                        className="w-full"
+                    />
+                    {/* <MultipleSelector
+                        placeholder="Filter by Date"
+                        options={tags.map((tag) => {
+                            return { label: tag, value: tag };
+                        })}
+                        onChange={handleDateFilterChange}
+                    /> */}
                     <div className="grid xl:grid-cols-2 grid-cols1 gap-8 ">
-                        {/* <Select
-                            placeholder="Filter by Date"
-
-                            onChange={handleDateFilterChange}
-                        />
-                        <Select
-                            placeholder="Filter by Tag"
-
-                            onChange={handleTagFilterChange}
-                        /> */}
-
                         {filteredEvents
                             .slice(startIndex, endIndex)
                             .map((event) => (
-                                <Card key={event.id} className='h-full'>
+                                <Card key={event.id} className="h-full">
                                     <CardContent className="first:p-0 flex flex-col justify-center items-center h-full">
                                         <Carousel
                                             orientation="horizontal"
@@ -192,7 +311,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                                         alt={
                                                                             'StudyFliss'
                                                                         }
-                                                                        className="h-[250px] w-full object-cover rounded-t-xl"
+                                                                        className="lg:h-[250px] h-[150px] w-full object-cover rounded-t-xl"
                                                                     />
                                                                 </CarouselItem>
                                                             )
@@ -204,14 +323,14 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                                 <img
                                                                     src="https://studyfliss.s3.ap-south-1.amazonaws.com/newreigncap_Design_a_ultra_HD_intriguing_and_futuristic_compute_1370d12f-b0de-404b-b79e-016782a9d0ff-a114f97880e75148823baeea3c6feefe8535366e57cb16732e95d39f8418c108.png"
                                                                     alt="StudyFliss"
-                                                                    className="h-[250px] w-full object-cover rounded-t-xl hue-rotate-[20deg]"
+                                                                    className="lg:h-[250px] h-[150px] w-full object-cover rounded-t-xl hue-rotate-[20deg]"
                                                                 />
                                                             </CarouselItem>
                                                         )}
                                                 </CarouselContent>
                                             </Link>
                                             <div
-                                                className="absolute h-[250px] w-full top-0 inset-0 bg-gradient-to-t from-background via-background/30 transition-all duration-300 ease-in-out-sine to-transparent"
+                                                className="absolute lg:h-[250px] h-[150px] w-full top-0 inset-0 bg-gradient-to-t from-background via-background/30 transition-all duration-300 ease-in-out-sine to-transparent"
                                                 onClick={() =>
                                                     router.push(
                                                         `/events/${event.slug}`
@@ -224,20 +343,20 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                             <Link
                                                 href={`/events/${event.slug}`}
                                             >
-                                                <h1 className="lg:text-2xl text-xl font-semibold line-clamp-1 underline underline-offset-4 decoration-primary/60 hover:decoration-primary decoration-[3px] transition-all duration-300 ease-in-out-sine">
+                                                <h1 className="lg:text-2xl text-lg font-semibold line-clamp-1 underline underline-offset-4 decoration-primary/60 hover:decoration-primary decoration-[3px] transition-all duration-300 ease-in-out-sine">
                                                     {event.title}
                                                 </h1>
                                             </Link>
                                             <p className="text-foreground/80 lg:leading-6 leading-5 line-clamp-3 lg:text-md text-sm">
                                                 {event.description}
                                             </p>
-                                            <h1 className="lg:text-xl text-lg font-semibold">
+                                            <h1 className="lg:text-xl text-md font-semibold">
                                                 Event Details
                                             </h1>
                                             <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
                                                 <div className="inline-flex gap-2 items-center">
-                                                    <ClockIcon className="size-6" />
-                                                    <span className="lg:text-lg text-md">
+                                                    <ClockIcon className="lg:size-6 size-5" />
+                                                    <span className="lg:text-lg text-sm">
                                                         {formatDate(
                                                             new Date(
                                                                 event.date ??
@@ -252,8 +371,8 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                     </span>
                                                 </div>
                                                 {/* <div className="inline-flex gap-2 items-center">
-                                                    <MdOutlineTimer className="size-6" />
-                                                    <span className="lg:text-lg text-md">
+                                                    <MdOutlineTimer className="lg:size-6 size-5" />
+                                                    <span className="lg:text-lg text-sm">
                                                         {convertTimeString(
                                                             event.time ??
                                                                 '00:00:00'
@@ -261,13 +380,13 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                     </span>
                                                 </div> */}
                                             </div>
-                                            <h1 className="lg:text-xl text-lg font-semibold">
+                                            <h1 className="lg:text-xl text-md font-semibold">
                                                 Host Details
                                             </h1>
                                             <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
                                                 <div className="inline-flex gap-2 items-center">
-                                                    <PersonIcon className="size-6" />
-                                                    <span className="lg:text-lg text-md">
+                                                    <PersonIcon className="lg:size-6 size-5" />
+                                                    <span className="lg:text-lg text-sm">
                                                         {(
                                                             JSON.parse(
                                                                 JSON.stringify(
@@ -279,8 +398,8 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                     </span>
                                                 </div>
                                                 {/* <div className="inline-flex gap-2 items-center">
-                                                    <EnvelopeOpenIcon className="size-6" />
-                                                    <span className="lg:text-lg text-md">
+                                                    <EnvelopeOpenIcon className="lg:size-6 size-5" />
+                                                    <span className="lg:text-lg text-sm">
                                                         {(
                                                             JSON.parse(
                                                                 JSON.stringify(
@@ -294,7 +413,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
 
                                             {event.tags && (
                                                 <>
-                                                    <h1 className="lg:text-xl text-lg font-semibold">
+                                                    <h1 className="lg:text-xl text-md font-semibold">
                                                         Event Tags
                                                     </h1>
                                                     <div className="flex gap-2 items-start flex-col">
@@ -306,7 +425,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                                             tag
                                                                         }
                                                                         variant="outline"
-                                                                        className="inline-flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold text-foreground/90 bg-primary/5 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine capitalize text-md"
+                                                                        className="inline-flex items-center gap-1 rounded-md px-3 py-1 font-semibold text-foreground/90 bg-primary/5 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine capitalize lg:text-md text-sm"
                                                                     >
                                                                         <TagIcon className="size-4" />
                                                                         {tag}
@@ -353,25 +472,34 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                 handlePageChange(index + 1)
                                             }
                                             className="p-0 hover:bg-transparent bg-transparent text-md"
+                                            isActive={index + 1 === currentPage}
                                         >
                                             {index + 1}
                                         </PaginationLink>
                                     </PaginationItem>
                                 )
                             )}
+
                             {currentPage <
                                 Math.ceil(
                                     filteredEvents.length / itemsPerPage
                                 ) && (
-                                <PaginationItem>
-                                    <PaginationNext
-                                        onClick={() =>
-                                            handlePageChange(currentPage + 1)
-                                        }
-                                        href="#"
-                                        className="hover:underline hover:bg-transparent text-md underline-offset-4 decoration-primary decoration-[3px] text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine"
-                                    />
-                                </PaginationItem>
+                                <>
+                                    <PaginationItem>
+                                        <PaginationEllipsis />
+                                    </PaginationItem>
+                                    <PaginationItem>
+                                        <PaginationNext
+                                            onClick={() =>
+                                                handlePageChange(
+                                                    currentPage + 1
+                                                )
+                                            }
+                                            href="#"
+                                            className="hover:underline hover:bg-transparent text-md underline-offset-4 decoration-primary decoration-[3px] text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine"
+                                        />
+                                    </PaginationItem>
+                                </>
                             )}
                         </PaginationContent>
                     </Pagination>
