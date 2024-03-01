@@ -37,8 +37,8 @@ export default function LandingPage() {
                                 learning experience that captivates students,
                                 making education engaging and fun.
                             </p>
-                            <div className="flex flex-row items-start justify-start gap-6">
-                                <Link href={'/signin/signup'} className="w-fit">
+                            <div className="flex flex-row items-start justify-start lg:gap-6 gap-2">
+                                <Link href={'/signin/signup'} className="w-fit lg:text-lg text-base">
                                     <Button
                                         variant={'outline'}
                                         type="submit"
@@ -54,7 +54,7 @@ export default function LandingPage() {
                                 </Link>
                                 <Link
                                     href="/about-us"
-                                    className="font-medium text-lg tracking-tighter w-fit"
+                                    className="font-medium lg:text-lg text-base tracking-tighter w-fit"
                                 >
                                     <Button
                                         variant={'link'}
@@ -84,7 +84,7 @@ export default function LandingPage() {
                 </div>
             </section>
             <section className="w-full mx-auto max-w-7xl border-b lg:py-24 py-12 border-b-primary/20">
-                <div className="container grid items-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+                <div className="container grid items-center gap-4 px-8 text-center lg:gap-10">
                     <div className="space-y-4">
                         <h2 className="lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
                             Features{' '}
@@ -102,11 +102,11 @@ export default function LandingPage() {
                         <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
                             <CardContent className="p-4 md:p-6">
                                 <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto w-10 h-10" />
-                                    <h3 className="text-lg font-bold">
+                                    <BookOpenIcon className="mx-auto size-12" />
+                                    <h3 className="lg:text-2xl text-xl font-bold">
                                         Interactive Learning
                                     </h3>
-                                    <p className="text-sm text-foreground/40 dark:text-foreground/60">
+                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
                                         Engage with dynamic content and
                                         immersive simulations.
                                     </p>
@@ -116,11 +116,11 @@ export default function LandingPage() {
                         <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
                             <CardContent className="p-4 md:p-6">
                                 <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto w-10 h-10" />
-                                    <h3 className="text-lg font-bold">
+                                    <BookOpenIcon className="mx-auto size-12" />
+                                    <h3 className="lg:text-2xl text-xl font-bold">
                                         Personalized Curriculum
                                     </h3>
-                                    <p className="text-sm text-foreground/40 dark:text-foreground/60">
+                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
                                         Tailored learning paths to match
                                         individual progress.
                                     </p>
@@ -130,11 +130,11 @@ export default function LandingPage() {
                         <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
                             <CardContent className="p-4 md:p-6">
                                 <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto w-10 h-10" />
-                                    <h3 className="text-lg font-bold">
+                                    <BookOpenIcon className="mx-auto size-12" />
+                                    <h3 className="lg:text-2xl text-xl font-bold">
                                         Real-time Progress Tracking
                                     </h3>
-                                    <p className="text-sm text-foreground/40 dark:text-foreground/60">
+                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
                                         Monitor performance and provide instant
                                         feedback.
                                     </p>
@@ -145,7 +145,7 @@ export default function LandingPage() {
                 </div>
             </section>
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
-                <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+                <div className="container grid items-center gap-6 px-8 lg:grid-cols-2 lg:gap-10">
                     <div className="space-y-4">
                         <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl">
                             Trusted{' '}
@@ -162,7 +162,7 @@ export default function LandingPage() {
                     <div className="mx-auto w-full lg:max-w-[600px] space-y-2 lg:order-last lg:mx-0 flex flex-row gap-4">
                         <Carousel
                             orientation="horizontal"
-                            className="flex flex-row gap-4 w-full rounded-2xl p-4 items-center justify-center h-full"
+                            className="flex flex-row gap-4 w-full rounded-2xl items-center justify-center h-full"
                             opts={{
                                 loop: true,
                                 align: 'center',
@@ -178,10 +178,10 @@ export default function LandingPage() {
                                 })
                             ]}
                         >
-                            <CarouselContent className="-ml-16">
-                                <CarouselItem className="pl-16 flex justify-center items-stretch">
+                            <CarouselContent className="-ml-2">
+                                <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
-                                        <CardContent className=" flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
+                                        <CardContent className=" flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
                                             <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
@@ -212,9 +212,9 @@ export default function LandingPage() {
                                         </CardContent>
                                     </Card>
                                 </CarouselItem>
-                                <CarouselItem className="pl-16 flex justify-center items-stretch">
+                                <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
-                                        <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
+                                        <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
                                             <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
@@ -248,9 +248,9 @@ export default function LandingPage() {
                                         </CardContent>
                                     </Card>
                                 </CarouselItem>
-                                <CarouselItem className="pl-16 flex justify-center items-stretch">
+                                <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
-                                        <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full p-6">
+                                        <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
                                             <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
@@ -289,7 +289,7 @@ export default function LandingPage() {
                 </div>
             </section>
             {/* <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
-        <div className="container grid items-center gap-16 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+        <div className="container grid items-center gap-16 px-8 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Experience the workflow the best frontend teams love.
@@ -318,7 +318,7 @@ export default function LandingPage() {
         </div>
       </section>
       <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
-        <div className="container px-4 md:px-6">
+        <div className="container px-8">
           <div className="grid gap-16 md:gap-16 lg:grid-cols-2">
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">

@@ -30,53 +30,9 @@ import { TagIcon } from 'lucide-react';
 import Input from '@/components/ui/Input';
 import MultipleSelector, { Option } from '@/components/ui/mutiple-selector';
 import { MultiSelect } from '@/components/multiple-select-2';
+import { convertTimeString, formatDate } from '@/utils/helpers';
 
-function formatDate(dateObject: Date) {
-    const options = {
-        month: 'long',
-        year: 'numeric'
-    } as Intl.DateTimeFormatOptions;
 
-    const dateFormatter = new Intl.DateTimeFormat('en-US', options);
-    const formattedDateString = dateFormatter.format(dateObject);
-
-    const day = dateObject.getDate();
-    const suffix = getDaySuffix(day);
-
-    return day + suffix + ' ' + formattedDateString;
-}
-
-function getDaySuffix(day: number) {
-    if (day >= 11 && day <= 13) {
-        return 'th';
-    }
-    switch (day % 10) {
-        case 1:
-            return 'st';
-        case 2:
-            return 'nd';
-        case 3:
-            return 'rd';
-        default:
-            return 'th';
-    }
-}
-
-function convertTimeString(inputTimeString: string) {
-    const [hours, minutes, seconds] = inputTimeString.split(':').map(Number);
-
-    let period = 'AM';
-    let formattedHours = hours;
-
-    if (hours >= 12) {
-        period = 'PM';
-        formattedHours = hours === 12 ? 12 : hours - 12;
-    }
-
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-    return `${formattedHours}:${formattedMinutes} ${period}`;
-}
 
 export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
     const router = useRouter();

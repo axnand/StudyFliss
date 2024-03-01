@@ -4,14 +4,14 @@ export const getURL = (path: string = '') => {
   // Check if NEXT_PUBLIC_SITE_URL is set and non-empty. Set this to your site URL in production env.
   let url =
     process?.env?.NEXT_PUBLIC_SITE_URL &&
-    process.env.NEXT_PUBLIC_SITE_URL.trim() !== ''
+      process.env.NEXT_PUBLIC_SITE_URL.trim() !== ''
       ? process.env.NEXT_PUBLIC_SITE_URL
       : // If not set, check for NEXT_PUBLIC_VERCEL_URL, which is automatically set by Vercel.
-        process?.env?.NEXT_PUBLIC_VERCEL_URL &&
-          process.env.NEXT_PUBLIC_VERCEL_URL.trim() !== ''
+      process?.env?.NEXT_PUBLIC_VERCEL_URL &&
+        process.env.NEXT_PUBLIC_VERCEL_URL.trim() !== ''
         ? process.env.NEXT_PUBLIC_VERCEL_URL
         : // If neither is set, default to localhost for local development.
-          'http://localhost:3000/';
+        'http://localhost:3000/';
 
   // Trim the URL and remove trailing slash if exists.
   url = url.replace(/\/+$/, '');
@@ -129,3 +129,50 @@ export const getErrorRedirect = (
     disableButton,
     arbitraryParams
   );
+
+export function formatDate(dateObject: Date) {
+  const options = {
+    month: 'long',
+    year: 'numeric'
+  } as Intl.DateTimeFormatOptions;
+
+  const dateFormatter = new Intl.DateTimeFormat('en-US', options);
+  const formattedDateString = dateFormatter.format(dateObject);
+
+  const day = dateObject.getDate();
+  const suffix = getDaySuffix(day);
+
+  return day + suffix + ' ' + formattedDateString;
+}
+
+export function getDaySuffix(day: number) {
+  if (day >= 11 && day <= 13) {
+    return 'th';
+  }
+  switch (day % 10) {
+    case 1:
+      return 'st';
+    case 2:
+      return 'nd';
+    case 3:
+      return 'rd';
+    default:
+      return 'th';
+  }
+}
+
+export function convertTimeString(inputTimeString: string) {
+  const [hours, minutes, seconds] = inputTimeString.split(':').map(Number);
+
+  let period = 'AM';
+  let formattedHours = hours;
+
+  if (hours >= 12) {
+    period = 'PM';
+    formattedHours = hours === 12 ? 12 : hours - 12;
+  }
+
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  return `${formattedHours}:${formattedMinutes} ${period}`;
+}
