@@ -1,5 +1,7 @@
 'use client';
 
+import Separator from '@/components/ui/AuthForms/Separator';
+import Button from '@/components/ui/Button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -13,7 +15,13 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Tables } from '@/types_db';
 import { convertTimeString, formatDate } from '@/utils/helpers';
-import { EnvelopeOpenIcon, PersonIcon } from '@radix-ui/react-icons';
+import {
+    ArrowRightIcon,
+    ArrowTopRightIcon,
+    CalendarIcon,
+    EnvelopeOpenIcon,
+    PersonIcon
+} from '@radix-ui/react-icons';
 import Autoplay from 'embla-carousel-autoplay';
 import {
     ClockIcon,
@@ -29,7 +37,7 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { FaMapPin } from 'react-icons/fa6';
+import { FaArrowRight, FaMapPin } from 'react-icons/fa6';
 
 export default function EventPageClient({
     event
@@ -53,9 +61,9 @@ export default function EventPageClient({
         });
     }, [api]);
     return (
-        <div className="flex flex-col min-h-[100dvh]">
+        <div className="flex flex-col min-h-[100dvh] mb-48">
             <main className="flex-1 px-8">
-                <section className="w-full py-6 md:py-12 lg:py-12 xl:py-24 max-w-5xl mx-auto flex flex-col gap-8 pt-0">
+                <section className="w-full py-6 md:py-12 lg:py-12 xl:py-24 max-w-5xl mx-auto flex flex-col gap-8 pt-0 ">
                     {/* <h1 className="lg:text-4xl tracking-tighter underline decoration-primary underline-offset-4 decoration-[4px] text-3xl text-center font-semibold line-clamp-1 transition-all duration-300 ease-in-out-sine">
                         {event.title ?? 'Unknown Event Title'}
                     </h1> */}
@@ -94,7 +102,7 @@ export default function EventPageClient({
                         <CarouselNext className="mr-16" />
                         <CarouselPrevious className="ml-16" />
                     </Carousel>
-                    <div className="flex lg:flex-row flex-col gap-8">
+                    <div className="flex lg:flex-row flex-col gap-8 relative">
                         <Card key={event.id} className="h-full basis-2/3">
                             <CardContent className="first:p-0 flex flex-col justify-start items-start h-full">
                                 <div className="flex flex-col gap-4 p-6 flex-1">
@@ -114,14 +122,14 @@ export default function EventPageClient({
                                                     'Unknown Event Title'}
                                             </h1>
                                             <div className="flex flex-row gap-2 items-center justify-between">
-                                                <Map className="size-6" />
-                                                <span className="lg:text-md text-sm text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine">
+                                                <Map className="lg:size-6 size-5" />
+                                                <span className="lg:text-md text-sm text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine line-clamp-1">
                                                     {event.location ??
                                                         'Event location not provided'}
                                                 </span>
                                             </div>
                                             <div className="inline-flex gap-2 items-center">
-                                                <ClockIcon className="lg:size-6 size-5" />
+                                                <CalendarIcon className="lg:size-6 size-5" />
                                                 <span className="lg:text-md text-sm text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine">
                                                     {formatDate(
                                                         new Date(
@@ -137,6 +145,7 @@ export default function EventPageClient({
                                             </div>
                                         </div>
                                     </div>
+                                    {/* <Separator text="" className='opacity-50' /> */}
                                     <Tabs
                                         defaultValue="description"
                                         className="w-full flex flex-col gap-2"
@@ -161,14 +170,19 @@ export default function EventPageClient({
                                                 Tags
                                             </TabsTrigger>
                                         </TabsList>
-                                        <TabsContent value="description" className='text-foreground/90'>
+                                        <TabsContent
+                                            value="description"
+                                            className="text-foreground/90 whitespace-pre-wrap"
+                                        >
                                             {event.description}
                                         </TabsContent>
                                         <TabsContent value="host">
                                             <div className="flex flex-row flex-wrap md:gap-x-16 gap-4 items-center justify-start text-foreground/90">
                                                 <div className="inline-flex flex-col lg:gap-2 gap-1">
-                                                    <h1 className='lg:text-xl text-lg tracking-tight font-bold'>Name</h1>
-                                                    <div className='flex flex-row gap-2 items-start justify-between'>
+                                                    <h1 className="lg:text-xl text-lg tracking-tight font-bold">
+                                                        Name
+                                                    </h1>
+                                                    <div className="flex flex-row gap-2 items-start justify-between">
                                                         <PersonIcon className="lg:size-6 size-5" />
                                                         <span className="lg:text-lg text-sm text-foreground/90 tracking-tight">
                                                             {(
@@ -183,10 +197,12 @@ export default function EventPageClient({
                                                     </div>
                                                 </div>
                                                 <div className="inline-flex flex-col lg:gap-2 gap-1">
-                                                    <h1 className='lg:text-xl text-lg tracking-tight font-bold'>College</h1>
-                                                    <div className='flex flex-row gap-2 items-start justify-between'>
+                                                    <h1 className="lg:text-xl text-lg tracking-tight font-bold">
+                                                        College
+                                                    </h1>
+                                                    <div className="flex flex-row gap-2 items-start justify-between">
                                                         <LucideGraduationCap className="lg:size-6 size-5" />
-                                                        <span className="lg:text-lg text-sm text-foreground/90 tracking-tight">
+                                                        <span className="lg:text-lg text-sm line-clamp-1 text-foreground/90 tracking-tight">
                                                             {(
                                                                 JSON.parse(
                                                                     JSON.stringify(
@@ -199,10 +215,16 @@ export default function EventPageClient({
                                                     </div>
                                                 </div>
                                                 <div className="inline-flex flex-col lg:gap-2 gap-1">
-                                                    <h1 className='lg:text-xl text-lg tracking-tight font-bold'>Contact Info</h1>
-                                                    <div className='flex flex-row gap-2 items-start justify-between'>
+                                                    <h1 className="lg:text-xl text-lg tracking-tight font-bold">
+                                                        Contact Info
+                                                    </h1>
+                                                    <div className="flex flex-row gap-2 items-start justify-between">
                                                         <EnvelopeOpenIcon className="lg:size-6 size-5" />
-                                                        <Link href={`mailto:${JSON.parse(JSON.stringify(event.host_data))?.email ?? "harjjotsinghh@gmail.com"}`} target='_blank' rel='noopener noreferrer'>
+                                                        <Link
+                                                            href={`mailto:${JSON.parse(JSON.stringify(event.host_data))?.email ?? 'harjjotsinghh@gmail.com'}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
                                                             <span className="lg:text-lg text-sm text-foreground/90 tracking-tight">
                                                                 {(
                                                                     JSON.parse(
@@ -216,122 +238,103 @@ export default function EventPageClient({
                                                         </Link>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                         </TabsContent>
                                         {event.tags && (
-                                        <TabsContent value="tags">
-                                            <div className="flex gap-2 items-start flex-col">
-                                                <div className="flex gap-3 flex-wrap">
-                                                    {event.tags.map((tag) => (
-                                                        <Link href={`/events?tags=${tag}`}>
-                                                            <Badge
-                                                                key={tag}
-                                                                variant="outline"
-                                                                className="inline-flex items-center gap-1 rounded-md px-3 py-1 font-semibold text-foreground/90 bg-primary/5 hover:bg-primary/15 transition-all duration-300 ease-in-out-sine capitalize lg:text-md text-sm"
-                                                            >
-                                                                <TagIcon className="size-4" />
-                                                                {tag}
-                                                            </Badge>
-                                                        </Link>
-                                                    ))}
+                                            <TabsContent value="tags">
+                                                <div className="flex gap-2 items-start flex-col">
+                                                    <div className="flex gap-3 flex-wrap">
+                                                        {event.tags.map(
+                                                            (tag) => (
+                                                                <Link
+                                                                    href={`/events?tags=${tag}`}
+                                                                >
+                                                                    <Badge
+                                                                        key={
+                                                                            tag
+                                                                        }
+                                                                        variant="outline"
+                                                                        className="inline-flex items-center gap-1 rounded-md px-3 py-1 font-semibold text-foreground/90 bg-primary/5 hover:bg-primary/15 transition-all duration-300 ease-in-out-sine capitalize lg:text-md text-sm"
+                                                                    >
+                                                                        <TagIcon className="size-4" />
+                                                                        {tag}
+                                                                    </Badge>
+                                                                </Link>
+                                                            )
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </TabsContent>
-                                    )}
+                                            </TabsContent>
+                                        )}
                                     </Tabs>
-                                    
-                                    
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card key={event.id} className="h-full basis-1/3">
-                            <CardContent className="first:p-0 flex flex-col justify-center items-center h-full">
-                                <div className="flex flex-col gap-2 p-6 flex-1">
-                                        <h1 className="lg:text-2xl text-lg font-semibold line-clamp-1 underline underline-offset-4 decoration-primary/50 decoration-[3px] transition-all duration-300 ease-in-out-sine">
-                                            {event.title ??
-                                                'Unknown Event Title'}
-                                        </h1>
-                                    <p className="text-foreground/90 lg:leading-6 leading-5 line-clamp-3 lg:text-md text-sm">
-                                        Interested in participating in <span className='font-bold'>{event.title ?? 'Unknown Event Title'}</span>?
-                                    </p>
-
-                                    <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
+                        <Card
+                            key={event.id}
+                            className="h-full basis-1/3 sticky top-40 gap-11"
+                        >
+                            <CardContent className="first:p-0 flex flex-col justify-start items-start h-full">
+                                <div className="flex flex-col gap-4 p-6 flex-1 w-full">
+                                    {/* <h1 className="lg:text-2xl text-lg font-semibold line-clamp-1 underline underline-offset-4 decoration-primary/50 decoration-[3px] transition-all duration-300 ease-in-out-sine">
+                                        {event.title ?? 'Unknown Event Title'}
+                                    </h1> */}
+                                    <div className="flex flex-col gap-2 w-full items-start justify-start">
+                                        <div className="flex flex-row gap-2 items-center justify-start">
+                                            <Map className="lg:size-6 size-5" />
+                                            <span className="lg:text-lg text-md text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine">
+                                                {event.location ??
+                                                    'Event location not provided'}
+                                            </span>
+                                        </div>
                                         <div className="inline-flex gap-2 items-center">
-                                            <ClockIcon className="lg:size-6 size-5" />
-                                            <span className="lg:text-lg text-sm text-foreground/90">
+                                            <CalendarIcon className="lg:size-6 size-5" />
+                                            <span className="lg:text-lg text-md text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine">
                                                 {formatDate(
                                                     new Date(
                                                         event.date ??
                                                             '1970-01-01'
                                                     )
                                                 )}
-                                                ,{' '}
+                                            </span>
+                                        </div>
+                                        <div className="inline-flex gap-2 items-center">
+                                            <ClockIcon className="lg:size-6 size-5" />
+                                            <span className="lg:text-lg text-md text-foreground/90 hover:text-foreground transition-all duration-300 ease-in-out-sine">
                                                 {convertTimeString(
                                                     event.time ?? '00:00:00'
                                                 )}
                                             </span>
                                         </div>
-                                        {/* <div className="inline-flex gap-2 items-center">
-                                                        <MdOutlineTimer className="lg:size-6 size-5" />
-                                                        <span className="lg:text-lg text-sm text-foreground/90">
-                                                            {convertTimeString(
-                                                                event.time ??
-                                                                    '00:00:00'
-                                                            )}
-                                                        </span>
-                                                    </div> */}
                                     </div>
-                                    <h1 className="lg:text-xl text-md font-semibold">
-                                        Host Details
-                                    </h1>
-                                    <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
-                                        <div className="inline-flex gap-2 items-center">
-                                            <PersonIcon className="lg:size-6 size-5" />
-                                            <span className="lg:text-lg text-sm text-foreground/90">
-                                                {(
-                                                    JSON.parse(
-                                                        JSON.stringify(
-                                                            event.host_data
-                                                        )
-                                                    ) as Tables<'users'>
-                                                )?.full_name ?? 'Unknown'}
+                                    <p className="text-foreground/90 lg:leading-6 leading-5 line-clamp-3 lg:text-md text-sm">
+                                        Interested in attending the event
+                                        <br />
+                                        <span className="font-bold line-clamp-1 -mt-1 lg:text-xl text-lg">
+                                            {event.title ??
+                                                'Unknown Event Title'}
+                                            ?
+                                        </span>
+                                    </p>
+                                    <Link
+                                        href={event.registration_link ?? '#'}
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                        className="lg:text-lg text-base w-full mt-2"
+                                    >
+                                        <Button
+                                            variant={'outline'}
+                                            type="submit"
+                                            className={
+                                                'group border-primary/50 hover:bg-primary/[0.02] border-2 lg:py-6 lg:px-6 py-6 px-4 lg:text-lg text-md tracking-tighter rounded-xl transition-all duration-300 ease-in-out-sine shadow-md hover:shadow-lg shadow-primary/20 hover:shadow-primary/40 w-full'
+                                            }
+                                        >
+                                            <span className="inline-flex flex-row gap-2 items-center justify-center font-bold">
+                                                Register Now{' '}
+                                                <FaArrowRight className="size-4 group-hover:-rotate-45 transition-all duration-500 ease-in-out-sine" />
                                             </span>
-                                        </div>
-                                        {/* <div className="inline-flex gap-2 items-center">
-                                                        <EnvelopeOpenIcon className="lg:size-6 size-5" />
-                                                        <span className="lg:text-lg text-sm text-foreground/90">
-                                                            {(
-                                                                JSON.parse(
-                                                                    JSON.stringify(
-                                                                        event.host_data
-                                                                    )
-                                                                ) as Tables<'users'>
-                                                            ).email ?? 'Unknown'}
-                                                        </span>
-                                                    </div> */}
-                                    </div>
-                                    {event.tags && (
-                                        <>
-                                            <h1 className="lg:text-xl text-md font-semibold">
-                                                Event Tags
-                                            </h1>
-                                            <div className="flex gap-2 items-start flex-col">
-                                                <div className="flex gap-3 flex-wrap">
-                                                    {event.tags.map((tag) => (
-                                                        <Badge
-                                                            key={tag}
-                                                            variant="outline"
-                                                            className="inline-flex items-center gap-1 rounded-md px-3 py-1 font-semibold text-foreground/90 bg-primary/5 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine capitalize lg:text-md text-sm"
-                                                        >
-                                                            <TagIcon className="size-4" />
-                                                            {tag}
-                                                        </Badge>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
+                                        </Button>
+                                    </Link>
                                 </div>
                             </CardContent>
                         </Card>

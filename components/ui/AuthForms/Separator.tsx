@@ -1,15 +1,13 @@
-interface SeparatorProps {
+interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
 }
 
-export default function Separator({ text }: SeparatorProps) {
+export default function Separator({ text, ...props }: SeparatorProps) {
   return (
-    <div className="relative">
+    <div className="relative" {...props}>
       <div className="relative flex items-center py-1">
         <div className="grow border-t border-primary"></div>
-        <span className="mx-3 shrink text-sm leading-8 text-foreground/70">
-          {text}
-        </span>
+        {text === '' ? null : <span className="mx-4 shrink text-sm leading-8">{text}</span>}
         <div className="grow border-t border-primary"></div>
       </div>
     </div>
