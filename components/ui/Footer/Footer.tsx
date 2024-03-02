@@ -93,7 +93,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col items-end justify-end col-span-1 text-foreground lg:col-span-full w-full lg:justify-end ">
+                <div className="flex flex-col md:items-start items-start justify-end col-span-1 text-foreground lg:col-span-full w-full lg:justify-end ">
                     {/* <h1 className="text-base uppercase font-bold transition-all duration-300 ease-in-out-sine">
                         Follow StudyFliss
                     </h1> */}

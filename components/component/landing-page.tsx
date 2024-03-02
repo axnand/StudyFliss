@@ -19,8 +19,8 @@ export default function LandingPage() {
         <div className="flex flex-col">
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
                 <div className="container space-y-10 px-8 md:space-y-16">
-                    <div className="grid max-w-[1300px] mx-auto gap-4 md:grid-cols-2 md:gap-16">
-                        <div className="flex flex-col justify-center gap-6">
+                    <div className="flex lg:flex-row  flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-0 grid-cols-3">
+                        <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
                             {/* <div className="inline-block rounded-lg bg-primary/10  px-3 py-1.5 lg:text-sm text-xs dark:bg-primary/10 border border-primary/40 font-light w-fit ">
                 Interactive Learning
               </div> */}
@@ -32,7 +32,7 @@ export default function LandingPage() {
                                 </span>
                                 .
                             </h1>
-                            <p className="mx-auto max-w-[700px] text-foreground/50 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/60 ">
+                            <p className=" max-w-[700px] text-foreground/50 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/60 ">
                                 StudyFliss provides an immersive and interactive
                                 learning experience that captivates students,
                                 making education engaging and fun.
@@ -65,19 +65,20 @@ export default function LandingPage() {
                                     >
                                         <span className="inline-flex flex-row gap-2 items-center justify-center">
                                             Know More
-                                            <FaArrowRight className="size-4 group-hover:ml-1 transition-all duration-300 ease-in-out-sine -rotate-[45deg] mt-1" />
+                                            <FaArrowRight className="size-4 transition-all duration-300 ease-in-out-sine group-hover:-rotate-[45deg] mt-1" />
                                         </span>
                                     </Button>
                                 </Link>
                             </div>
                         </div>
-                        <div className="mx-auto flex items-center justify-center p-4 sm:p-8">
+                        <div className="mx-auto flex items-center justify-center w-full h-full lg:w-3/5">
                             <Image
                                 alt="Image"
-                                className="aspect-video overflow-hidden rounded-xl object-cover object-center"
+                                className="select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
                                 height="310"
-                                src="/placeholder.svg"
+                                src="/landing-page.png"
                                 width="550"
+                                draggable={false}
                             />
                         </div>
                     </div>
