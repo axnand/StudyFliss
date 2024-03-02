@@ -6,7 +6,13 @@ import {
     LinkedInLogoIcon,
     TwitterLogoIcon
 } from '@radix-ui/react-icons';
-import { BadgeInfoIcon, Briefcase, Calendar, InfoIcon, LucideGlobe } from 'lucide-react';
+import {
+    BadgeInfoIcon,
+    Briefcase,
+    Calendar,
+    InfoIcon,
+    LucideGlobe
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -18,6 +24,7 @@ import {
     FaXTwitter
 } from 'react-icons/fa6';
 import { MdAutoGraph } from 'react-icons/md';
+import { Card, CardContent } from '../ui/card';
 
 export function AboutUsPage() {
     return (
@@ -32,7 +39,7 @@ export function AboutUsPage() {
                                     StudyFliss
                                 </span>
                             </h1>
-                            <p className="mx-auto max-w-[70ch] mt-4 text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            <p className="mx-auto max-w-[70ch] mt-4 text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                 A website that comprises all the information/
                                 resources a student might need to live his/her
                                 college years to the fullest. Through the
@@ -43,69 +50,98 @@ export function AboutUsPage() {
                     </div>
                 </section>
                 <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-8">
-                    <div className=" grid items-center gap-8 px-4 text-center md:px-6 lg:grid-cols-[1fr_1fr] lg:gap-16 xl:grid-cols-[1fr_1fr]">
-                        <div className="space-y-4 lg:p-12 p-6 border-primary/50 border-2 rounded-2xl">
-                            <InfoIcon className="mx-auto lg:size-16 size-12" />
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                                    Up-To-Date Info 
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Our website provides updated notes, datesheets, syllabus and other information for students to study and learn.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="space-y-4 lg:p-12 p-6 border-primary/50 border-2 rounded-2xl">
-                            <MdAutoGraph className="mx-auto lg:size-16 size-12" />
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                                    Examination Analysis 
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Out website provides detailed examination analysis which helps students understand exam patterns and prepare for the exam.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="space-y-4 lg:p-12 p-6 border-primary/50 border-2 rounded-2xl">
-                            <Calendar className="mx-auto lg:size-16 size-12" />
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                                    Latest Events Info
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Our website provides the latest events' details for students to stay updated about all the upcoming events amd not miss any opportunity.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="space-y-4 lg:p-12 p-6 border-primary/50 border-2 rounded-2xl">
-                            <Briefcase className="mx-auto lg:size-16 size-12" />
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                                    Internship Opportunities
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Our website provides internship opportunities for students to get hands-on experience in their field of interest.
-                                </p>
-                            </div>
-                        </div>
+                    <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
+                        <Card className='lg:p-0 p-6'>
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Up-To-Date Info
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides updated notes,
+                                        datesheets, syllabus and other
+                                        information for students to study and
+                                        learn.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className='lg:p-0 p-6'>
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Examination Analysis
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Out website provides detailed
+                                        examination analysis which helps
+                                        students understand exam patterns and
+                                        prepare for the exam.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className='lg:p-0 p-6'>
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Latest Events Info
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides the latest events'
+                                        details for students to stay updated
+                                        about all the upcoming events amd not
+                                        miss any opportunity.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className='lg:p-0 p-6'>
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <Briefcase className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Internship Opportunities
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides internship
+                                        opportunities for students to get
+                                        hands-on experience in their field of
+                                        interest.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
                     </div>
                 </section>
                 <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-8 rounded-2xl">
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-[600px_1fr]">
                             <div className="space-y-4">
-                                <h2 className="text-3xl font-bold text-pretty tracking-tighter sm:text-4xl md:text-5xl">
-                                    "The main motive of our website is to not let
-                                    anyone miss out on an opportunity that could
-                                    potentially be a <span className='decoration-primary decoration-[6px] underline underline-offset-4'>life changing moment</span> for
-                                    them."
+                                <h2 className="text-3xl font-2old text-pretty tracking-tighter sm:text-3xl md:text-4xl">
+                                    "The main motive of our website is to not
+                                    let anyone miss out on an opportunity that
+                                    could potentially be a{' '}
+                                    <span className="decoration-primary decoration-[6px] underline underline-offset-4">
+                                        life changing moment
+                                    </span>{' '}
+                                    for them."
                                 </h2>
                                 <div className="flex items-center space-x-2">
                                     <div className="font-medium flex flex-col gap-1">
                                         <h3>— Amitoje Singh Bakshi</h3>
-                                        <div className='flex flex-col items-start gap-0 text-sm'>
-                                            <span className='hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine'>&nbsp;&nbsp;&nbsp;&nbsp; Co-Founder & CEO</span>
-                                            <span className='hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine'>&nbsp;&nbsp;&nbsp;&nbsp; StudyFliss</span>
+                                        <div className="flex flex-col items-start gap-0 text-sm">
+                                            <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                Co-Founder & CEO
+                                            </span>
+                                            <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                StudyFliss
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +153,6 @@ export function AboutUsPage() {
                                     className="select-none object-cover object-center h-full w-full"
                                     height="500"
                                     src="/amitoje-quote.webp"
-                                    
                                     width="600"
                                 />
                             </div>
@@ -159,7 +194,7 @@ export function AboutUsPage() {
                                                     Amitoje Singh Bakshi
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder and CEO
+                                                    Co-Founder & CEO
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     {/* <Link
@@ -214,7 +249,7 @@ export function AboutUsPage() {
                                                     Harjot Singh Rana
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder and CTO
+                                                    Co-Founder & CTO
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     <Link
@@ -269,7 +304,7 @@ export function AboutUsPage() {
                                                     Prabhmeet Singh
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder and CCO
+                                                    Co-Founder & CCO
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     {/* <Link
@@ -337,7 +372,7 @@ export function AboutUsPage() {
                                 <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
                                     Adventure
                                 </div>
-                                <p className="mx-auto max-w-[700px] text-foreground/40 dark:text-foreground/60 md:text-xl/relaxed">
+                                <p className="mx-auto max-w-[700px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed">
                                     Learning should be fun, engaging, and
                                     inspiring. At StudyFliss, we're dedicated to
                                     creating an educational adventure for every
@@ -357,4 +392,3 @@ export function AboutUsPage() {
         </div>
     );
 }
-

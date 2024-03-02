@@ -13,10 +13,21 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import { FaArrowRight } from 'react-icons/fa6';
+import { Briefcase, Calendar, InfoIcon, MapPinIcon } from 'lucide-react';
+import { CalendarIcon } from '@radix-ui/react-icons';
+import { formatDate } from '@/utils/helpers';
+import { Tables } from '@/types_db';
+import { useRouter } from 'next/navigation';
+import { MdAutoGraph } from 'react-icons/md';
 
-export default function LandingPage() {
+export default function LandingPage({
+    recentEvents
+}: {
+    recentEvents: Tables<'events'>[] | [];
+}) {
+    const router = useRouter();
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-96 lg:mb-48">
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
                 <div className="container space-y-10 px-8 md:space-y-16">
                     <div className="flex lg:flex-row  flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-0 grid-cols-3">
@@ -32,13 +43,16 @@ export default function LandingPage() {
                                 </span>
                                 .
                             </h1>
-                            <p className=" max-w-[700px] text-foreground/50 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/60 ">
-                                StudyFliss provides an immersive and interactive
-                                learning experience that captivates students,
-                                making education engaging and fun.
+                            <p className=" max-w-[700px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/90 ">
+                                StudyFliss is a platform consisting of all the 
+                                resources a student might need in order to live their
+                                college years to the fullest.
                             </p>
                             <div className="flex flex-row items-start justify-start lg:gap-6 gap-2">
-                                <Link href={'/signin/signup'} className="w-fit lg:text-lg text-base">
+                                <Link
+                                    href={'/signin/signup'}
+                                    className="w-fit lg:text-lg text-base"
+                                >
                                     <Button
                                         variant={'outline'}
                                         type="submit"
@@ -90,54 +104,74 @@ export default function LandingPage() {
                         <h2 className="lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
                             Features{' '}
                             <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
-                                that Inspire
+                                for Students
                             </span>
                         </h2>
-                        <p className="mx-auto max-w-[600px] text-foreground/50 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/60">
-                            Experience the platform that's transforming
-                            education with innovative features and cutting-edge
-                            technology.
+                        <p className="mx-auto max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/90">
+                            Some of the key features of StudyFliss, which are designed to help students in their college journey are listed below.
                         </p>
                     </div>
-                    <div className="flex lg:justify-center lg:items-center items-center gap-8 lg:flex-row flex-wrap flex-col">
-                        <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
-                            <CardContent className="p-4 md:p-6">
-                                <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto size-12" />
-                                    <h3 className="lg:text-2xl text-xl font-bold">
-                                        Interactive Learning
-                                    </h3>
-                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
-                                        Engage with dynamic content and
-                                        immersive simulations.
+                    <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Up-To-Date Info
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides updated notes,
+                                        datesheets, syllabus and other
+                                        information for students to study and
+                                        learn.
                                     </p>
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
-                            <CardContent className="p-4 md:p-6">
-                                <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto size-12" />
-                                    <h3 className="lg:text-2xl text-xl font-bold">
-                                        Personalized Curriculum
-                                    </h3>
-                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
-                                        Tailored learning paths to match
-                                        individual progress.
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Examination Analysis
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Out website provides detailed
+                                        examination analysis which helps
+                                        students understand exam patterns and
+                                        prepare for the exam.
                                     </p>
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className="md:max-w-xs w-full lg:max-w-sm xl:max-w-sm border-primary/50 border-2">
-                            <CardContent className="p-4 md:p-6">
-                                <div className="flex flex-col gap-2">
-                                    <BookOpenIcon className="mx-auto size-12" />
-                                    <h3 className="lg:text-2xl text-xl font-bold">
-                                        Real-time Progress Tracking
-                                    </h3>
-                                    <p className="lg:text-base text-sm text-foreground/70 dark:text-foreground/80">
-                                        Monitor performance and provide instant
-                                        feedback.
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Latest Events Info
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides the latest events'
+                                        details for students to stay updated
+                                        about all the upcoming events amd not
+                                        miss any opportunity.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <Briefcase className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Internship Opportunities
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides internship
+                                        opportunities for students to get
+                                        hands-on experience in their field of
+                                        interest.
                                     </p>
                                 </div>
                             </CardContent>
@@ -145,19 +179,17 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
-            <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
+            <section className="w-full max-w-7xl mx-auto lg:py-24 py-12">
                 <div className="container grid items-center gap-6 px-8 lg:grid-cols-2 lg:gap-10">
                     <div className="space-y-4">
-                        <h2 className="text-3xl font-medium tracking-tighter sm:text-4xl md:text-5xl">
-                            Trusted{' '}
+                        <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
+                            Trusted by{' '}
                             <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
-                                by Educators
+                                Educators
                             </span>
-                        </h2>
-                        <p className="max-w-[600px] text-foreground/50 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/60 mt-4">
-                            StudyFliss provides an immersive and interactive
-                            learning experience that captivates students, making
-                            education engaging and fun.
+                        </h1>
+                        <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/90 mt-4">
+                            Our platform has been verified by many educators and teachers. Educators highly recommend StudyFliss to their students in order to help them in their college journey.
                         </p>
                     </div>
                     <div className="mx-auto w-full lg:max-w-[600px] space-y-2 lg:order-last lg:mx-0 flex flex-row gap-4">
@@ -183,22 +215,22 @@ export default function LandingPage() {
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className=" flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            <img
+                                            {/* <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
-                                                height="150"
-                                                src="/placeholder.svg"
+                                                height="125"
+                                                src="https://avatar.iran.liara.run/public/46"
                                                 style={{
                                                     aspectRatio: '150/150',
                                                     objectFit: 'cover'
                                                 }}
-                                                width="150"
-                                            />
+                                                width="125"
+                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
-                                                <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">
+                                                <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     John Doe
                                                 </p>
-                                                <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                                                <p className="lg:text-lg text-base leading-relaxed text-foreground/80 italic dark:text-foreground/90">
                                                     "StudyFliss has transformed
                                                     my classroom. My students
                                                     are more engaged and
@@ -216,22 +248,22 @@ export default function LandingPage() {
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            <img
+                                            {/* <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
-                                                height="150"
-                                                src="/placeholder.svg"
+                                                height="125"
+                                                src="https://avatar.iran.liara.run/public/63"
                                                 style={{
                                                     aspectRatio: '150/150',
                                                     objectFit: 'cover'
                                                 }}
-                                                width="150"
-                                            />
+                                                width="125"
+                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
-                                                <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">
+                                                <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     Jane Smith
                                                 </p>
-                                                <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                                                <p className="lg:text-lg text-base leading-relaxed text-foreground/80 italic dark:text-foreground/90">
                                                     "As an educator, I'm always
                                                     looking for ways to make
                                                     learning more engaging and
@@ -252,22 +284,22 @@ export default function LandingPage() {
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            <img
+                                            {/* <img
                                                 alt="Avatar"
                                                 className="rounded-full object-cover object-center"
-                                                height="150"
-                                                src="/placeholder.svg"
+                                                height="125"
+                                                src="https://avatar.iran.liara.run/public/71"
                                                 style={{
                                                     aspectRatio: '150/150',
                                                     objectFit: 'cover'
                                                 }}
-                                                width="150"
-                                            />
+                                                width="125"
+                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
-                                                <p className="lg:text-xl text-lg font-semibold lg:text-left text-center">
+                                                <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     Emily Johnson
                                                 </p>
-                                                <p className="lg:text-md text-foreground/40 italic first-letter:text-xl dark:text-foreground/60">
+                                                <p className="lg:text-lg text-base leading-relaxed text-foreground/80 italic dark:text-foreground/90">
                                                     "I've been using StudyFliss
                                                     to help my students learn
                                                     and retain information more
@@ -289,6 +321,128 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+            {recentEvents.length > 0 && (
+                <section className="w-full max-w-7xl mx-auto flex flex-col gap-8 pt-0 px-8 lg:py-24 py-12 border-t border-t-primary/20">
+                    <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-pretty">
+                        Recently Added{' '}
+                        <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
+                            Events
+                        </span>
+                    </h1>
+                    <div className="grid xl:grid-cols-2 grid-cols-1 gap-8 ">
+                        {recentEvents.map((event) => (
+                            <Card key={event.id} className="h-full">
+                                <CardContent className="first:p-0 flex flex-col justify-center items-center h-full">
+                                    <Carousel
+                                        orientation="horizontal"
+                                        className=" w-full h-full hover:cursor-pointer relative"
+                                        opts={{
+                                            loop: true,
+                                            align: 'center',
+                                            duration: 35
+                                        }}
+                                        plugins={[
+                                            Autoplay({
+                                                delay: 3000,
+                                                playOnInit: true,
+                                                stopOnMouseEnter: false,
+                                                stopOnFocusIn: false,
+                                                stopOnInteraction: false
+                                            })
+                                        ]}
+                                    >
+                                        <Link href={`/events/${event.slug}`}>
+                                            <CarouselContent className="-ml-0">
+                                                {event.images &&
+                                                    event.images.map(
+                                                        (image, index) => (
+                                                            <CarouselItem className="pl-0">
+                                                                <img
+                                                                    key={index}
+                                                                    src={image}
+                                                                    alt={
+                                                                        'StudyFliss'
+                                                                    }
+                                                                    className="lg:h-[150px] h-[150px] w-full object-cover rounded-t-xl"
+                                                                />
+                                                            </CarouselItem>
+                                                        )
+                                                    )}
+                                                {event.images &&
+                                                    event.images.length ===
+                                                        0 && (
+                                                        <CarouselItem className="pl-0">
+                                                            <img
+                                                                src="https://studyfliss.s3.ap-south-1.amazonaws.com/newreigncap_Design_a_ultra_HD_intriguing_and_futuristic_compute_1370d12f-b0de-404b-b79e-016782a9d0ff-a114f97880e75148823baeea3c6feefe8535366e57cb16732e95d39f8418c108.png"
+                                                                alt="StudyFliss"
+                                                                className="lg:h-[150px] h-[150px] w-full object-cover rounded-t-xl hue-rotate-[20deg]"
+                                                            />
+                                                        </CarouselItem>
+                                                    )}
+                                            </CarouselContent>
+                                        </Link>
+                                        <div
+                                            className="absolute lg:h-[150px] h-[150px] w-full top-0 inset-0 bg-gradient-to-t from-background via-background/30 transition-all duration-300 ease-in-out-sine to-transparent"
+                                            onClick={() =>
+                                                router.push(
+                                                    `/events/${event.slug}`
+                                                )
+                                            }
+                                        />
+                                    </Carousel>
+                                    <div className="flex flex-col gap-2 p-6 flex-1">
+                                        <Link href={`/events/${event.slug}`}>
+                                            <h1 className="lg:text-2xl text-lg font-semibold line-clamp-1 underline underline-offset-4 decoration-primary/60 hover:decoration-primary decoration-[3px] transition-all duration-300 ease-in-out-sine">
+                                                {event.title}
+                                            </h1>
+                                        </Link>
+                                        <p className="text-foreground/80 lg:leading-6 leading-5 line-clamp-3 lg:text-md text-sm">
+                                            {event.description}
+                                        </p>
+                                        <h1 className="lg:text-xl text-md font-semibold">
+                                            Event Details
+                                        </h1>
+                                        <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
+                                            <div className="inline-flex gap-2 items-center">
+                                                <MapPinIcon className="lg:size-6 size-5" />
+                                                <span className="lg:text-lg text-sm">
+                                                    {event.location ?? 'Online'}
+                                                </span>
+                                            </div>
+                                            <div className="inline-flex gap-2 items-center">
+                                                <CalendarIcon className="lg:size-6 size-5" />
+                                                <span className="lg:text-lg text-sm">
+                                                    {formatDate(
+                                                        new Date(
+                                                            event.date ??
+                                                                '1970-01-01'
+                                                        )
+                                                    )}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                    <Link href={`/events`}>
+                        <Button
+                            variant={'outline'}
+                            type="submit"
+                            className={
+                                'group border-primary/50 hover:bg-primary/[0.02] border-2 lg:py-8 lg:px-6 py-6 px-4 lg:text-lg text-md tracking-tighter rounded-xl transition-all duration-300 ease-in-out-sine w-full'
+                            }
+                        >
+                            <span className="inline-flex flex-row gap-2 items-center justify-center font-bold">
+                                Browse All Events{' '}
+                                <FaArrowRight className="size-4 group-hover:-rotate-45 transition-all duration-500 ease-in-out-sine" />
+                            </span>
+                        </Button>
+                    </Link>
+                </section>
+            )}
+
             {/* <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
         <div className="container grid items-center gap-16 px-8 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4">
@@ -309,7 +463,7 @@ export default function LandingPage() {
               />
               <Button type="submit">Sign Up</Button>
             </form>
-            <p className="text-xs text-foreground/40 dark:text-foreground/60">
+            <p className="text-xs text-foreground/40 dark:text-foreground/90">
               Sign up to get notified when we launch.
               <Link className="underline underline-offset-2" href="#">
                 Terms & Conditions
@@ -375,7 +529,7 @@ export default function LandingPage() {
               />
               <Button type="submit">Sign Up</Button>
             </form>
-            <p className="text-xs text-foreground/40 dark:text-foreground/60">
+            <p className="text-xs text-foreground/40 dark:text-foreground/90">
               Sign up to get notified when we launch.
               <Link className="underline underline-offset-2" href="#">
                 Terms & Conditions
