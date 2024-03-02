@@ -16,7 +16,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import NotesPDFViewer from './notes-pdf-viewer';
 import { branches } from '@/utils/helpers';
-
+import NotesDocViewer from './notes-doc-viewer';
 
 export default function CoursePageClient({ course }: { course: string }) {
     // console.log(Object.keys(branches));
@@ -111,7 +111,9 @@ export default function CoursePageClient({ course }: { course: string }) {
                                         className=" max-h-[200px]"
                                     >
                                         {Array.from(
-                                            { length: course === 'bba' ? 6 : 8 },
+                                            {
+                                                length: course === 'bba' ? 6 : 8
+                                            },
                                             (_, i) => i + 1
                                         ).map((i) => (
                                             <SelectItem
@@ -203,16 +205,17 @@ export default function CoursePageClient({ course }: { course: string }) {
                             </div>
                         </div>
                     ) : (
-                        semester &&
-                        <div>
-                            <h1 className="lg:text-6xl overflow-visible text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
-                                Semester {semester} Notes
-                                <br />
-                                <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
-                                    Coming Soon!
-                                </span>
-                            </h1>
-                        </div>
+                        semester && (
+                            <div>
+                                <h1 className="lg:text-6xl overflow-visible text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
+                                    Semester {semester} Notes
+                                    <br />
+                                    <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
+                                        Coming Soon!
+                                    </span>
+                                </h1>
+                            </div>
+                        )
                     )}
                     {notes.filter((note) => note.subject === subject).length >
                         0 && (
@@ -229,21 +232,69 @@ export default function CoursePageClient({ course }: { course: string }) {
                                         .filter(
                                             (note) => note.subject === subject
                                         )
-                                        .map((note) => (
-                                            <Card
-                                                key={note.id}
-                                                className=" p-2"
-                                            >
-                                                <CardTitle className="text-center lg:text-xl text-lg font-semibold my-2 mb-4">
-                                                    {note.title}
-                                                </CardTitle>
-                                                <CardContent>
-                                                    <iframe
-                                                        src={note.link}
-                                                        className="w-full lg:h-[450px] h-[400px]"
-                                                    />
-                                                </CardContent>
-                                            </Card>
+                                        .map((note: Tables<'notes'>) => (
+                                            <>
+                                                {Boolean(
+                                                    JSON.parse(
+                                                        JSON.stringify(
+                                                            note.notes
+                                                        )
+                                                    )
+                                                ) === true &&
+                                                    (
+                                                        JSON.parse(
+                                                            JSON.stringify(
+                                                                note.notes
+                                                            )
+                                                        ) as {
+                                                            link: string;
+                                                            name: string;
+                                                        }[]
+                                                    ).map(
+                                                        (note: {
+                                                            link: string;
+                                                            name: string;
+                                                        }) => {
+                                                            return (
+                                                                <Card
+                                                                    key={
+                                                                        note.name
+                                                                    }
+                                                                    className=" p-2"
+                                                                >
+                                                                    <CardTitle className="text-center capitalize lg:text-xl text-lg font-semibold mt-4">
+                                                                        {
+                                                                            encodeURI(note.name.slice(0, -4))
+                                                                        }
+                                                                    </CardTitle>
+                                                                    <CardContent className="flex justify-center items-center">
+                                                                        <NotesDocViewer
+                                                                            link={
+                                                                                note.link
+                                                                            }
+                                                                            className="w-full lg:h-[450px] h-[400px] overflow-hidden object-center"
+                                                                        />
+                                                                    </CardContent>
+                                                                </Card>
+                                                            );
+                                                        }
+                                                    )}
+                                                {Boolean(
+                                                    JSON.parse(
+                                                        JSON.stringify(
+                                                            note.notes
+                                                        )
+                                                    )
+                                                ) === false && (
+                                                    <p className='text-2xl tracking-tighter text-foreground font-thin'>
+                                                        Currently, there are no notes available for{' '}
+                                                        <span className='font-bold underline decoration-primary decoration-[3px]'>{note.subject}</span>.<br/>
+                                                        We will be adding notes for this subject very soon.
+                                                    </p>
+                                                )}
+                                                
+
+                                            </>
                                         ))}
                                 </div>
                             </div>

@@ -65,12 +65,28 @@ export async function POST(req: NextRequest, res: NextResponse) {
             }
         }
         if (existingNote) {
-            console.log(filesLinks,
-                JSON.parse(JSON.stringify(existingNote.notes)),
-                [...filesLinks.values(), JSON.parse(JSON.stringify(existingNote.notes))[0]]);
-            const uniqueNamesMap: { [name: string]: { link: string; name: string } } = {};
-            const notesLinksArray = Array.from(
-                new Set([...filesLinks.values(), (JSON.parse(JSON.stringify(existingNote.notes)))[0]])).filter((x) => { return typeof x !== "undefined" })
+            // console.log(filesLinks,
+            //     JSON.parse(JSON.stringify(existingNote.notes)),
+            //     // [...filesLinks.values(), JSON.parse(JSON.stringify(existingNote.notes))[0]]
+            //     );
+            // const uniqueNamesMap: { [name: string]: { link: string; name: string } } = {};
+            var notesLinksArray;
+            if (Boolean(JSON.parse(JSON.stringify(existingNote.notes)))) {
+                notesLinksArray = Array.from(
+                    new Set(
+                        [...filesLinks.values(),
+                        Boolean(JSON.parse(JSON.stringify(existingNote.notes))) ? (JSON.parse(JSON.stringify(existingNote.notes)))[0] : {}
+                        ]
+                    )
+                ).filter((x) => { return typeof x !== "undefined" })
+            } else {
+                notesLinksArray = Array.from(
+                    new Set(
+                        [...filesLinks.values()]
+                    )
+                ).filter((x) => { return typeof x !== "undefined" })
+            }
+
             // const uniqueNotes = notesLinksArray.reduce((acc, file) => {
             //     if (!uniqueNamesMap[file.name] || uniqueNamesMap[file.name].link < file.link) {
             //         uniqueNamesMap[file.name] = file;
@@ -138,6 +154,8 @@ async function uploadFiles(files: File[]) {
                     '.' +
                     file.name.split('.').slice(-1),
                 Body: await file.arrayBuffer(),
+                ContentType: "application/pdf",
+                ContentDisposition: 'inline',
             } as PutObjectCommandInput;
             const command = new PutObjectCommand(params);
             const data = await s3.send(command);
