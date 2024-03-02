@@ -21,7 +21,6 @@ import { getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
 import { type Option } from '@/components/ui/mutiple-selector';
 import MultipleSelector from '@/components/ui/mutiple-selector';
-import { cn } from '@/utils/cn';
 
 const eventSchema = z.object({
     title: z
@@ -63,60 +62,6 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
     });
 
     async function onSubmit(values: z.infer<typeof eventSchema>) {
-        // async function uploadFiles(): Promise<string[] | undefined> {
-        //     const S3_BUCKET = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME!;
-        //     const REGION = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_REGION!;
-        //     const ACCESS_KEY =
-        //         process.env.NEXT_PUBLIC_AWS_S3_BUCKET_ACCESS_KEY!;
-        //     const SECRET_ACCESS_KEY =
-        //         process.env.NEXT_PUBLIC_AWS_S3_BUCKET_SECRET_ACCESS_KEY!;
-        //     AWS.config.update({
-        //         accessKeyId: ACCESS_KEY,
-        //         secretAccessKey: SECRET_ACCESS_KEY
-        //     });
-        //     const s3 = new AWS.S3({
-        //         params: { Bucket: S3_BUCKET },
-        //         region: REGION
-        //     });
-
-        //     try {
-        //         const uploadPromises = Array.from(values.images).map(
-        //             async (image: File) => {
-        //                 const params = {
-        //                     Bucket: S3_BUCKET,
-        //                     Key:
-        //                         image.name.split('.')[0] +
-        //                         '-' +
-        //                         crypto.randomBytes(32).toString('hex') +
-        //                         '.' +
-        //                         image.name.split('.').slice(-1),
-        //                     Body: image
-        //                 } as AWS.S3.Types.PutObjectRequest;
-
-        //                 const data = await s3
-        //                     .putObject(params)
-        //                     .on('httpUploadProgress', (evt: Progress) => {
-        //                         console.log(
-        //                             'Uploading ' +
-        //                                 String((evt.loaded * 100) / evt.total) +
-        //                                 '%'
-        //                         );
-        //                     })
-        //                     .promise();
-
-        //                 const uploadedImageUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${params.Key}`;
-        //                 console.log(uploadedImageUrl);
-        //                 return uploadedImageUrl;
-        //             }
-        //         );
-
-        //         const results = await Promise.all(uploadPromises);
-        //         return results;
-        //     } catch (error) {
-        //         console.error(error);
-        //         return [];
-        //     }
-        // }
         try {
             setLoading(true);
             const formData = new FormData();
@@ -146,33 +91,6 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                 method: 'POST',
                 body: formData
             });
-            // for (var key of formData.entries()) {
-            //     console.log(key[0] + ', ' + key[1]);
-            // }
-            // const imagesLinks = await uploadFiles();
-            // // console.log(imagesLinks);
-            // const { data, error } = await supabase.from('events').insert({
-            //     host_data: user,
-            //     host_user_id: user.id,
-            //     slug: values.title
-            //         .toLowerCase()
-            //         .replace(/ /g, '-')
-            //         .replace(/[^\w-]+/g, ''),
-            //     ...values,
-            //     time: `${values.time?.hour}:${values.time?.minute}:${values.time?.second}`,
-            //     images: imagesLinks
-            // });
-            // console.log(imagesLinks);
-
-            // if (error) {
-            //     console.error(error);
-            //     router.push(
-            //         getErrorRedirect(
-            //             window.location.toString(),
-            //             'Error creating event.',
-            //             error.message
-            //         )
-            //     );
             if (res.ok) {
                 router.push(
                     `/events/${values.title

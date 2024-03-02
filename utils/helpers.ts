@@ -176,3 +176,19 @@ export function convertTimeString(inputTimeString: string) {
 
   return `${formattedHours}:${formattedMinutes} ${period}`;
 }
+
+export const branches: Object = {
+  CSE: 'Computer Science and Engineering',
+  ECE: 'Electrical and Computer Engineering',
+  EEE: 'Electronics and Electrical Engineering',
+  ME: 'Mechanical Engineering',
+  IT: 'Information Technology',
+  CST: 'Computer Science and Technology',
+  MAE: 'Mechanical and Aerospace Engineering',
+  CE: 'Civil Engineering',
+  IoT: 'Internet of Things',
+  AIML: 'Artificial Intelligence and Machine Learning',
+  AIDS: 'Artificial Intelligence and Data Science',
+  EE: 'Electrical Engineering',
+  ITE: 'Information Technology Engineering',
+};

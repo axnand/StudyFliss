@@ -29,7 +29,7 @@ const ScrollToTopButton = () => {
     return (
         <Button
             className={`fixed bottom-4 right-8 p-0 rounded-2xl size-14 border-2 border-primary/50 hover:bg-primary/20 hover:border-primary/60 transition-all duration-300 ease-in-out-sine group ${
-                isVisible ? 'opacity-100' : 'opacity-0'
+                isVisible ? 'opacity-100' : 'opacity-0 cursor-default'
             }`}
             onClick={scrollToTop}
             variant={'outline'}

@@ -15,21 +15,11 @@ import { Tables } from '@/types_db';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import NotesPDFViewer from './notes-pdf-viewer';
-const branches: Object = {
-    CSE: 'Computer Science and Engineering'
-    // ECE: 'Electrical and Computer Engineering',
-    // EEE: 'Electronics and Electrical Engineering',
-    // ME: 'Mechanical Engineering',
-    // IT: 'Information Technology',
-    // CST: 'Computer Science and Technology',
-    // MAE: 'Mechanical and Aerospace Engineering',
-    // CE: 'Civil Engineering',
-    // IoT: 'Internet of Things',
-    // AIML: 'Artificial Intelligence and Machine Learning',
-    // AIDS: 'Artificial Intelligence and Data Science'
-};
+import { branches } from '@/utils/helpers';
+
 
 export default function CoursePageClient({ course }: { course: string }) {
+    // console.log(Object.keys(branches));
     const supabase = createClient();
     const router = useRouter();
     const pathname = usePathname();

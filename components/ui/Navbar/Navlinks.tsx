@@ -22,6 +22,7 @@ import {
     CalendarIcon,
     FileTextIcon,
     HomeIcon,
+    InfoCircledIcon,
     PersonIcon,
     RowsIcon
 } from '@radix-ui/react-icons';
@@ -89,7 +90,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                 )}
 
                 <ThemeSwitcher />
-                <DropdownMenu modal={false}>
+                <DropdownMenu modal={false} >
                     <DropdownMenuTrigger>
                         <div className="md:px-4 md:py-4 px-4 py-4 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground  hover:bg-primary/20 transition-all duration-300 ease-in-out-sine">
                             {user ? (
@@ -99,7 +100,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                             )}
                         </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className='w-full min-w-[200px] '>
                         {user && (
                             <>
                                 <DropdownMenuLabel className="inline-flex items-center justify-center">
@@ -123,6 +124,11 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                         <Link href="/">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <HomeIcon className="size-4 mr-2" /> Home
+                            </DropdownMenuItem>
+                        </Link>
+                        <Link href="/about-us">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <InfoCircledIcon className="size-4 mr-2" /> About Us
                             </DropdownMenuItem>
                         </Link>
                         <Link href="/events">

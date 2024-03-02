@@ -155,7 +155,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
-async function uploadFiles(images: File[]) {
+export async function uploadFiles(files: File[]) {
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
     const ACCESS_KEY = process.env.AWS_S3_BUCKET_ACCESS_KEY!;
@@ -170,21 +170,21 @@ async function uploadFiles(images: File[]) {
     } as S3ClientConfig);
 
     try {
-        const uploadPromises = images.map(async (image) => {
+        const uploadPromises = files.map(async (file) => {
             const params = {
                 Bucket: S3_BUCKET,
                 Key:
-                    image.name.split('.')[0] +
+                    file.name.split('.')[0] +
                     '-' +
                     crypto.randomBytes(32).toString('hex') +
                     '.' +
-                    image.name.split('.').slice(-1),
-                Body: await image.arrayBuffer(),
+                    file.name.split('.').slice(-1),
+                Body: await file.arrayBuffer(),
             } as PutObjectCommandInput;
             const command = new PutObjectCommand(params);
             const data = await s3.send(command);
-            const uploadedImageUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${params.Key}`;
-            return uploadedImageUrl;
+            const uploadedFileUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${params.Key}`;
+            return uploadedFileUrl;
         });
         const results = await Promise.all(uploadPromises);
         return results;

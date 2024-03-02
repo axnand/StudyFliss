@@ -30,7 +30,7 @@ import {
 } from '@radix-ui/react-icons';
 import { MdOutlineTimer } from 'react-icons/md';
 import { PersonIcon } from '@radix-ui/react-icons';
-import { MapPinIcon, TagIcon } from 'lucide-react';
+import { Clock, MapPinIcon, TagIcon } from 'lucide-react';
 import Input from '@/components/ui/Input';
 import MultipleSelector, { Option } from '@/components/ui/mutiple-selector';
 import { MultiSelect } from '@/components/multiple-select-2';
@@ -291,7 +291,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                     </span>
                                                 </div>
                                                 <div className="inline-flex gap-2 items-center">
-                                                    <MdOutlineTimer className="lg:size-6 size-5" />
+                                                    <ClockIcon className="lg:size-6 size-5" />
                                                     <span className="lg:text-lg text-sm">
                                                         {convertTimeString(
                                                             event.time ??
