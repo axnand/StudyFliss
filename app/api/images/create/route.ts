@@ -155,7 +155,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
-export async function uploadFiles(files: File[]) {
+async function uploadFiles(files: File[]) {
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
     const ACCESS_KEY = process.env.AWS_S3_BUCKET_ACCESS_KEY!;
