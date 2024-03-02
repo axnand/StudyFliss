@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import {
     CalendarIcon,
+    FileTextIcon,
     HomeIcon,
     PersonIcon,
     RowsIcon
@@ -127,6 +128,11 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                         <Link href="/events">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <CalendarIcon className="size-4 mr-2" /> Events
+                            </DropdownMenuItem>
+                        </Link>
+                        <Link href="/courses">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <FileTextIcon className="size-4 mr-2" /> Notes
                             </DropdownMenuItem>
                         </Link>
                     </DropdownMenuContent>

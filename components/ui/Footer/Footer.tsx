@@ -60,10 +60,10 @@ export default function Footer() {
                         </li>
                         <li className="py-3 md:py-0 md:pb-4">
                             <Link
-                                href="/"
+                                href="/courses"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
                             >
-                                Blog
+                                Notes
                             </Link>
                         </li>
                     </ul>
