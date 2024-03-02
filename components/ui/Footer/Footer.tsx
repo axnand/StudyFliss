@@ -11,8 +11,8 @@ import { MdWhatsapp } from 'react-icons/md';
 
 export default function Footer() {
     return (
-        <footer className="mx-auto max-w-7xl px-8 bg-background border-t-primary/10 border-t-2 transition-all duration-300 ease-in-out-sine">
-            <div className="grid grid-cols-1 gap-8 py-12 text-foreground border-b lg:grid-cols-12 border-border bg-background transition-all duration-300 ease-in-out-sine">
+        <footer className="mx-auto max-w-7xl px-8 bg-background border-t-primary/20 border-t-2 transition-all duration-300 ease-in-out-sine">
+            <div className="grid grid-cols-1 gap-8 py-12 text-foreground lg:grid-cols-12  bg-background transition-all duration-300 ease-in-out-sine">
                 <div className="col-span-1 lg:col-span-4">
                     <Link
                         href="/"
@@ -133,11 +133,24 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-background transition-all duration-300 ease-in-out-sine">
+            <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-background transition-all duration-300 ease-in-out-sine border-t-primary/20 border-t-2 tracking-tight">
                 <div>
                     <span>
                         &copy; {new Date().getFullYear()} StudyFliss. All rights
                         reserved.
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Developed with ❤️ by{' '}
+                        <Link
+                            href="https://harjot.pro"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className='underline-offset-[2px] underline decoration-[2px] decoration-primary transition-all duration-300 ease-in-out-sine hover:text-foreground font-bold'
+                        >
+                            Harjot Singh
+                        </Link>.
                     </span>
                 </div>
             </div>

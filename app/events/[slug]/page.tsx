@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import EventPageClient from './event-page';
+import Link from 'next/link';
 
 export default async function EventPage({
     params
@@ -12,6 +13,12 @@ export default async function EventPage({
         .select('*')
         .eq('slug', params.slug)
         .single();
+    const {data: recentEventsData, error: recentEventsError} = await supabase
+        .from('events')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .neq('slug', params.slug)
+        .limit(4);
     if (eventError) {
         console.error(eventError);
         return (
@@ -23,12 +30,12 @@ export default async function EventPage({
                                 <h1 className="-mt-2 lg:leading-tighter text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-balance">
                                     Error <span className='text-destructive'>404</span>
                                     <br />
-                                    <div className='text-4xl font-medium tracking-tight'>
+                                    <div className='text-4xl font-medium tracking-tight mt-2'>
                                         Event called{' '}
                                         <span className="underline underline-offset-4 decoration-primary decoration-[3px] transition-all duration-300 ease-in-out-sine">
                                             {decodeURI(params.slug)
                                                 .toLowerCase()
-                                                .split(' ')
+                                                .split('-')
                                                 .map((s: string) => {
                                                     let matchResult = s.match(/\w/);
                                                     if (matchResult) {
@@ -46,6 +53,14 @@ export default async function EventPage({
                                         </span>{' '}
                                         does not exist.
                                     </div>
+                                    <div className='text-2xl font-thin tracking-tight mt-2'>
+                                        You can browse all available events by{' '}
+                                        <Link href={`/events`}>
+                                            <span className="underline underline-offset-4 decoration-primary decoration-[3px] transition-all duration-300 ease-in-out-sine hover:text-foreground">
+                                            clicking here
+                                            </span>
+                                        </Link>.
+                                    </div>
                                 </h1>
                             </div>
                         </div>
@@ -54,5 +69,5 @@ export default async function EventPage({
             </div>
         );
     }
-    return <EventPageClient event={eventData} />;
+    return <EventPageClient event={eventData} recentEvents={recentEventsData ?? []} />;
 }

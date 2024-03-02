@@ -64,8 +64,8 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                                 }
                             >
                                 <span className="inline-flex justify-center items-center gap-2">
-                                    Sign out
-                                    <MdLogout className="size-4" />
+                                    Sign Out
+                                    <MdLogout className="size-4 group-hover:ml-0.5 group-hover:-rotate-6 transition-all duration-300 ease-in-out-sine" />
                                 </span>
                             </Button>
                         </form>

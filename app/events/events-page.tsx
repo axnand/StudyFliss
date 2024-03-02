@@ -23,16 +23,18 @@ import {
 import { max } from 'date-fns';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ClockIcon, EnvelopeOpenIcon } from '@radix-ui/react-icons';
+import {
+    CalendarIcon,
+    ClockIcon,
+    EnvelopeOpenIcon
+} from '@radix-ui/react-icons';
 import { MdOutlineTimer } from 'react-icons/md';
 import { PersonIcon } from '@radix-ui/react-icons';
-import { TagIcon } from 'lucide-react';
+import { MapPinIcon, TagIcon } from 'lucide-react';
 import Input from '@/components/ui/Input';
 import MultipleSelector, { Option } from '@/components/ui/mutiple-selector';
 import { MultiSelect } from '@/components/multiple-select-2';
 import { convertTimeString, formatDate } from '@/utils/helpers';
-
-
 
 export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
     const router = useRouter();
@@ -160,7 +162,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                         value={selectedTags}
                         onChange={setSelectedTags}
                     /> */}
-                    <div className='flex flex-row gap-8'>
+                    <div className="flex flex-row gap-8">
                         <MultiSelect
                             options={tagFilters}
                             selected={selectedTags}
@@ -178,7 +180,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                             className="w-full"
                         /> */}
                     </div>
-                    
+
                     {/* <MultipleSelector
                         placeholder="Filter by Date"
                         options={tags.map((tag) => {
@@ -186,7 +188,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                         })}
                         onChange={handleDateFilterChange}
                     /> */}
-                    <div className="grid xl:grid-cols-2 grid-cols1 gap-8 ">
+                    <div className="grid xl:grid-cols-2 grid-cols-1 gap-8 ">
                         {filteredEvents
                             .slice(startIndex, endIndex)
                             .map((event) => (
@@ -272,7 +274,13 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                             </h1>
                                             <div className="flex flex-row gap-2 items-center justify-between text-foreground/90">
                                                 <div className="inline-flex gap-2 items-center">
-                                                    <ClockIcon className="lg:size-6 size-5" />
+                                                    <MapPinIcon className="lg:size-6 size-5" />
+                                                    <span className="lg:text-lg text-sm">
+                                                        {event.location ?? "Online"}
+                                                    </span>
+                                                </div>
+                                                <div className="inline-flex gap-2 items-center">
+                                                    <CalendarIcon className="lg:size-6 size-5" />
                                                     <span className="lg:text-lg text-sm">
                                                         {formatDate(
                                                             new Date(
@@ -280,14 +288,9 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                                     '1970-01-01'
                                                             )
                                                         )}
-                                                        ,{' '}
-                                                        {convertTimeString(
-                                                            event.time ??
-                                                                '00:00:00'
-                                                        )}
                                                     </span>
                                                 </div>
-                                                {/* <div className="inline-flex gap-2 items-center">
+                                                <div className="inline-flex gap-2 items-center">
                                                     <MdOutlineTimer className="lg:size-6 size-5" />
                                                     <span className="lg:text-lg text-sm">
                                                         {convertTimeString(
@@ -295,7 +298,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                                                                 '00:00:00'
                                                         )}
                                                     </span>
-                                                </div> */}
+                                                </div>
                                             </div>
                                             <h1 className="lg:text-xl text-md font-semibold">
                                                 Host Details

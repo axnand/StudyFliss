@@ -21,6 +21,7 @@ import { getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
 import { type Option } from '@/components/ui/mutiple-selector';
 import MultipleSelector from '@/components/ui/mutiple-selector';
+import { cn } from '@/utils/cn';
 
 const eventSchema = z.object({
     title: z
@@ -31,6 +32,7 @@ const eventSchema = z.object({
     host_user_id: z.string(),
     date: z.string(),
     time: z.custom<TimeValue>(),
+    location: z.string().min(4, 'Please enter a valid location').max(200, 'Location must be at most 200 characters.'),
     description: z
         .string()
         .min(100, 'Must be at least 100 characters.')
@@ -43,6 +45,7 @@ const eventSchema = z.object({
 const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState("");
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
@@ -54,7 +57,8 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
             images: [],
             host_data: user,
             host_user_id: user.id,
-            tags: []
+            tags: [],
+            location: ''
         }
     });
 
@@ -113,16 +117,22 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
         //         return [];
         //     }
         // }
-
         try {
             setLoading(true);
             const formData = new FormData();
+            if(values.images.length === 0) {
+                return form.setError("images", {message: "Please select at least one image."});
+            }
+            if(values.tags.length < 3) {
+                return form.setError("tags", {message: "Please select at least three tag."});
+            }
             formData.set('title', values.title);
             formData.set('date', values.date);
             formData.set('time', JSON.stringify(values.time));
             formData.set('description', values.description);
             formData.set('registration_link', values.registration_link);
             formData.set('host_user_id', values.host_user_id);
+            formData.set('location', values.location);
             Array.from(values.images).forEach((file, index) => {
                 formData.set(`images[${index}]`, file);
             });
@@ -247,6 +257,21 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                         </FormItem>
                     )}
                 />
+                <FormField
+                    control={form.control}
+                    name="location"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel className="text-base font-medium">
+                                Location
+                            </FormLabel>
+                            <FormControl>
+                                <Input type="text" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
                 <FormField
                     control={form.control}
@@ -320,6 +345,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                         disabled={form.formState.isSubmitting}
                                         {...field}
                                         onChange={(event) => {
+                                            
                                             const dataTransfer =
                                                 new DataTransfer();
                                             if (images) {
@@ -336,6 +362,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                                 dataTransfer.items.add(image)
                                             );
                                             const newFiles = dataTransfer.files;
+                                            
                                             onChange(newFiles);
                                         }}
                                     />
@@ -384,12 +411,21 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                         );
                     }}
                 />
-
+                <span className='text-destructive text-base whitespace-pre-wrap'>{message}</span>
                 <Button
                     disabled={loading}
                     size={'lg'}
                     className="w-full"
                     type="submit"
+                    onClick={() => {
+                        console.log(form.getValues());
+                        if (form.getValues().images.length === 0) {
+                            setMessage((message) => message + "\nPlease select at least one image.");
+                        }
+                        if (form.getValues().tags.length < 3) {
+                            setMessage((message) => message + "\nPlease select at least three tags.");
+                        }
+                    }}
                 >
                     Create Event
                 </Button>

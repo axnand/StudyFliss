@@ -107,7 +107,7 @@ export default async function SignIn({
           )}
         </Card_>
       </div>
-      <LottieAnimation className="md:max-w-lg w-[calc(100%-20px)] lg:block hidden h-full animate-pendulum-spin" />
+      <LottieAnimation className="md:max-w-lg w-[calc(100%-20px)] lg:block hidden h-full" />
 
     </div>
   );
