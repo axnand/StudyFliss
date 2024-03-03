@@ -208,7 +208,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                             </div>
                         </div>
                     ) : (
-                        semester && (
+                        semester && (course === "btech" ? branch : true) && (
                             <div>
                                 <h1 className="lg:text-6xl overflow-visible text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                                     Semester {semester} Notes
