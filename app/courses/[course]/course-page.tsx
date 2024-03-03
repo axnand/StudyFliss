@@ -25,7 +25,7 @@ export default function CoursePageClient({ course }: { course: string }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const semester = searchParams.get('semester');
-    const branch = searchParams.get('brach');
+    const branch = searchParams.get('branch');
     const subject = searchParams.get('subject');
     const [notes, setNotes] = useState<Tables<'notes'>[]>([]);
     const [errorMessage, setErrorMessage] = useState('');
@@ -46,6 +46,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                 setNotes(error ? [] : data);
             }
             if (course === 'btech') {
+                console.log(branch)
                 const { data: data, error: error } = await supabase
                     .from('notes')
                     .select('*')
@@ -57,7 +58,9 @@ export default function CoursePageClient({ course }: { course: string }) {
                     console.error(error);
                     setErrorMessage('Could not fetch notes: ' + error.message);
                 }
+                console.log(data, error)
                 setNotes(error ? [] : data);
+                console.log(notes)
             }
         };
         fetchNotes();
@@ -96,7 +99,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                 )
                                         );
                                     }}
-                                    defaultValue={semester ?? '1'}
+                                    value={semester ?? undefined}
                                 >
                                     <SelectTrigger
                                         className="rounded-2xl lg:text-xl text-lg h-12 lg:px-4 px-3 md:w-[450px] w-full"
@@ -127,7 +130,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                                     </SelectContent>
                                 </Select>
                             }
-                            {course === 'btech' && !branch && (
+                            {course === 'btech' && (
                                 <Select
                                     onValueChange={(value) => {
                                         router.push(
@@ -139,7 +142,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                 )
                                         );
                                     }}
-                                    defaultValue={branch ?? 'CSE'}
+                                    value={branch ?? undefined}
                                 >
                                     <SelectTrigger
                                         className="rounded-2xl lg:text-xl text-lg h-12 lg:px-4 px-3 md:w-[450px] w-full"
