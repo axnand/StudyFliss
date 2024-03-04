@@ -17,6 +17,10 @@ import { Card, CardContent, CardTitle } from '@/components/ui/card';
 import NotesPDFViewer from './notes-pdf-viewer';
 import { branches } from '@/utils/helpers';
 import NotesDocViewer from './notes-doc-viewer';
+import Button from '@/components/ui/Button';
+import { DownloadIcon } from '@radix-ui/react-icons';
+import { DownloadCloudIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CoursePageClient({ course }: { course: string }) {
     // console.log(Object.keys(branches));
@@ -263,12 +267,19 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                                     key={
                                                                         note.name
                                                                     }
-                                                                    className=" p-2"
+                                                                    className=" lg:p-4 p-2"
                                                                 >
-                                                                    <CardTitle className="text-center capitalize lg:text-xl text-lg font-semibold mt-4">
-                                                                        {
-                                                                            encodeURI(note.name.slice(0, -4))
-                                                                        }
+                                                                    <CardTitle className="flex justify-center items-center gap-4 py-4 pt-0">
+                                                                        <h1 className='text-center capitalize lg:text-xl text-lg font-semibold'>
+                                                                            {
+                                                                                decodeURI(note.name.slice(0, -4))
+                                                                            }
+                                                                        </h1>
+                                                                        <Link href={note.link} target='_blank' rel='noopener noreferrer'>
+                                                                            <Button variant={'outline'} className='border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-2 px-6 lg:text-base text-sm py-5'>
+                                                                                <DownloadCloudIcon className="h-5 w-5 text-foreground" /> Download Notes
+                                                                            </Button>
+                                                                        </Link>
                                                                     </CardTitle>
                                                                     <CardContent className="flex justify-center items-center">
                                                                         <NotesDocViewer

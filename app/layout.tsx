@@ -9,6 +9,7 @@ import { Jost, Space_Grotesk } from 'next/font/google';
 import { cn } from '@/utils/cn';
 import { Providers } from './providers';
 import ScrollToTopButton from '@/components/ui/scroll-to-top';
+import Spinner from '@/components/ui/spinner';
 
 const jost = Jost({
     subsets: ['latin', 'latin-ext'],
@@ -92,7 +93,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                         <Footer />
                         <ScrollToTopButton />
                     </main>
-                    <Suspense>
+                    <Suspense fallback={<Spinner/>}>
                         <Toaster />
                     </Suspense>
                 </Providers>

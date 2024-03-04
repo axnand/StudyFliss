@@ -21,6 +21,7 @@ import { getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
 import { type Option } from '@/components/ui/mutiple-selector';
 import MultipleSelector from '@/components/ui/mutiple-selector';
+import Spinner from '@/components/ui/spinner';
 
 const eventSchema = z.object({
     title: z
@@ -31,7 +32,10 @@ const eventSchema = z.object({
     host_user_id: z.string(),
     date: z.string(),
     time: z.custom<TimeValue>(),
-    location: z.string().min(4, 'Please enter a valid location').max(200, 'Location must be at most 200 characters.'),
+    location: z
+        .string()
+        .min(4, 'Please enter a valid location')
+        .max(200, 'Location must be at most 200 characters.'),
     description: z
         .string()
         .min(100, 'Must be at least 100 characters.')
@@ -44,7 +48,7 @@ const eventSchema = z.object({
 const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState('');
     const form = useForm<z.infer<typeof eventSchema>>({
         resolver: zodResolver(eventSchema),
         defaultValues: {
@@ -65,11 +69,15 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
         try {
             setLoading(true);
             const formData = new FormData();
-            if(values.images.length === 0) {
-                return form.setError("images", {message: "Please select at least one image."});
+            if (values.images.length === 0) {
+                return form.setError('images', {
+                    message: 'Please select at least one image.'
+                });
             }
-            if(values.tags.length < 3) {
-                return form.setError("tags", {message: "Please select at least three tag."});
+            if (values.tags.length < 3) {
+                return form.setError('tags', {
+                    message: 'Please select at least three tag.'
+                });
             }
             formData.set('title', values.title);
             formData.set('date', values.date);
@@ -97,7 +105,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                         .toLowerCase()
                         .replace(/ /g, '-')
                         .replace(/[^\w-]+/g, '')}`
-                )
+                );
                 router.push(
                     getStatusRedirect(
                         window.location.toString(),
@@ -127,11 +135,19 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                 )
             );
         } finally {
+            router.push(
+                `${window.location.origin}/events/${values.title
+                    .toLowerCase()
+                    .replace(/ /g, '-')
+                    .replace(/[^\w-]+/g, '')}`
+            );
             form.reset();
             setLoading(false);
         }
     }
-
+    if (loading) {
+        return <Spinner />;
+    }
     return (
         <Form {...form}>
             <form
@@ -153,7 +169,11 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                 Title
                             </FormLabel>
                             <FormControl>
-                                <Input placeholder="Event Title" {...field} />
+                                <Input
+                                    disabled={loading}
+                                    placeholder="Event Title"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -169,7 +189,11 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                 Date
                             </FormLabel>
                             <FormControl>
-                                <Input type="date" {...field} />
+                                <Input
+                                    disabled={loading}
+                                    type="date"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -184,7 +208,11 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                 Location
                             </FormLabel>
                             <FormControl>
-                                <Input type="text" {...field} />
+                                <Input
+                                    disabled={loading}
+                                    type="text"
+                                    {...field}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -236,6 +264,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                             </FormLabel>
                             <FormControl>
                                 <Input
+                                    disabled={loading}
                                     placeholder="Registration Link"
                                     {...field}
                                 />
@@ -257,13 +286,12 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                 </FormLabel>
                                 <FormControl>
                                     <Input
+                                        disabled={loading}
                                         type="file"
                                         accept="image/*"
                                         multiple={true}
-                                        disabled={form.formState.isSubmitting}
                                         {...field}
                                         onChange={(event) => {
-                                            
                                             const dataTransfer =
                                                 new DataTransfer();
                                             if (images) {
@@ -280,7 +308,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                                                 dataTransfer.items.add(image)
                                             );
                                             const newFiles = dataTransfer.files;
-                                            
+
                                             onChange(newFiles);
                                         }}
                                     />
@@ -329,7 +357,9 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                         );
                     }}
                 />
-                <span className='text-destructive text-base whitespace-pre-wrap'>{message}</span>
+                <span className="text-destructive text-base whitespace-pre-wrap">
+                    {message}
+                </span>
                 <Button
                     disabled={loading}
                     size={'lg'}
@@ -338,15 +368,28 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                     onClick={() => {
                         console.log(form.getValues());
                         if (form.getValues().images.length === 0) {
-                            setMessage((message) => message + "\nPlease select at least one image.");
+                            setMessage(
+                                (message) =>
+                                    message +
+                                    '\nPlease select at least one image.'
+                            );
                         }
                         if (form.getValues().tags.length < 3) {
-                            setMessage((message) => message + "\nPlease select at least three tags.");
+                            setMessage(
+                                (message) =>
+                                    message +
+                                    '\nPlease select at least three tags.'
+                            );
                         }
                     }}
                 >
                     Create Event
                 </Button>
+                {loading && (
+                    <div className="py-4">
+                        <Spinner />
+                    </div>
+                )}
             </form>
         </Form>
     );

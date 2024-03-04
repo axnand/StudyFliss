@@ -1,11 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Limelight } from 'next/font/google';
 import Button from './Button';
-import { Skeleton } from './skeleton';
 import { DotsHorizontalIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import LoadingDots from './LoadingDots';
 
 export const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();

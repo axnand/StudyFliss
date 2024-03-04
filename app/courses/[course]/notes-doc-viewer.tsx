@@ -1,5 +1,5 @@
 import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer';
-import { ITheme } from '@cyntler/react-doc-viewer';
+import { ITheme, INoRendererConfig } from '@cyntler/react-doc-viewer';
 
 interface NotesPDFViewerProps extends React.ComponentPropsWithoutRef<'div'> {
     link: string;
@@ -32,7 +32,7 @@ export default function NotesDocViewer({
                         disableFileName: true,
                         disableHeader: true,
                     },
-                    pdfVerticalScrollByDefault: false
+                    pdfVerticalScrollByDefault: false,
                 }}
                 className='w-full h-full rounded-2xl'
             />

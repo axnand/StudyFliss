@@ -40,6 +40,7 @@ import {
     SelectTrigger,
     SelectValue
 } from '@/components/ui/select';
+import Spinner from '@/components/ui/spinner';
 
 const noteSchema = z.object({
     semester: z
@@ -123,6 +124,10 @@ const CreateNoteForm = () => {
             form.reset();
             setLoading(false);
         }
+    }
+
+    if (loading) {
+        return <Spinner/>;
     }
 
     return (

@@ -3,8 +3,6 @@ import { CardContent, Card } from '../ui/card';
 import {
     CarouselItem,
     Carousel,
-    CarouselPrevious,
-    CarouselNext,
     CarouselContent
 } from '@/components/ui/carousel';
 import Input from '../ui/Input';
