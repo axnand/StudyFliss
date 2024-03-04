@@ -7,12 +7,12 @@ export default function Spinner() {
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
-                viewBox="-4 0 130 130"
-                className="size-48 fill-none flex items-center justify-center p-8 border-2 border-primary/80 shadow-lg shadow-primary/20 hover:shadow-primary/10 hover:shadow-xl transition-all duration-300 ease-in-out-sine rounded-full scale-90"
+                viewBox="-8 -8 150 150"
+                className="size-48 fill-none flex items-center justify-center p-8 border-2 border-primary/80 shadow-lg shadow-primary/20 hover:shadow-primary/10 hover:shadow-xl transition-all duration-300 ease-in-out-sine rounded-full"
                 stroke="hsl(var(--primary)/0.8)"
                 strokeWidth={0.5}
             >
-                <g transform="translate(-7.995886493167068, -77.16029099675677) scale(3.331619901699667)" className="">
+                <g transform="translate(0, -69.16029099675677) scale(3.331619901699667)" className="">
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"

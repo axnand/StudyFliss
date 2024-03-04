@@ -1,9 +1,18 @@
+import Spinner from '@/components/ui/spinner';
 import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer';
 import { ITheme, INoRendererConfig } from '@cyntler/react-doc-viewer';
 
 interface NotesPDFViewerProps extends React.ComponentPropsWithoutRef<'div'> {
     link: string;
 }
+
+const CenteredSpinner = () => {
+    return (
+        <div className="flex items-center justify-center w-full h-full">
+            <Spinner />
+        </div>
+    );
+};
 
 export default function NotesDocViewer({
     link,
@@ -27,14 +36,19 @@ export default function NotesDocViewer({
                     textTertiary: 'hsl(var(--primary))',
                     disableThemeScrollbar: false
                 }}
+                
                 config={{
                     header: {
                         disableFileName: true,
                         disableHeader: true,
                     },
                     pdfVerticalScrollByDefault: false,
+                    loadingRenderer: {
+                        overrideComponent: CenteredSpinner,
+                        showLoadingTimeout: 500
+                    }
                 }}
-                className='w-full h-full rounded-2xl'
+                className='w-full h-full rounded-2xl bg-background'
             />
         </div>
     );

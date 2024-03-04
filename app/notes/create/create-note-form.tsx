@@ -126,15 +126,11 @@ const CreateNoteForm = () => {
         }
     }
 
-    if (loading) {
-        return <Spinner/>;
-    }
-
     return (
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 w-full mx-auto lg:max-w-2xl lg:border-2 lg:border-primary/50 rounded-xl p-8 mt-12 mb-24"
+                className="space-y-8 w-full mx-auto lg:max-w-2xl lg:border-2 lg:border-primary/50 rounded-xl p-8 mt-12 mb-24 relative"
             >
                 <h1 className="lg:leading-tighter text-3xl text-center font-medium tracking-tighter sm:text-4xl md:text-5xl text-balance">
                     Add{' '}
@@ -158,11 +154,10 @@ const CreateNoteForm = () => {
                                     The name of the file will be used as the <b className='text-base'>title of the note</b>.
                                 </FormDescription>
                                 <FormControl>
-                                    <Input
+                                    <Input disabled={loading}
                                         type="file"
-                                        accept="application/pdf"
+                                        accept="application/pdf, image/gif, image/jpeg, image/png"
                                         multiple={true}
-                                        disabled={form.formState.isSubmitting}
                                         {...field}
                                         onChange={(event) => {
                                             const dataTransfer =
@@ -202,7 +197,7 @@ const CreateNoteForm = () => {
                             </FormLabel>
 
                             <FormControl>
-                                <Input
+                                <Input disabled={loading}
                                     type="number"
                                     min={1}
                                     max={8}
@@ -225,7 +220,7 @@ const CreateNoteForm = () => {
                             </FormLabel>
 
                             <FormControl>
-                                <Input placeholder="Subject" {...field} />
+                                <Input disabled={loading} placeholder="Subject" {...field} />
                             </FormControl>
 
                             <FormMessage />
@@ -244,6 +239,7 @@ const CreateNoteForm = () => {
 
                             <FormControl>
                                 <Select
+                                    disabled={loading}
                                     {...field}
                                     onValueChange={field.onChange}
                                     value={undefined}
@@ -275,20 +271,23 @@ const CreateNoteForm = () => {
                             </FormControl>
 
                             <FormMessage />
+                            <div className='flex flex-row items-end justify-end '>
+                    <Button
+                        variant="outline"
+                        className="rounded-2xl lg:text-base text-sm h-12 lg:px-4 px-6 hover:bg-primary/5 hover:text-primary transition-all duration-300 ease-in-out-sine border-primary/50 border-2"
+                        disabled={form.formState.isSubmitting}
+                        onClick={() => {
+                            form.setValue('branch', undefined);
+                        }}
+                        type="reset"
+                    >
+                        Reset Branch
+                    </Button>
+                </div>
                         </FormItem>
                     )}
                 />
-                <Button
-                    variant="outline"
-                    className=""
-                    disabled={form.formState.isSubmitting}
-                    onClick={() => {
-                        form.setValue('branch', undefined);
-                    }}
-                    type="reset"
-                >
-                    Reset Branch
-                </Button>
+                
 
                 <FormField
                     control={form.control}
@@ -301,6 +300,7 @@ const CreateNoteForm = () => {
 
                             <FormControl>
                                 <Select
+                                    disabled={loading}
                                     {...field}
                                     onValueChange={field.onChange}
                                 >
@@ -345,8 +345,13 @@ const CreateNoteForm = () => {
                     className="w-full"
                     type="submit"
                 >
-                    Add Note
+                    Add Notes
                 </Button>
+                {loading && (
+                    <div className="py-4 absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-sm">
+                        <Spinner />
+                    </div>
+                )}
             </form>
         </Form>
     );

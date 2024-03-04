@@ -121,7 +121,7 @@ export function AboutUsPage() {
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-[600px_1fr]">
                             <div className="space-y-4">
-                                <h2 className="text-3xl font-2old text-pretty tracking-tighter sm:text-3xl md:text-4xl">
+                                <h2 className="text-3xl font-bold text-pretty tracking-tighter sm:text-3xl md:text-4xl">
                                     "The main motive of our website is to not
                                     let anyone miss out on an opportunity that
                                     could potentially be a{' '}

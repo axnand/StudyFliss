@@ -145,14 +145,12 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
             setLoading(false);
         }
     }
-    if (loading) {
-        return <Spinner />;
-    }
+
     return (
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 w-full lg:max-w-2xl lg:border-2 lg:border-primary/50 rounded-xl p-8 mt-12 mb-24"
+                className="space-y-8 w-full lg:max-w-2xl lg:border-2 lg:border-primary/50 rounded-xl p-8 mt-12 mb-24 relative"
             >
                 <h1 className="lg:leading-tighter text-3xl text-center font-medium tracking-tighter sm:text-4xl md:text-5xl text-balance">
                     Add an{' '}
@@ -386,7 +384,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                     Create Event
                 </Button>
                 {loading && (
-                    <div className="py-4">
+                    <div className="py-4 absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-sm">
                         <Spinner />
                     </div>
                 )}

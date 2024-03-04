@@ -311,7 +311,7 @@ export default function EventPageClient({
                                         </div>
                                     </div>
                                     <p className="text-foreground/90 lg:leading-6 leading-5 line-clamp-3 lg:text-md text-sm">
-                                        Interested in attending the event
+                                        Interested in attending
                                         <br />
                                         <span className="font-bold line-clamp-1 -mt-1 lg:text-xl text-lg">
                                             {event.title ??
@@ -459,13 +459,13 @@ export default function EventPageClient({
                         </div>
                     </section>
                 )}
-                <section className="w-full max-w-5xl mx-auto flex flex-col gap-8 pt-8">
+                <section className=" max-w-5xl mx-auto flex flex-col gap-8 pt-8 w-full">
                     <Link href={`/events`}>
                         <Button
                             variant={'outline'}
                             type="submit"
                             className={
-                                'group border-primary/50 hover:bg-primary/[0.02] border-2 lg:py-8 lg:px-6 py-6 px-4 lg:text-lg text-md tracking-tighter rounded-xl transition-all duration-300 ease-in-out-sine w-full'
+                                'group border-primary/50 hover:bg-primary/[0.02] border-2 lg:py-8 lg:px-6 py-6 px-4 lg:text-lg text-md tracking-tighter rounded-xl transition-all duration-300 ease-in-out-sine xl:w-[calc(50%-1rem)] w-full'
                             }
                         >
                             <span className="inline-flex flex-row gap-2 items-center justify-center font-bold">

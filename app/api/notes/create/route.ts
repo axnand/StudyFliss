@@ -129,6 +129,28 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
+function getContentTypeFromFileName(fileName: string): string {
+    const extension = fileName.split('.').pop()?.toLowerCase();
+
+    if (extension) {
+        switch (extension) {
+            case 'pdf':
+                return 'application/pdf';
+            case 'gif':
+                return 'image/gif';
+            case 'jpeg':
+            case 'jpg':
+                return 'image/jpeg';
+            case 'png':
+                return 'image/png';
+            default:
+                return "";
+        }
+    }
+
+    return "";
+}
+
 async function uploadFiles(files: File[]) {
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
@@ -154,7 +176,7 @@ async function uploadFiles(files: File[]) {
                     '.' +
                     file.name.split('.').slice(-1),
                 Body: await file.arrayBuffer(),
-                ContentType: "application/pdf",
+                ContentType: getContentTypeFromFileName(file.name),
                 ContentDisposition: 'inline',
             } as PutObjectCommandInput;
             const command = new PutObjectCommand(params);
