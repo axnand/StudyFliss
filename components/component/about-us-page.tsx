@@ -30,7 +30,7 @@ export function AboutUsPage() {
     return (
         <div className="flex flex-col min-h-[100dvh] pt-12 lg:mb-48 mb-96">
             <main className="flex-1">
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-8">
+                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto lg:px-8 px-4">
                     <div className="overflow-clip relative  flex lg:flex-row flex-col items-center justify-center px-4 space-y-4 md:px-6 lg:space-y-10">
                         <div className="text-center">
                             <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
