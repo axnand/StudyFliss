@@ -23,6 +23,8 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Spinner from '@/components/ui/spinner';
 import { FixedSizeList as List } from 'react-window';
+import { motion } from 'framer-motion';
+import { json } from 'stream/consumers';
 
 const Card = dynamic(() =>
     import('@/components/ui/card').then((module) => ({ default: module.Card }))
@@ -44,9 +46,7 @@ export default function CoursePageClient({ course }: { course: string }) {
         const note = notes.filter((n) => n.subject === subject)[index];
 
         return (
-            <div
-                style={style}
-            >
+            <div style={style}>
                 {Boolean(JSON.parse(JSON.stringify(note.notes))) === true && (
                     <Suspense fallback={<Spinner />}>
                         <>
@@ -271,44 +271,58 @@ export default function CoursePageClient({ course }: { course: string }) {
                         </div>
                     </div>
                     {notes.length > 0 ? (
-                        <div className="overflow-clip relative flex lg:flex-row flex-col items-start justify-start space-y-4 lg:space-y-10">
-                            <div className="flex flex-col gap-6">
-                                <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
-                                    Select a{' '}
-                                    <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
-                                        Subject
-                                    </span>
-                                </h1>
-                                <div className="flex flex-row flex-wrap gap-4">
-                                    {Array.from(
-                                        new Set(
-                                            notes.map((note) => note.subject)
-                                        )
-                                    ).map((sub) => (
-                                        <Badge
-                                            variant={'outline'}
-                                            className={`border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl lg:px-6 px-6 lg:py-2 py-1 lg:text-lg text-md font-semibold text-foreground/90 cursor-pointer ${subject?.toLowerCase() === sub?.toLowerCase() ? 'bg-primary/10 border-primary/70' : ''}`}
-                                            onClick={() => {
-                                                router.push(
-                                                    pathname +
-                                                        '?' +
-                                                        createQueryString(
-                                                            'subject',
-                                                            sub ?? ''
-                                                        )
-                                                );
-                                            }}
-                                        >
-                                            {sub ?? 'Unknown Subject'}
-                                        </Badge>
-                                    ))}
+                        <motion.div
+                            initial={{ opacity: 0, y: -40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.75, ease: 'easeInOut' }}
+                        >
+                            <div className="overflow-clip relative flex lg:flex-row flex-col items-start justify-start space-y-4 lg:space-y-10">
+                                <div className="flex flex-col gap-6">
+                                    <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
+                                        Select a{' '}
+                                        <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
+                                            Subject
+                                        </span>
+                                    </h1>
+                                    <div className="flex flex-row flex-wrap gap-4">
+                                        {Array.from(
+                                            new Set(
+                                                notes.map(
+                                                    (note) => note.subject
+                                                )
+                                            )
+                                        ).map((sub) => (
+                                            <Badge
+                                                variant={'outline'}
+                                                className={`border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl lg:px-6 px-6 lg:py-2 py-1 lg:text-lg text-md font-semibold text-foreground/90 cursor-pointer ${subject?.toLowerCase() === sub?.toLowerCase() ? 'bg-primary/10 border-primary/70' : ''}`}
+                                                onClick={() => {
+                                                    router.push(
+                                                        pathname +
+                                                            '?' +
+                                                            createQueryString(
+                                                                'subject',
+                                                                sub ?? ''
+                                                            )
+                                                    );
+                                                }}
+                                            >
+                                                {sub ?? 'Unknown Subject'}
+                                            </Badge>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ) : (
                         semester &&
                         (course === 'btech' ? branch : true) && (
-                            <div>
+                            <motion.div 
+                                initial={{ opacity: 0, y: -40 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.75, ease: 'easeInOut' }}
+                            >
                                 <h1 className="lg:text-6xl overflow-visible text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                                     Semester {semester} Notes
                                     <br />
@@ -316,41 +330,49 @@ export default function CoursePageClient({ course }: { course: string }) {
                                         Coming Soon!
                                     </span>
                                 </h1>
-                            </div>
+                            </motion.div>
                         )
                     )}
                     {notes.filter((note) => note.subject === subject).length >
                         0 && (
-                        <div className="overflow-clip relative flex lg:flex-row flex-col items-start justify-start space-y-4 lg:space-y-10">
-                            <div className="flex flex-col gap-6 w-full">
-                                <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
-                                    {subject}{' '}
-                                    <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
-                                        Notes
-                                    </span>
-                                </h1>
-                                <div className="grid grid-cols-1 gap-8 w-full">
-                                    <List
-                                        height={800}
-                                        itemCount={
-                                            notes.filter(
-                                                (note) =>
-                                                    note.subject === subject
-                                            ).length
-                                        }
-                                        width={'100%'}
-                                        itemSize={
-                                            notes.filter(
-                                                (note) =>
-                                                    note.subject === subject
-                                            ).length * 400
-                                        }
-                                    >
-                                        {Row}
-                                    </List>
+                        <motion.div 
+                            initial={{ opacity: 0, y: -40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.75, ease: 'easeInOut' }}
+                            key={JSON.stringify(notes)}
+                        >
+                            <div className="overflow-clip relative flex lg:flex-row flex-col items-start justify-start space-y-4 lg:space-y-10">
+                                <div className="flex flex-col gap-6 w-full">
+                                    <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
+                                        {subject}{' '}
+                                        <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
+                                            Notes
+                                        </span>
+                                    </h1>
+                                    <div className="grid grid-cols-1 gap-8 w-full">
+                                        <List
+                                            height={800}
+                                            itemCount={
+                                                notes.filter(
+                                                    (note) =>
+                                                        note.subject === subject
+                                                ).length
+                                            }
+                                            width={'100%'}
+                                            itemSize={
+                                                notes.filter(
+                                                    (note) =>
+                                                        note.subject === subject
+                                                ).length * 400
+                                            }
+                                        >
+                                            {Row}
+                                        </List>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     )}
                     {errorMessage}
                 </section>
