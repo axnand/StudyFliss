@@ -181,7 +181,7 @@ export default function LandingPage({
                                 <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     We'll keep you updated on upcoming events
                                     held in all IPU colleges, ensuring you never
-                                    miss out on any opportunities for fun.
+                                    miss out on any opportunities to have fun.
                                 </p>
                             </div>
                         </CardContent>

@@ -14,18 +14,22 @@ export default function Footer() {
         <footer className="mx-auto max-w-7xl px-4 bg-background border-t-primary/20 border-t-2 transition-all duration-300 ease-in-out-sine">
             <div className="grid grid-cols-1 gap-8 py-12 text-foreground lg:grid-cols-12  bg-background transition-all duration-300 ease-in-out-sine">
                 <div className="col-span-1 lg:col-span-4">
-                    <Link
-                        href="/"
+                    <div
                         className="flex items-center flex-initial font-bold md:mr-24"
                     >
-                        <div className="flex flex-row items-center gap-2">
-                            <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
-                            <h1 className="md:text-3xl text-2xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
-                                Study
-                                <span className="text-primary/90">Fliss</span>
-                            </h1>
+                        <div className="flex flex-col items-start gap-2">
+                            <Link href={"/"} className='flex flex-row items-center gap-2'>
+                                <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
+                                <h1 className="md:text-3xl text-2xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
+                                    Study
+                                    <span className="text-primary/90">Fliss</span>
+                                </h1>
+                            </Link>
+                            <p className='font-thin text-sm lg:max-w-full max-w-[300px] text-foreground/80 dark:text-foreground/80'>
+                            StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.
+                            </p>
                         </div>
-                    </Link>
+                    </div>
                 </div>
                 <div className="col-span-1 lg:col-span-2">
                     <ul className="flex flex-col flex-initial md:flex-1">
@@ -33,14 +37,6 @@ export default function Footer() {
                             <p className="font-bold text-foreground transition-all duration-300 ease-in-out-sine">
                                 NAVIGATION
                             </p>
-                        </li>
-                        <li className="py-3 md:py-0 md:pb-4">
-                            <Link
-                                href="/"
-                                className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
-                            >
-                                Home
-                            </Link>
                         </li>
                         <li className="py-3 md:py-0 md:pb-4">
                             <Link
@@ -52,18 +48,18 @@ export default function Footer() {
                         </li>
                         <li className="py-3 md:py-0 md:pb-4">
                             <Link
-                                href="/events"
+                                href="/courses"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
                             >
-                                Events
+                                All Courses
                             </Link>
                         </li>
                         <li className="py-3 md:py-0 md:pb-4">
                             <Link
-                                href="/courses"
+                                href="/growth-sf"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
                             >
-                                Notes
+                                Growth SF
                             </Link>
                         </li>
                     </ul>
