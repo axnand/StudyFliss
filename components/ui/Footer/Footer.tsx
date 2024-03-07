@@ -11,7 +11,7 @@ import { MdWhatsapp } from 'react-icons/md';
 
 export default function Footer() {
     return (
-        <footer className="mx-auto max-w-7xl px-8 bg-background border-t-primary/20 border-t-2 transition-all duration-300 ease-in-out-sine">
+        <footer className="mx-auto max-w-7xl px-4 bg-background border-t-primary/20 border-t-2 transition-all duration-300 ease-in-out-sine">
             <div className="grid grid-cols-1 gap-8 py-12 text-foreground lg:grid-cols-12  bg-background transition-all duration-300 ease-in-out-sine">
                 <div className="col-span-1 lg:col-span-4">
                     <Link

@@ -30,7 +30,7 @@ export function AboutUsPage() {
     return (
         <div className="flex flex-col min-h-[100dvh] pt-12 lg:mb-48 mb-96">
             <main className="flex-1">
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto lg:px-8 px-4">
+                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto lg:px-4 px-4">
                     <div className="overflow-clip relative  flex lg:flex-row flex-col items-center justify-center px-4 space-y-4 md:px-6 lg:space-y-10">
                         <div className="text-center">
                             <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
@@ -49,9 +49,9 @@ export function AboutUsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-8">
+                <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-4">
                     <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
-                        <Card className='lg:p-0 p-6'>
+                        <Card className="lg:p-0 p-6">
                             <CardContent className="space-y-4 lg:p-12 p-0">
                                 <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="space-y-2">
@@ -67,7 +67,7 @@ export function AboutUsPage() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className='lg:p-0 p-6'>
+                        <Card className="lg:p-0 p-6">
                             <CardContent className="space-y-4 lg:p-12 p-0">
                                 <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="space-y-2">
@@ -83,7 +83,7 @@ export function AboutUsPage() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className='lg:p-0 p-6'>
+                        <Card className="lg:p-0 p-6">
                             <CardContent className="space-y-4 lg:p-12 p-0">
                                 <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="space-y-2">
@@ -99,7 +99,7 @@ export function AboutUsPage() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className='lg:p-0 p-6'>
+                        <Card className="lg:p-0 p-6">
                             <CardContent className="space-y-4 lg:p-12 p-0">
                                 <Briefcase className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="">
@@ -117,7 +117,7 @@ export function AboutUsPage() {
                         </Card>
                     </div>
                 </section>
-                <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-8 rounded-2xl">
+                <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4 rounded-2xl">
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-[600px_1fr]">
                             <div className="space-y-4">
@@ -135,8 +135,7 @@ export function AboutUsPage() {
                                         <h3>— Amitoje Singh Bakshi</h3>
                                         <div className="flex flex-col items-start gap-0 text-sm">
                                             <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                Co-Founder & CEO
+                                                &nbsp;&nbsp;&nbsp;&nbsp; CEO
                                             </span>
                                             <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -159,7 +158,7 @@ export function AboutUsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-8">
+                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4">
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-1">
                             <section className="w-full py-12 md:py-24 lg:py-32">
@@ -194,7 +193,7 @@ export function AboutUsPage() {
                                                     Amitoje Singh Bakshi
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder & CEO
+                                                    Chief Executive Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     {/* <Link
@@ -249,7 +248,7 @@ export function AboutUsPage() {
                                                     Harjot Singh Rana
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder & CTO
+                                                    Chief Technical Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     <Link
@@ -304,7 +303,7 @@ export function AboutUsPage() {
                                                     Prabhmeet Singh
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Co-Founder & CCO
+                                                    Chief Commercial Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     {/* <Link

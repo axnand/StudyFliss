@@ -65,7 +65,7 @@ export default function EventPageClient({
     }, [api]);
     return (
         <div className="flex flex-col min-h-[100dvh] mb-96">
-            <main className="flex-1 px-8">
+            <main className="flex-1 px-4">
                 <section className="w-full py-6 md:py-12 lg:py-12 xl:py-24 max-w-5xl mx-auto flex flex-col gap-8 pt-0 pb-0">
                     {/* <h1 className="lg:text-4xl tracking-tighter underline decoration-primary underline-offset-4 decoration-[4px] text-3xl text-center font-semibold line-clamp-1 transition-all duration-300 ease-in-out-sine">
                         {event.title ?? 'Unknown Event Title'}

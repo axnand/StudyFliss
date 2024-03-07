@@ -27,8 +27,8 @@ export default function LandingPage({
     return (
         <div className="flex flex-col mb-96 lg:mb-48">
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
-                <div className="container space-y-10 px-8 md:space-y-16">
-                    <div className="flex lg:flex-row  flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-0 grid-cols-3">
+                <div className="container space-y-10 px-4 md:space-y-16">
+                    <div className="flex lg:flex-row justif flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-0 grid-cols-3">
                         <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
                             {/* <div className="inline-block rounded-lg bg-primary/10  px-3 py-1.5 lg:text-sm text-xs dark:bg-primary/10 border border-primary/40 font-light w-fit ">
                 Interactive Learning
@@ -83,7 +83,7 @@ export default function LandingPage({
                                 </Link>
                             </div>
                         </div>
-                        <div className="mx-auto flex items-center justify-center w-full h-full lg:w-3/5">
+                        <div className="flex items-center justify-center lg:w-fit w-full h-full">
                             <Image
                                 alt="Image"
                                 className="select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
@@ -97,7 +97,7 @@ export default function LandingPage({
                 </div>
             </section>
             <section className="w-full mx-auto max-w-7xl border-b lg:py-24 py-12 border-b-primary/20">
-                <div className="container grid items-center gap-4 px-8 text-center lg:gap-10">
+                <div className="container grid items-center gap-4 px-4 text-center lg:gap-10">
                     <div className="space-y-4">
                         <h2 className="lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
                             Features{' '}
@@ -177,8 +177,8 @@ export default function LandingPage({
                     </div>
                 </div>
             </section>
-            <section className="w-full max-w-7xl mx-auto lg:py-24 py-12">
-                <div className="container grid items-center gap-6 px-8 lg:grid-cols-2 lg:gap-10">
+            {/* <section className="w-full max-w-7xl mx-auto lg:py-24 py-12">
+                <div className="container grid items-center gap-6 px-4 lg:grid-cols-2 lg:gap-10">
                     <div className="space-y-4">
                         <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
                             Trusted by{' '}
@@ -213,17 +213,6 @@ export default function LandingPage({
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className=" flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            {/* <img
-                                                alt="Avatar"
-                                                className="rounded-full object-cover object-center"
-                                                height="125"
-                                                src="https://avatar.iran.liara.run/public/46"
-                                                style={{
-                                                    aspectRatio: '150/150',
-                                                    objectFit: 'cover'
-                                                }}
-                                                width="125"
-                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
                                                 <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     John Doe
@@ -246,17 +235,6 @@ export default function LandingPage({
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            {/* <img
-                                                alt="Avatar"
-                                                className="rounded-full object-cover object-center"
-                                                height="125"
-                                                src="https://avatar.iran.liara.run/public/63"
-                                                style={{
-                                                    aspectRatio: '150/150',
-                                                    objectFit: 'cover'
-                                                }}
-                                                width="125"
-                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
                                                 <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     Jane Smith
@@ -282,17 +260,6 @@ export default function LandingPage({
                                 <CarouselItem className="pl-4 flex justify-center items-stretch">
                                     <Card className=" w-full border-primary/50 border-2">
                                         <CardContent className="flex lg:flex-row flex-col gap-4 justify-center items-center h-[100%] w-full lg:p-6 p-4">
-                                            {/* <img
-                                                alt="Avatar"
-                                                className="rounded-full object-cover object-center"
-                                                height="125"
-                                                src="https://avatar.iran.liara.run/public/71"
-                                                style={{
-                                                    aspectRatio: '150/150',
-                                                    objectFit: 'cover'
-                                                }}
-                                                width="125"
-                                            /> */}
                                             <div className="flex gap-0 flex-col lg:items-start items-center">
                                                 <p className="lg:text-2xl text-xl font-semibold lg:text-left text-center mb-2">
                                                     Emily Johnson
@@ -318,9 +285,9 @@ export default function LandingPage({
                         </Carousel>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {recentEvents.length > 0 && (
-                <section className="w-full max-w-7xl mx-auto flex flex-col gap-8 pt-0 px-8 lg:py-24 py-12 border-t border-t-primary/20">
+                <section className="w-full max-w-7xl mx-auto flex flex-col gap-8 pt-0 px-4 lg:py-24 py-12 border-t border-t-primary/20">
                     <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-pretty">
                         Recently Added{' '}
                         <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
@@ -442,7 +409,7 @@ export default function LandingPage({
             )}
 
             {/* <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
-        <div className="container grid items-center gap-16 px-8 lg:grid-cols-2 lg:gap-10">
+        <div className="container grid items-center gap-16 px-4 lg:grid-cols-2 lg:gap-10">
           <div className="space-y-4">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Experience the workflow the best frontend teams love.
@@ -471,7 +438,7 @@ export default function LandingPage({
         </div>
       </section>
       <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20">
-        <div className="container px-8">
+        <div className="container px-4">
           <div className="grid gap-16 md:gap-16 lg:grid-cols-2">
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">

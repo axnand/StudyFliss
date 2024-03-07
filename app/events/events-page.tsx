@@ -156,7 +156,7 @@ export default function EventsPage({ events }: { events: Tables<'events'>[] }) {
                         </div>
                     </div>
                 </section>
-                <section className="w-full py-12 md:py-2 max-w-7xl mx-auto px-8 flex flex-col gap-8">
+                <section className="w-full py-12 md:py-2 max-w-7xl mx-auto px-4 flex flex-col gap-8">
                     {/* <TagsInput
                         data={tagsData} // this is like options
                         value={selectedTags}

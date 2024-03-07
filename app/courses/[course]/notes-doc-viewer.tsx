@@ -36,7 +36,7 @@ export default function NotesDocViewer({
                     textTertiary: 'hsl(var(--primary))',
                     disableThemeScrollbar: false
                 }}
-                
+
                 config={{
                     header: {
                         disableFileName: true,
@@ -46,7 +46,7 @@ export default function NotesDocViewer({
                     loadingRenderer: {
                         overrideComponent: CenteredSpinner,
                         showLoadingTimeout: 500
-                    }
+                    },
                 }}
                 className='w-full h-full rounded-2xl bg-background'
             />

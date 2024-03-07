@@ -154,10 +154,11 @@ function getContentTypeFromFileName(fileName: string): string {
 async function uploadFiles(files: File[]) {
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
-    const ACCESS_KEY = process.env.AWS_S3_BUCKET_ACCESS_KEY!;
-    const SECRET_ACCESS_KEY = process.env.AWS_S3_BUCKET_SECRET_ACCESS_KEY!;
+    const ACCESS_KEY = process.env.SCALEWAY_BUCKET_ACCESS_KEY!;
+    const SECRET_ACCESS_KEY = process.env.SCALEWAY_BUCKET_SECRET_ACCESS_KEY!;
 
     const s3 = new S3Client({
+        endpoint: "https://s3.tebi.io",
         credentials: {
             accessKeyId: ACCESS_KEY,
             secretAccessKey: SECRET_ACCESS_KEY

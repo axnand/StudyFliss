@@ -18,13 +18,22 @@ import NotesPDFViewer from './notes-pdf-viewer';
 import { branches } from '@/utils/helpers';
 import NotesDocViewer from './notes-doc-viewer';
 import Button from '@/components/ui/Button';
-import { DownloadCloudIcon } from 'lucide-react';
+import { DownloadCloudIcon, FileBadge, PaperclipIcon } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Spinner from '@/components/ui/spinner';
 import { FixedSizeList as List } from 'react-window';
 import { motion } from 'framer-motion';
 import { json } from 'stream/consumers';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger
+} from '@/components/ui/dialog';
+import { FileIcon } from '@radix-ui/react-icons';
 
 const Card = dynamic(() =>
     import('@/components/ui/card').then((module) => ({ default: module.Card }))
@@ -74,28 +83,51 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                                 )
                                                             )}
                                                         </h1>
-                                                        <Link
-                                                            href={note.link}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            download={note.name}
-                                                        >
-                                                            <Button
-                                                                variant={
-                                                                    'outline'
-                                                                }
-                                                                className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-2 px-6 lg:text-base text-sm py-5"
-                                                            >
-                                                                <DownloadCloudIcon className="h-5 w-5 text-foreground" />{' '}
-                                                                Download
-                                                            </Button>
-                                                        </Link>
+
+                                                        <Dialog>
+                                                            <DialogTrigger>
+                                                                <Button
+                                                                    variant={
+                                                                        'outline'
+                                                                    }
+                                                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5"
+                                                                >
+                                                                    <FileIcon className="h-5 w-5 text-foreground" />{' '}
+                                                                    Show Notes
+                                                                </Button>
+                                                            </DialogTrigger>
+                                                            <DialogContent className=''>
+                                                                <DialogHeader>
+                                                                    <DialogTitle>
+                                                                        {course ===
+                                                                        'bba'
+                                                                            ? 'BBA'
+                                                                            : 'B. Tech'}{' '}
+                                                                        |
+                                                                        Semester{' '}
+                                                                        {
+                                                                            semester
+                                                                        }{' '}
+                                                                        |{' '}
+                                                                        {
+                                                                            subject
+                                                                        }{' '}
+                                                                        Notes
+                                                                    </DialogTitle>
+                                                                    <DialogDescription className='w-full'>
+                                                                        <NotesDocViewer
+                                                                            link={
+                                                                                note.link
+                                                                            }
+                                                                            className="w-full lg:aspect-[16/9] aspect-[9/16] overflow-hidden object-center"
+                                                                        />
+                                                                    </DialogDescription>
+                                                                </DialogHeader>
+                                                            </DialogContent>
+                                                        </Dialog>
                                                     </CardTitle>
                                                     <CardContent className="flex justify-center items-center">
-                                                        <NotesDocViewer
-                                                            link={note.link}
-                                                            className="w-full lg:h-[450px] h-[400px] overflow-hidden object-center"
-                                                        />
+                                                        .
                                                     </CardContent>
                                                 </Card>
                                             </Suspense>
@@ -173,7 +205,7 @@ export default function CoursePageClient({ course }: { course: string }) {
         [searchParams]
     );
     return (
-        <div className="flex flex-col min-h-[100dvh] pt-12 lg:px-8 px-4 lg:mb-48 mb-96">
+        <div className="flex flex-col min-h-[100dvh] pt-12 lg:px-4 px-4 lg:mb-48 mb-96">
             <main className="flex-1">
                 <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-5xl mx-auto flex flex-col gap-12 pt-0 pb-0 ">
                     <div className="flex flex-col gap-6">
@@ -317,11 +349,14 @@ export default function CoursePageClient({ course }: { course: string }) {
                     ) : (
                         semester &&
                         (course === 'btech' ? branch : true) && (
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, y: -40 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.75, ease: 'easeInOut' }}
+                                transition={{
+                                    duration: 0.75,
+                                    ease: 'easeInOut'
+                                }}
                             >
                                 <h1 className="lg:text-6xl overflow-visible text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                                     Semester {semester} Notes
@@ -335,7 +370,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                     )}
                     {notes.filter((note) => note.subject === subject).length >
                         0 && (
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: -40 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0 }}

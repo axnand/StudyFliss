@@ -32,7 +32,7 @@ export default function NotesPage() {
                     </div>
                 </section>
                 {/* <section className="w-full py-12 md:py-24">
-                    <div className="container grid items-center gap-16 px-4 text-center md:px-6 lg:grid-cols-[1fr_1fr] lg:gap-16 xl:grid-cols-[1fr_1fr]">
+                    <div className="container grid items-center gap-16 px-8 text-center md:px-6 lg:grid-cols-[1fr_1fr] lg:gap-16 xl:grid-cols-[1fr_1fr]">
                         <div className="space-y-4 p-12 border-primary/50 border-2 rounded-2xl">
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                                 Today's Notes
