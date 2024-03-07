@@ -1,28 +1,10 @@
 'use client';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-    CarouselItem,
-    Carousel,
-    CarouselContent
-} from '@/components/ui/carousel';
-import Link from 'next/link';
-import Image from 'next/image';
-import Autoplay from 'embla-carousel-autoplay';
-import { FaArrowRight } from 'react-icons/fa6';
-import { Briefcase, Calendar, CircleDollarSign, DollarSign, DollarSignIcon, InfoIcon, MapPinIcon } from 'lucide-react';
+import { CircleDollarSign  } from 'lucide-react';
 import { CalendarIcon } from '@radix-ui/react-icons';
-import { formatDate } from '@/utils/helpers';
-import { Tables } from '@/types_db';
-import { useRouter } from 'next/navigation';
 import { MdAutoGraph } from 'react-icons/md';
-import { Typewriter } from 'react-simple-typewriter';
 
-export default function LandingPage({
-    recentEvents
-}: {
-    recentEvents: Tables<'events'>[] | [];
-}) {
-    const router = useRouter();
+export default function GrowthSFPage() {
     return (
         <div className="flex flex-col mb-96 lg:mb-48">
             <section className="w-full mx-auto max-w-7xl border-b lg:py-24 py-12 border-b-primary/20">

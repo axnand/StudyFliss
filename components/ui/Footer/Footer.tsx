@@ -101,7 +101,7 @@ export default function Footer() {
                             </p>
                         </li>
                         <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
-                            admin@studyfliss.com
+                            contact@studyfliss.com
                         </li>
                         <li className="py-3 md:py-0 md:pb-4 text-foreground/80">+91 8287028821</li>
                         <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
