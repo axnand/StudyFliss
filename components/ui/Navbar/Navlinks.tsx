@@ -52,6 +52,7 @@ import {
 } from 'lucide-react';
 import { FaCircleUser, FaRegCircleUser } from 'react-icons/fa6';
 import { CoursesListItem, AboutUsListItem } from '../list-item';
+import { Badge } from '../badge';
 
 const coursesFields: { title: string; href: string; description: string }[] = [
     {
@@ -67,9 +68,9 @@ const coursesFields: { title: string; href: string; description: string }[] = [
 ];
 const aboutUsFields: { title: string; href: string; description: string }[] = [
     {
-        title: 'Our Vision',
-        href: '/vision',
-        description: 'StudyFliss vision.'
+        title: 'Company Profile',
+        href: '/company-profile',
+        description: 'The vision and mission of StudyFliss.'
     },
     {
         title: 'Our Team',
@@ -77,13 +78,30 @@ const aboutUsFields: { title: string; href: string; description: string }[] = [
         description: 'The faces behind StudyFliss.'
     }
 ];
+const growSFFields: { title: string; href: string; description: string }[] = [
+    {
+        title: 'College Events',
+        href: '/growth-sf',
+        description: 'Find upcoming college events.'
+    },
+    {
+        title: 'Internships',
+        href: '/growth-sf',
+        description: 'Find your internships.'
+    },
+    {
+        title: 'Resume Builder',
+        href: '/growth-sf',
+        description: 'Build your resume.'
+    }
+];
 
 export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
     const router = getRedirectMethod() === 'client' ? useRouter() : null;
 
     return (
-        <div className="relative flex flex-row justify-between py-4 align-center md:py-4">
-            <div className="lg:flex hidden items-center flex-1 ">
+        <div className="relative flex flex-row lg:justify-between justify-center py-4 align-center md:py-4">
+            <div className="items-center flex-1 ">
                 <Link
                     href="/"
                     className={'flex flex-row items-center gap-2 '}
@@ -96,57 +114,11 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                 </Link>
             </div>
             <div className="flex justify-end items-center space-x-2">
-                <NavigationMenu className="max-w-[300px]">
+                <NavigationMenu className="lg:flex hidden">
                     <NavigationMenuList>
-                        {/* <NavigationMenuItem>
-                            <NavigationMenuTrigger>
-                                Getting started
-                            </NavigationMenuTrigger>
-                            <NavigationMenuContent>
-                                <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                                    <li className="row-span-3">
-                                        <NavigationMenuLink asChild>
-                                            <a
-                                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                href="/"
-                                            >
-                                                <Logo />
-                                                <div className="mb-2 mt-4 text-lg font-medium">
-                                                    StidyFliss
-                                                </div>
-                                                <p className="text-sm leading-tight text-muted-foreground">
-                                                    A website that comprises of resources that a
-                                                    student might need to live
-                                                    his/her college years to the
-                                                    fullest.
-                                                </p>
-                                            </a>
-                                        </NavigationMenuLink>
-                                    </li>
-                                    <ListItem href="/docs" title="Introduction">
-                                        Re-usable components built using Radix
-                                        UI and Tailwind CSS.
-                                    </ListItem>
-                                    <ListItem
-                                        href="/docs/installation"
-                                        title="Installation"
-                                    >
-                                        How to install dependencies and
-                                        structure your app.
-                                    </ListItem>
-                                    <ListItem
-                                        href="/docs/primitives/typography"
-                                        title="Typography"
-                                    >
-                                        Styles for headings, paragraphs,
-                                        lists...etc
-                                    </ListItem>
-                                </ul>
-                            </NavigationMenuContent>
-                        </NavigationMenuItem> */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="bg-transparent hover:bg-primary/20 border-primary/50 border-2 lg:py-6 lg:px-6 md:py-7 py-6 px-4 lg:text-sm text-xs rounded-xl transition-all duration-300 ease-in-out-sine">
-                                All Courses
+                                <Link href={"/courses"}>All Courses</Link>
                             </NavigationMenuTrigger>
                             <NavigationMenuContent className="">
                                 <ul className="grid gap-2 p-4 md:w-[256px] md:grid-cols-1 lg:w-[350px] w-[240px] rounded-2xl">
@@ -164,7 +136,27 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <NavigationMenuTrigger className="bg-transparent hover:bg-primary/20 border-primary/50 border-2 lg:py-6 lg:px-6 md:py-7 py-6 px-4 lg:text-sm text-xs rounded-xl transition-all duration-300 ease-in-out-sine">
-                                About Us
+                                <Link href={"/growth-sf"}>Growth SF</Link>
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent className="">
+                                <ul className="grid gap-2 p-4 md:w-[256px] md:grid-cols-1 lg:w-[350px] w-[240px] rounded-2xl">
+                                    {growSFFields.map((component) => (
+                                        <AboutUsListItem
+                                            key={component.title}
+                                            title={component.title}
+                                            href={component.href}
+                                            aria-disabled="true"
+                                            className="w-full"
+                                        >
+                                            Coming Soon
+                                        </AboutUsListItem>
+                                    ))}
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger className="bg-transparent hover:bg-primary/20 border-primary/50 border-2 lg:py-6 lg:px-6 md:py-7 py-6 px-4 lg:text-sm text-xs rounded-xl transition-all duration-300 ease-in-out-sine">
+                                <Link href={"/about-us"}>About Us</Link>
                             </NavigationMenuTrigger>
                             <NavigationMenuContent className="">
                                 <ul className="grid gap-2 p-4 md:w-[256px] md:grid-cols-1 lg:w-[350px] w-[240px] rounded-2xl">
@@ -204,7 +196,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                     <DropdownMenuTrigger>
                         <div className="md:px-4 md:py-4 px-4 py-4 rounded-2xl lg:scale-90 bg-transparent border-2 border-primary/50 text-foreground  hover:bg-primary/20 transition-all duration-300 ease-in-out-sine">
                             {user ? (
-                                <PersonIcon className="md:w-6 md:h-6 w-4 h-4 " />
+                                <RowsIcon className="md:w-6 md:h-6 w-4 h-4 " />
                             ) : (
                                 <RowsIcon className="md:w-6 md:h-6 w-4 h-4" />
                             )}
@@ -218,12 +210,12 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                                     Your Account
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator className="bg-primary/50 border-1" />
-                                <Link href="/account">
+                                {/* <Link href="/account">
                                     <DropdownMenuItem className="hover:cursor-pointer">
                                         <MdOutlineSettings className="size-4 mr-2 text-foreground/80" />
                                         Settings
                                     </DropdownMenuItem>
-                                </Link>
+                                </Link> */}
                                 <Link href="/account">
                                     <DropdownMenuItem className="hover:cursor-pointer mb-2">
                                         <LogOutIcon className="size-4 mr-2 text-foreground/80" />
@@ -255,27 +247,53 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                             Navigation
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator className="bg-primary/50 border-1" />
-                        <Link href="/">
+                        {/* <Link href="/">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <HomeIcon className="size-4 mr-2" /> Home
+                            </DropdownMenuItem>
+                        </Link> */}
+                        {/* <Link href="/about-us">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <InfoCircledIcon className="size-4 mr-2" />{' '}
+                                Our Team
                             </DropdownMenuItem>
                         </Link>
                         <Link href="/about-us">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <InfoCircledIcon className="size-4 mr-2" />{' '}
-                                About Us
+                                Company Profile
                             </DropdownMenuItem>
-                        </Link>
-                        <Link href="/events">
+                        </Link> */}
+                        {/* <Link href="/events">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <CalendarIcon className="size-4 mr-2" /> Events
                             </DropdownMenuItem>
-                        </Link>
+                        </Link> */}
                         <Link href="/courses">
                             <DropdownMenuItem className="hover:cursor-pointer">
-                                <FileTextIcon className="size-4 mr-2" /> Notes
+                                <FileTextIcon className="size-4 mr-2" /> All Courses
                             </DropdownMenuItem>
                         </Link>
+                        <Link href="/growth-sf">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <FileTextIcon className="size-4 mr-2" /> Growth SF
+                            </DropdownMenuItem>
+                        </Link>
+                        <Link href="/about-us">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <FileTextIcon className="size-4 mr-2" /> About Us
+                            </DropdownMenuItem>
+                        </Link>
+                        {/* <Link href="/courses">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <FileTextIcon className="size-4 mr-2" /> Grow SF
+                            </DropdownMenuItem>
+                        </Link> */}
+                        {/* <Link href="/courses">
+                            <DropdownMenuItem className="hover:cursor-pointer">
+                                <FileTextIcon className="size-4 mr-2" /> All Courses
+                            </DropdownMenuItem>
+                        </Link> */}
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>

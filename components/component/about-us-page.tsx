@@ -1,27 +1,17 @@
-import {
-    LinkedInLogoIcon,
-} from '@radix-ui/react-icons';
-import {
-    Briefcase,
-    Calendar,
-    InfoIcon,
-    LucideGlobe
-} from 'lucide-react';
+import { LinkedInLogoIcon } from '@radix-ui/react-icons';
+import { Briefcase, Calendar, InfoIcon, LucideGlobe } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-    FaGithub,
-    FaInstagram,
-    FaXTwitter
-} from 'react-icons/fa6';
+import { FaGithub, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 import { MdAutoGraph } from 'react-icons/md';
 import { Card, CardContent } from '../ui/card';
+import { Badge } from '../ui/badge';
 
 export function AboutUsPage() {
     return (
         <div className="flex flex-col min-h-[100dvh] pt-12 lg:mb-48 mb-96">
             <main className="flex-1">
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto lg:px-4 px-4">
+                {/* <section className="w-full pt-6 md:pt-12 lg:pt-20 xl:pt-24 max-w-7xl mx-auto lg:px-4 px-4">
                     <div className="overflow-clip relative  flex lg:flex-row flex-col items-center justify-center px-4 space-y-4 md:px-6 lg:space-y-10">
                         <div className="text-center">
                             <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
@@ -39,15 +29,30 @@ export function AboutUsPage() {
                             </p>
                         </div>
                     </div>
-                </section>
-                <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-4">
+                </section> */}
+                {/* <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-4">
                     <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
                         <Card className="lg:p-0 p-6">
                             <CardContent className="space-y-4 lg:p-12 p-0">
                                 <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="space-y-2">
                                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Up-To-Date Info
+                                        Up-To-Date Notes
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Notes available across all domains of
+                                        subjects offered by IPU, plus verified
+                                        by college faculty
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Up-To-Date Syllabus
                                     </h2>
                                     <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                         Our website provides updated notes,
@@ -63,7 +68,7 @@ export function AboutUsPage() {
                                 <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
                                 <div className="space-y-2">
                                     <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Examination Analysis
+                                        IPU Exams Analysis
                                     </h2>
                                     <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                         Out website provides detailed
@@ -90,22 +95,35 @@ export function AboutUsPage() {
                                 </div>
                             </CardContent>
                         </Card>
-                        <Card className="lg:p-0 p-6">
-                            <CardContent className="space-y-4 lg:p-12 p-0">
-                                <Briefcase className="mx-auto lg:size-16 size-12 mb-4" />
-                                <div className="">
-                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Internship Opportunities
-                                    </h2>
-                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        Our website provides internship
-                                        opportunities for students to get
-                                        hands-on experience in their field of
-                                        interest.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
+                        
+                    </div>
+                </section> */}
+                <section className="w-full max-w-7xl mx-auto lg:px-4 px-4 pt-0 py-4 md:py-6 lg:py-8 xl:py-8 pb-3 md:pb-6 lg:pb-10 xl:pb-12">
+                    <div className=" px-4 md:px-6 flex justify-center items-center flex-col gap-0">
+                        <h1 className="lg:text-5xl tracking-tight text-4xl font-semibold lg:text-left text-center mb-4">
+                            Know More{' '}
+                            <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
+                                About Us
+                            </span>
+                        </h1>
+                        <div className="flex flex-row items-start justify-start flex-wrap gap-4">
+                            <Link href={'/team'}>
+                                <Badge
+                                    variant={'outline'}
+                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl lg:px-8 px-6 lg:py-2 py-1 lg:text-2xl text-lg font-semibold text-foreground/90"
+                                >
+                                    Our Team
+                                </Badge>
+                            </Link>
+                            <Link href={'/company-profile'}>
+                                <Badge
+                                    variant={'outline'}
+                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl lg:px-8 px-6 lg:py-2 py-1 lg:text-2xl text-lg font-semibold text-foreground/90"
+                                >
+                                    Company Profile
+                                </Badge>
+                            </Link>
+                        </div>
                     </div>
                 </section>
                 <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4 rounded-2xl">
@@ -149,7 +167,7 @@ export function AboutUsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4">
+                {/* <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4">
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-1">
                             <section className="w-full py-12 md:py-24 lg:py-32">
@@ -187,13 +205,7 @@ export function AboutUsPage() {
                                                     Chief Executive Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
-                                                    {/* <Link
-                                                        href="https://harjot.pro"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <LucideGlobe className="size-6 mx-2 hover:text-primary transition-all duration-300 ease-in-out-sine text-foreground/80" />
-                                                    </Link> */}
+ 
                                                     <Link
                                                         href="https://www.linkedin.com/in/amitojesbakshi"
                                                         target="_blank"
@@ -201,20 +213,6 @@ export function AboutUsPage() {
                                                     >
                                                         <LinkedInLogoIcon className="size-6 mx-2 hover:text-primary transition-all duration-300 ease-in-out-sine text-foreground/80" />
                                                     </Link>
-                                                    {/* <Link
-                                                        href="https://github.com/HarjjotSinghh"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <FaGithub className="size-6 mx-2 hover:text-primary transition-all duration-300 ease-in-out-sine text-foreground/80" />
-                                                    </Link> */}
-                                                    {/* <Link
-                                                        href="https://twitter.com/HarjjotSinghh"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <FaXTwitter className="size-6 mx-2 hover:text-primary transition-all duration-300 ease-in-out-sine text-foreground/80" />
-                                                    </Link> */}
                                                     <Link
                                                         href="https://www.instagram.com/amitojesb_official"
                                                         target="_blank"
@@ -297,13 +295,6 @@ export function AboutUsPage() {
                                                     Chief Commercial Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
-                                                    {/* <Link
-                                                        href="https://harjot.pro"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        <LucideGlobe className="size-6 mx-2 hover:text-primary transition-all duration-300 ease-in-out-sine text-foreground/80" />
-                                                    </Link> */}
                                                     <Link
                                                         href="https://www.linkedin.com/in/prabhmeet-singh-41a841284/"
                                                         target="_blank"
@@ -340,7 +331,7 @@ export function AboutUsPage() {
                             </section>
                         </div>
                     </div>
-                </section>
+                </section> */}
                 {/* <section className="w-full py-12 md:py-24">
                     <div className=" px-4 md:px-6">
                         <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2">

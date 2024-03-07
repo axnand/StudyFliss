@@ -93,19 +93,35 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
+                <div className="col-span-1 lg:col-span-2">
+                    <ul className="flex flex-col flex-initial md:flex-1">
+                        <li className="py-3 md:py-0 md:pb-4">
+                            <p className="font-bold text-foreground transition-all duration-300 ease-in-out-sine hover:text-foreground">
+                                CONTACT US
+                            </p>
+                        </li>
+                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
+                            admin@studyfliss.com
+                        </li>
+                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">+91 8287028821</li>
+                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
+                            New Delhi, India
+                        </li>
+                    </ul>
+                </div>
                 <div className="flex flex-col md:items-start items-start justify-end col-span-1 text-foreground lg:col-span-full w-full lg:justify-end ">
                     {/* <h1 className="text-base uppercase font-bold transition-all duration-300 ease-in-out-sine">
                         Follow StudyFliss
                     </h1> */}
                     <div className="flex items-center h-10 divide-x-2 divide-primary/20 [:first-child]:mr-0 ">
-                        <Link
+                        {/* <Link
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Github Repository"
                             href="https://github.com/HarjjotSinghh/"
                         >
                             <GitHubLogoIcon className="size-6 mx-2 ml-0 text-foreground/80 hover:text-foreground transition-all duration-300 ease-in-out-sine" />
-                        </Link>
+                        </Link> */}
                         <Link
                             target="_blank"
                             rel="noopener noreferrer"
@@ -147,10 +163,11 @@ export default function Footer() {
                             href="https://harjot.pro"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className='underline-offset-[2px] underline decoration-[2px] decoration-primary transition-all duration-300 ease-in-out-sine hover:text-foreground font-bold'
+                            className="underline-offset-[2px] underline decoration-[2px] decoration-primary transition-all duration-300 ease-in-out-sine hover:text-foreground font-bold"
                         >
                             Harjot Singh
-                        </Link>.
+                        </Link>
+                        .
                     </span>
                 </div>
             </div>

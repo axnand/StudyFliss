@@ -1,17 +1,15 @@
 'use client';
-import { CardContent, Card } from '../ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import {
     CarouselItem,
     Carousel,
     CarouselContent
 } from '@/components/ui/carousel';
-import Input from '../ui/Input';
-import Button from '../ui/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import { FaArrowRight } from 'react-icons/fa6';
-import { Briefcase, Calendar, InfoIcon, MapPinIcon } from 'lucide-react';
+import { Briefcase, Calendar, CircleDollarSign, DollarSign, DollarSignIcon, InfoIcon, MapPinIcon } from 'lucide-react';
 import { CalendarIcon } from '@radix-ui/react-icons';
 import { formatDate } from '@/utils/helpers';
 import { Tables } from '@/types_db';
@@ -27,155 +25,70 @@ export default function LandingPage({
     const router = useRouter();
     return (
         <div className="flex flex-col mb-96 lg:mb-48">
-            <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
-                <div className="container space-y-10 px-4 md:space-y-16">
-                    <div className="flex lg:flex-row justify-between flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-2 grid-cols-3">
-                        <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
-                            {/* <div className="inline-block rounded-lg bg-primary/10  px-3 py-1.5 lg:text-sm text-xs dark:bg-primary/10 border border-primary/40 font-light w-fit ">
-                Interactive Learning
-              </div> */}
-                            <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
-                                Level up your
-                                <br />
-                                <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
-                                    <Typewriter
-                                        words={[
-                                            'College Experience',
-                                            'Learning Experience'
-                                        ]}
-                                        loop={false}
-                                        typeSpeed={120}
-                                        deleteSpeed={50}
-                                        delaySpeed={2000}
-                                    />
-                                </span>
-                                .
-                            </h1>
-                            <p className=" max-w-[700px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/90 ">
-                                StudyFliss is a platform consisting of all the
-                                resources a student might need in order to live
-                                their college years to the fullest.
-                            </p>
-                            <div className="flex flex-row items-start justify-start lg:gap-6 gap-2">
-                                <Link
-                                    href={'/signin/signup'}
-                                    className="w-fit lg:text-lg text-base"
-                                >
-                                    <Button
-                                        variant={'outline'}
-                                        type="submit"
-                                        className={
-                                            'group border-primary/50 hover:bg-primary/10 border-2 lg:py-6 lg:px-6 py-6 px-4 lg:text-lg text-md tracking-tighter rounded-xl transition-all duration-300 ease-in-out-sine shadow-md hover:shadow-lg shadow-primary/20 hover:shadow-primary/30 '
-                                        }
-                                    >
-                                        <span className="inline-flex flex-row gap-2 items-center justify-center">
-                                            Get Started{' '}
-                                            <FaArrowRight className="size-4 group-hover:ml-1 transition-all duration-300 ease-in-out-sine" />
-                                        </span>
-                                    </Button>
-                                </Link>
-                                <Link
-                                    href="/about-us"
-                                    className="font-medium lg:text-lg text-base tracking-tighter w-fit"
-                                >
-                                    <Button
-                                        variant={'link'}
-                                        type="submit"
-                                        className={
-                                            'group lg:py-6 lg:px-0 py-6 px-4 lg:text-lg text-md tracking-tighter text-foreground decoration-primary decoration-[3px] rounded-xl transition-all duration-300 ease-in-out-sine '
-                                        }
-                                    >
-                                        <span className="inline-flex flex-row gap-2 items-center justify-center">
-                                            Know More
-                                            <FaArrowRight className="size-4 transition-all duration-300 ease-in-out-sine group-hover:-rotate-[45deg] mt-1" />
-                                        </span>
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="flex items-center justify-center lg:w-fit w-full h-full">
-                            <Image
-                                alt="Image"
-                                className="select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
-                                height="310"
-                                src="/landing-page.png"
-                                width="550"
-                                draggable={false}
-                            />
-                        </div>
+            <section className="w-full mx-auto max-w-7xl border-b lg:py-24 py-12 border-b-primary/20">
+                <div className="container grid items-center gap-4 px-4 text-center lg:gap-10">
+                    <div className="space-y-4">
+                        <h2 className="lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
+                            Introducing{' '}
+                            <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
+                                Growth SF
+                            </span>
+                        </h2>
+                        <p className="mx-auto max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-foreground/90 mt-4">
+                            Coming soon!
+                        </p>
                     </div>
-                </div>
-            </section>
-            <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4">
-                <h1 className="-mt-2 lg:leading-tighter text-4xl text-center font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance pb-8">
-                    Features for{' '}
-                    <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
-                        Students
-                    </span>
-                </h1>
-
-                <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
-                    <Card className="lg:p-0 p-6">
-                        <CardContent className="space-y-4 lg:p-12 p-0">
-                            <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
-                            <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    Up-To-Date Notes
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Notes available across all domain of
-                                    subjects and all branches offered by IPU,
-                                    verified by the official college faculty.
-                                </p>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card className="lg:p-0 p-6">
-                        <CardContent className="space-y-4 lg:p-12 p-0">
-                            <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
-                            <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    Up-To-Date Syllabus
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Stay updated with what’s coming in the exam
-                                    papers. The syllabus is updated based on IPU
-                                    latest curriculum.
-                                </p>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card className="lg:p-0 p-6">
-                        <CardContent className="space-y-4 lg:p-12 p-0">
-                            <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
-                            <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    IPU Exams Analysis
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Our website offers analysis of previous year
-                                    IPU External Exam Papers and provides a list
-                                    of potential questions for upcoming External
-                                    Exams.
-                                </p>
-                            </div>
-                        </CardContent>
-                    </Card>
-                    <Card className="lg:p-0 p-6">
-                        <CardContent className="space-y-4 lg:p-12 p-0">
-                            <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
-                            <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    College Events Info
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    We'll keep you updated on upcoming events
-                                    held in all IPU colleges, ensuring you never
-                                    miss out on any opportunities for fun.
-                                </p>
-                            </div>
-                        </CardContent>
-                    </Card>
+                    <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <CalendarIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Upcoming Events
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides updated notes,
+                                        datesheets, syllabus and other
+                                        information for students to study and
+                                        learn.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Build Your Resume
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Out website provides detailed
+                                        examination analysis which helps
+                                        students understand exam patterns and
+                                        prepare for the exam.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className="lg:p-0 p-6">
+                            <CardContent className="space-y-4 lg:p-12 p-0">
+                                <CircleDollarSign className="mx-auto lg:size-16 size-12 mb-4" />
+                                <div className="space-y-2">
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
+                                        Paid Interships
+                                    </h2>
+                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                        Our website provides the latest events'
+                                        details for students to stay updated
+                                        about all the upcoming events amd not
+                                        miss any opportunity.
+                                    </p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        
+                    </div>
                 </div>
             </section>
             {/* <section className="w-full max-w-7xl mx-auto lg:py-24 py-12">
