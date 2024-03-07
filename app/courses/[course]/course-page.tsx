@@ -55,7 +55,7 @@ export default function CoursePageClient({ course }: { course: string }) {
         const note = notes.filter((n) => n.subject === subject)[index];
 
         return (
-            <div style={style}>
+            <div style={style} className='flex flex-wrap flex-row gap-4'>
                 {Boolean(JSON.parse(JSON.stringify(note.notes))) === true && (
                     <Suspense fallback={<Spinner />}>
                         <>
@@ -70,66 +70,43 @@ export default function CoursePageClient({ course }: { course: string }) {
                                     (note: { link: string; name: string }) => {
                                         return (
                                             <Suspense fallback={<Spinner />}>
-                                                <Card
-                                                    key={index}
-                                                    className=" lg:p-4 p-0 w-full mb-10"
-                                                >
-                                                    <CardTitle className="flex justify-center items-center gap-4 py-4 lg:pt-0 pt-4 flex-row flex-wrap">
-                                                        <h1 className="text-center capitalize lg:text-xl text-lg font-semibold">
-                                                            {decodeURI(
-                                                                note.name.slice(
-                                                                    0,
-                                                                    -4
-                                                                )
-                                                            )}
-                                                        </h1>
-
-                                                        <Dialog>
-                                                            <DialogTrigger>
-                                                                <Button
-                                                                    variant={
-                                                                        'outline'
-                                                                    }
-                                                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5"
-                                                                >
-                                                                    <FileIcon className="h-5 w-5 text-foreground" />{' '}
-                                                                    Show Notes
-                                                                </Button>
-                                                            </DialogTrigger>
-                                                            <DialogContent className=''>
-                                                                <DialogHeader>
-                                                                    <DialogTitle>
-                                                                        {course ===
-                                                                        'bba'
-                                                                            ? 'BBA'
-                                                                            : 'B. Tech'}{' '}
-                                                                        |
-                                                                        Semester{' '}
-                                                                        {
-                                                                            semester
-                                                                        }{' '}
-                                                                        |{' '}
-                                                                        {
-                                                                            subject
-                                                                        }{' '}
-                                                                        Notes
-                                                                    </DialogTitle>
-                                                                    <DialogDescription className='w-full'>
-                                                                        <NotesDocViewer
-                                                                            link={
-                                                                                note.link
-                                                                            }
-                                                                            className="w-full lg:aspect-[16/9] aspect-[9/16] overflow-hidden object-center"
-                                                                        />
-                                                                    </DialogDescription>
-                                                                </DialogHeader>
-                                                            </DialogContent>
-                                                        </Dialog>
-                                                    </CardTitle>
-                                                    <CardContent className="flex justify-center items-center">
-                                                        .
-                                                    </CardContent>
-                                                </Card>
+                                                <CardTitle className="flex justify-center items-center gap-4 flex-row flex-wrap w-fit">
+                                                    <Dialog>
+                                                        <DialogTrigger>
+                                                            <Button
+                                                                variant={
+                                                                    'outline'
+                                                                }
+                                                                className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
+                                                            >
+                                                                <FileIcon className="h-5 w-5 text-foreground" />{' '}
+                                                                {note.name.slice(0,-4)}
+                                                            </Button>
+                                                        </DialogTrigger>
+                                                        <DialogContent className="overflow-auto min-w-[calc(100dvw-100px)] h-[calc(100dvh-100px)]">
+                                                            <DialogHeader>
+                                                                <DialogTitle className='mb-4 text-center'>
+                                                                    {course ===
+                                                                    'bba'
+                                                                        ? 'BBA'
+                                                                        : 'B. Tech'}{' '}
+                                                                    | Semester{' '}
+                                                                    {semester} |{' '}
+                                                                    {subject}{' '}
+                                                                    Notes
+                                                                </DialogTitle>
+                                                                <DialogDescription className="w-full px-4 overflow-hidden">
+                                                                    <NotesDocViewer
+                                                                        link={
+                                                                            note.link
+                                                                        }
+                                                                        // className="lg:w-full h-full lg:aspect-square md:aspect-square sm:aspect-[9/16] overflow-hidden object-center"
+                                                                    />
+                                                                </DialogDescription>
+                                                            </DialogHeader>
+                                                        </DialogContent>
+                                                    </Dialog>
+                                                </CardTitle>
                                             </Suspense>
                                         );
                                     }
@@ -385,9 +362,26 @@ export default function CoursePageClient({ course }: { course: string }) {
                                             Notes
                                         </span>
                                     </h1>
-                                    <div className="grid grid-cols-1 gap-8 w-full">
+                                    <div className="flex flex-row flex-wrap gap-4 w-full">
+                                        {/* {notes
+                                            .filter(
+                                                (note) =>
+                                                    note.subject === subject
+                                            )
+                                            .map((note) => {
+                                                return (
+                                                    <Suspense
+                                                        fallback={<Spinner />}
+                                                    ></Suspense>
+                                                );
+                                            })} */}
                                         <List
-                                            height={800}
+                                            height={
+                                                notes.filter(
+                                                    (note) =>
+                                                        note.subject === subject
+                                                ).length * 400
+                                            }
                                             itemCount={
                                                 notes.filter(
                                                     (note) =>
@@ -396,11 +390,9 @@ export default function CoursePageClient({ course }: { course: string }) {
                                             }
                                             width={'100%'}
                                             itemSize={
-                                                notes.filter(
-                                                    (note) =>
-                                                        note.subject === subject
-                                                ).length * 400
+                                                50
                                             }
+                                            className='w-full flex flex-row flex-wrap gap-4'
                                         >
                                             {Row}
                                         </List>

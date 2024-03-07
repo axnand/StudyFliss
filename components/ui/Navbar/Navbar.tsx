@@ -15,7 +15,7 @@ export default async function Navbar() {
     return (
         <nav
             className={
-                'border-b-primary/10 border-b-2 max-w-5xl mx-auto relative'
+                'max-w-5xl mx-auto relative'
             }
         >
             {/* <a href="#skip" className="sr-only focus:not-sr-only">

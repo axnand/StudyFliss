@@ -31,7 +31,7 @@ export default function NotesDocViewer({
                     primary: 'hsl(var(--primary))',
                     secondary: 'hsl(var(--secondary))',
                     tertiary: 'hsl(var(--card))',
-                    textPrimary: 'hsl(var(--background))',
+                    textPrimary: 'hsl(var(--foreground))',
                     textSecondary: 'hsl(var(--background))',
                     textTertiary: 'hsl(var(--primary))',
                     disableThemeScrollbar: false
@@ -47,6 +47,10 @@ export default function NotesDocViewer({
                         overrideComponent: CenteredSpinner,
                         showLoadingTimeout: 500
                     },
+                    pdfZoom: {
+                        defaultZoom: 1,
+                        zoomJump: 0.1,
+                    }
                 }}
                 className='w-full h-full rounded-2xl bg-background'
             />

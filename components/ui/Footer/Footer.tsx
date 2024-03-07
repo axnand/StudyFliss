@@ -112,7 +112,7 @@ export default function Footer() {
                             aria-label="Linkedin Company Page"
                             href="https://www.linkedin.com/company/studyfliss/"
                         >
-                            <LinkedInLogoIcon className="size-6 mx-2 text-foreground/80 hover:text-foreground transition-all duration-300 ease-in-out-sine" />
+                            <LinkedInLogoIcon className="size-6 mx-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out-sine" />
                         </Link>
                         <Link
                             target="_blank"
@@ -120,7 +120,7 @@ export default function Footer() {
                             aria-label="Instagram Page"
                             href="https://www.instagram.com/studyfliss/"
                         >
-                            <InstagramLogoIcon className="size-6 mx-2 text-foreground/80 hover:text-foreground transition-all duration-300 ease-in-out-sine" />
+                            <InstagramLogoIcon className="size-6 mx-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out-sine" />
                         </Link>
                         <Link
                             target="_blank"
@@ -128,7 +128,7 @@ export default function Footer() {
                             aria-label="Instagram Page"
                             href="https://chat.whatsapp.com/Inpe3jKMg8eCQmt2v3PvxZ"
                         >
-                            <MdWhatsapp className="size-6 mx-2 text-foreground/80 hover:text-foreground transition-all duration-300 ease-in-out-sine" />
+                            <MdWhatsapp className="size-6 mx-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out-sine" />
                         </Link>
                     </div>
                 </div>

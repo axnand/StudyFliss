@@ -158,15 +158,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
 async function uploadFiles(files: File[]) {
     const S3_BUCKET = process.env.AWS_S3_BUCKET_NAME!;
     const REGION = process.env.AWS_S3_BUCKET_REGION!;
-    const ACCESS_KEY = process.env.SCALEWAY_BUCKET_ACCESS_KEY!;
-    const SECRET_ACCESS_KEY = process.env.SCALEWAY_BUCKET_SECRET_ACCESS_KEY!;
-
+    const ACCESS_KEY = process.env.CLOUDFLARE_BUCKET_ACCESS_KEY!;
+    const SECRET_ACCESS_KEY = process.env.CLOUDFLARE_BUCKET_SECRET_ACCESS_KEY!;
+    const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID!;
     const s3 = new S3Client({
+        endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
         credentials: {
             accessKeyId: ACCESS_KEY,
             secretAccessKey: SECRET_ACCESS_KEY
         },
-        region: REGION
+        region: "auto"
     } as S3ClientConfig);
 
     try {
@@ -183,7 +184,7 @@ async function uploadFiles(files: File[]) {
             } as PutObjectCommandInput;
             const command = new PutObjectCommand(params);
             const data = await s3.send(command);
-            const uploadedFileUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${params.Key}`;
+            const uploadedFileUrl = `https://files.studyfliss.com/${params.Key}`;
             return uploadedFileUrl;
         });
         const results = await Promise.all(uploadPromises);

@@ -14,149 +14,19 @@ import {
     FaInstagram,
     FaXTwitter
 } from 'react-icons/fa6';
-import { MdAutoGraph } from 'react-icons/md';
-import { Card, CardContent } from '../ui/card';
 
-export function AboutUsPage() {
+export default function TeamPage() {
     return (
-        <div className="flex flex-col min-h-[100dvh] pt-12 lg:mb-48 mb-96">
+        <div className="flex flex-col min-h-[100dvh]  lg:mb-48 mb-96">
             <main className="flex-1">
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto lg:px-4 px-4">
-                    <div className="overflow-clip relative  flex lg:flex-row flex-col items-center justify-center px-4 space-y-4 md:px-6 lg:space-y-10">
-                        <div className="text-center">
-                            <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
-                                About{' '}
-                                <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
-                                    StudyFliss
-                                </span>
-                            </h1>
-                            <p className="mx-auto max-w-[70ch] mt-4 text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                A website that comprises all the information/
-                                resources a student might need to live his/her
-                                college years to the fullest. Through the
-                                efficient use of technology, we will transform
-                                the access to resources for students.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full pb-6 md:pb-12 lg:pb-20 xl:pb-24 max-w-7xl mx-auto px-4">
-                    <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
-                        <Card className="lg:p-0 p-6">
-                            <CardContent className="space-y-4 lg:p-12 p-0">
-                                <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
-                                <div className="space-y-2">
-                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Up-To-Date Info
-                                    </h2>
-                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        Our website provides updated notes,
-                                        datesheets, syllabus and other
-                                        information for students to study and
-                                        learn.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                        <Card className="lg:p-0 p-6">
-                            <CardContent className="space-y-4 lg:p-12 p-0">
-                                <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
-                                <div className="space-y-2">
-                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Examination Analysis
-                                    </h2>
-                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        Out website provides detailed
-                                        examination analysis which helps
-                                        students understand exam patterns and
-                                        prepare for the exam.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                        <Card className="lg:p-0 p-6">
-                            <CardContent className="space-y-4 lg:p-12 p-0">
-                                <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
-                                <div className="space-y-2">
-                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Latest Events Info
-                                    </h2>
-                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        Our website provides the latest events'
-                                        details for students to stay updated
-                                        about all the upcoming events amd not
-                                        miss any opportunity.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                        <Card className="lg:p-0 p-6">
-                            <CardContent className="space-y-4 lg:p-12 p-0">
-                                <Briefcase className="mx-auto lg:size-16 size-12 mb-4" />
-                                <div className="">
-                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                        Internship Opportunities
-                                    </h2>
-                                    <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        Our website provides internship
-                                        opportunities for students to get
-                                        hands-on experience in their field of
-                                        interest.
-                                    </p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </section>
-                <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4 rounded-2xl">
-                    <div className=" px-4 md:px-6">
-                        <div className="grid items-center gap-10 lg:grid-cols-[600px_1fr]">
-                            <div className="space-y-4">
-                                <h2 className="text-3xl font-bold text-pretty tracking-tighter sm:text-3xl md:text-4xl">
-                                    "The main motive of our website is to not
-                                    let anyone miss out on an opportunity that
-                                    could potentially be a{' '}
-                                    <span className="decoration-primary decoration-[6px] underline underline-offset-4">
-                                        life changing moment
-                                    </span>{' '}
-                                    for them."
-                                </h2>
-                                <div className="flex items-center space-x-2">
-                                    <div className="font-medium flex flex-col gap-1">
-                                        <h3>— Amitoje Singh Bakshi</h3>
-                                        <div className="flex flex-col items-start gap-0 text-sm">
-                                            <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
-                                                &nbsp;&nbsp;&nbsp;&nbsp; CEO
-                                            </span>
-                                            <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                StudyFliss
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="mx-auto overflow-hidden rounded-xl h-full lg:block hidden">
-                                <Image
-                                    draggable={false}
-                                    alt="Image"
-                                    className="select-none object-cover object-center h-full w-full"
-                                    height="500"
-                                    src="/amitoje-quote.webp"
-                                    width="600"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4">
-                    <div className=" px-4 md:px-6">
+                <section className="w-full max-w-7xl mx-auto px-4">
+                    <div className="">
                         <div className="grid items-center gap-10 lg:grid-cols-1">
                             <section className="w-full py-12 md:py-24 lg:py-32">
-                                <div className=" grid items-center gap-16 px-4 md:px-6">
+                                <div className=" grid items-center gap-16">
                                     <div className="space-y-2 flex flex-col gap-0 justify-center items-center tracking-tight">
-                                        <h1 className="-mt-2 lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">
-                                            Meet Team{' '}
+                                        <h1 className="-mt-2 text-center lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-pretty">
+                                            Meet<br className='md:hidden'/> Team{' '}
                                             <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
                                                 StudyFliss
                                             </span>

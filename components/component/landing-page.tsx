@@ -28,7 +28,7 @@ export default function LandingPage({
         <div className="flex flex-col mb-96 lg:mb-48">
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
                 <div className="container space-y-10 px-4 md:space-y-16">
-                    <div className="flex lg:flex-row justif flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-0 grid-cols-3">
+                    <div className="flex lg:flex-row justify-between flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-2 grid-cols-3">
                         <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
                             {/* <div className="inline-block rounded-lg bg-primary/10  px-3 py-1.5 lg:text-sm text-xs dark:bg-primary/10 border border-primary/40 font-light w-fit ">
                 Interactive Learning

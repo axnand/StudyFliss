@@ -51,34 +51,30 @@ import {
     User2Icon
 } from 'lucide-react';
 import { FaCircleUser, FaRegCircleUser } from 'react-icons/fa6';
-import {CoursesListItem, AboutUsListItem} from '../list-item';
+import { CoursesListItem, AboutUsListItem } from '../list-item';
 
 const coursesFields: { title: string; href: string; description: string }[] = [
     {
         title: 'B. Tech',
         href: '/courses/btech',
-        description:
-            'Bachelors of Technology'
+        description: 'Bachelors of Technology'
     },
     {
         title: 'BBA',
         href: '/courses/bba',
-        description:
-            'Bachelors of Business Administration'
+        description: 'Bachelors of Business Administration'
     }
 ];
 const aboutUsFields: { title: string; href: string; description: string }[] = [
     {
         title: 'Our Vision',
         href: '/vision',
-        description:
-            'StudyFliss vision.'
+        description: 'StudyFliss vision.'
     },
     {
         title: 'Our Team',
         href: '/team',
-        description:
-            'The faces behind StudyFliss.'
+        description: 'The faces behind StudyFliss.'
     }
 ];
 
@@ -87,7 +83,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
 
     return (
         <div className="relative flex flex-row justify-between py-4 align-center md:py-4">
-            <div className="flex items-center flex-1 ">
+            <div className="lg:flex hidden items-center flex-1 ">
                 <Link
                     href="/"
                     className={'flex flex-row items-center gap-2 '}
@@ -186,9 +182,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </NavigationMenu>
-                {user ? (
-                    null
-                ) : (
+                {user ? null : (
                     <Link href="/signin" className={''}>
                         <Button
                             variant={'outline'}
@@ -223,7 +217,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                                     <FaRegCircleUser className="size-4 mr-2 text-foreground/80" />
                                     Your Account
                                 </DropdownMenuLabel>
-                                <DropdownMenuSeparator className='bg-primary/50 border-1' />
+                                <DropdownMenuSeparator className="bg-primary/50 border-1" />
                                 <Link href="/account">
                                     <DropdownMenuItem className="hover:cursor-pointer">
                                         <MdOutlineSettings className="size-4 mr-2 text-foreground/80" />
@@ -260,7 +254,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                             <CompassIcon className="size-4 inline-block mr-2" />{' '}
                             Navigation
                         </DropdownMenuLabel>
-                        <DropdownMenuSeparator className='bg-primary/50 border-1' />
+                        <DropdownMenuSeparator className="bg-primary/50 border-1" />
                         <Link href="/">
                             <DropdownMenuItem className="hover:cursor-pointer">
                                 <HomeIcon className="size-4 mr-2" /> Home
