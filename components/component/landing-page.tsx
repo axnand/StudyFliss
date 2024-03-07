@@ -96,11 +96,21 @@ export default function LandingPage({
                         <div className="flex items-center justify-center lg:w-fit w-full h-full">
                             <Image
                                 alt="Image"
-                                className="select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
+                                className="dark:block hidden select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
                                 height="310"
-                                src="/landing-page.png"
+                                src="/dark-bg-landing-page.gif"
                                 width="550"
                                 draggable={false}
+                                unoptimized
+                            />
+                            <Image
+                                alt="Image"
+                                className="dark:hidden block select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
+                                height="310"
+                                src="/light-bg-landing-page.gif"
+                                width="550"
+                                draggable={false}
+                                unoptimized
                             />
                         </div>
                     </div>
