@@ -21,7 +21,7 @@ export default async function Navbar() {
             {/* <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
       </a> */}
-            <div className="lg:px-16 px-4 fixed w-full top-0 z-10 bg-background/80 lg:border-2 border-b lg:border-primary/50 border-primary/20 backdrop-blur-md max-w-5xl lg:mx-auto lg:m-8 lg:rounded-full rounded-none tranisiton-all duration-300 ease-in-out-sine">
+            <div className="lg:px-16 px-4 fixed w-full top-0 z-10 bg-background/80 lg:border-2 border-b-2 lg:border-primary/50 border-primary/50 backdrop-blur-md max-w-5xl lg:mx-auto lg:m-8 lg:rounded-full rounded-none tranisiton-all duration-300 ease-in-out-sine">
                 <Navlinks user={userDetails ?? null} />
             </div>
         </nav>

@@ -109,6 +109,9 @@ html {
   #pdf-download {
     display: none;
   }
+  #pdf-page-info {
+    text-align: center;
+  }
   #react-doc-viewer {
     @apply bg-background;
   }

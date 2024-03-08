@@ -8,25 +8,31 @@ import {
     LinkedInLogoIcon
 } from '@radix-ui/react-icons';
 import { MdWhatsapp } from 'react-icons/md';
+import FeedbackForm from './feedback-form';
 
 export default function Footer() {
     return (
         <footer className="mx-auto max-w-7xl px-4 bg-background border-t-primary/20 border-t-2 transition-all duration-300 ease-in-out-sine">
             <div className="grid grid-cols-1 gap-8 py-12 text-foreground lg:grid-cols-12  bg-background transition-all duration-300 ease-in-out-sine">
-                <div className="col-span-1 lg:col-span-4">
-                    <div
-                        className="flex items-center flex-initial font-bold md:mr-24"
-                    >
+                <div className="col-span-1 lg:col-span-4 md:mr-24">
+                    <div className="flex items-center flex-initial font-bold ">
                         <div className="flex flex-col items-start gap-2">
-                            <Link href={"/"} className='flex flex-row items-center gap-2'>
+                            <Link
+                                href={'/'}
+                                className="flex flex-row items-center gap-2"
+                            >
                                 <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
                                 <h1 className="text-3xl font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine tracking-tight">
                                     Study
-                                    <span className="text-primary/90">Fliss</span>
+                                    <span className="text-primary/90">
+                                        Fliss
+                                    </span>
                                 </h1>
                             </Link>
-                            <p className='font-thin text-sm lg:max-w-full max-w-[300px] text-foreground/80 dark:text-foreground/80'>
-                            StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.
+                            <p className="font-thin text-sm lg:max-w-full max-w-[300px] text-foreground/80 dark:text-foreground/80">
+                                StudyFliss is a platform consisting of all the
+                                resources a student might need in order to live
+                                their college years to the fullest.
                             </p>
                         </div>
                     </div>
@@ -97,15 +103,19 @@ export default function Footer() {
                             </p>
                         </li>
                         <li className="py-1 md:py-0 md:pb-4 text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground">
-                            <Link href={"mailto:contact@studyfliss.com"}>contact@studyfliss.com</Link>
+                            <Link href={'mailto:contact@studyfliss.com'}>
+                                contact@studyfliss.com
+                            </Link>
                         </li>
-                        <li className="py-1 md:py-0 md:pb-4 text-foreground/80">+91 8287028821</li>
+                        <li className="py-1 md:py-0 md:pb-4 text-foreground/80">
+                            +91 8287028821
+                        </li>
                         <li className="py-1 md:py-0 md:pb-4 text-foreground/80">
                             New Delhi, India
                         </li>
                     </ul>
                 </div>
-                <div className="flex flex-col md:items-start items-start justify-end col-span-1 text-foreground lg:col-span-full w-full lg:justify-end ">
+                <div className="flex lg:flex-row flex-col gap-8 justify-between md:items-start items-start col-span-1 text-foreground lg:col-span-full w-full lg:justify-between ">
                     {/* <h1 className="text-base uppercase font-bold transition-all duration-300 ease-in-out-sine">
                         Follow StudyFliss
                     </h1> */}
@@ -143,6 +153,8 @@ export default function Footer() {
                             <MdWhatsapp className="size-6 mx-2 text-foreground/80 hover:text-primary transition-all duration-300 ease-in-out-sine" />
                         </Link>
                     </div>
+                    <FeedbackForm className='w-full max-w-[calc(24em+8px)] space-y-1'/>
+
                 </div>
             </div>
             <div className="flex flex-col items-center justify-between py-12 pb-24 space-y-4 md:flex-row bg-background transition-all duration-300 ease-in-out-sine border-t-primary/20 border-t-2 tracking-tight">
@@ -154,7 +166,11 @@ export default function Footer() {
                 </div>
                 <div>
                     <span>
-                        Developed with <span className='inline-block selection:bg-primary/0 animate-heart'>❤️</span> by{' '}
+                        Developed with{' '}
+                        <span className="inline-block selection:bg-primary/0 animate-heart">
+                            ❤️
+                        </span>{' '}
+                        by{' '}
                         <Link
                             href="https://harjot.pro"
                             target="_blank"

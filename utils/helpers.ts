@@ -128,7 +128,7 @@ export const getErrorRedirect = (
     errorDescription,
     disableButton,
     arbitraryParams
-  );
+  ) as string;
 
 export function formatDate(dateObject: Date) {
   const options = {

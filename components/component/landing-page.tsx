@@ -39,7 +39,7 @@ export default function LandingPage() {
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
                 <Dialog defaultOpen={true}>
                     <DialogTrigger></DialogTrigger>
-                    <DialogContent className="px-4" onCloseAutoFocus={() => {}}>
+                    <DialogContent className="px-4 border-2 border-primary/50 lg:rounded-2xl rounded-2xl" onCloseAutoFocus={() => {}}>
                         <DialogHeader>
                             <DialogTitle className="text-center lg:text-3xl text-2xl font-semibold tracking-tight">
                                 Welcome to StudyFliss!
