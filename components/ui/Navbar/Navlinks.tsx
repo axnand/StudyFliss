@@ -108,7 +108,7 @@ export default function Navlinks({ user }: { user: Tables<'users'> | null }) {
                     aria-label="Logo"
                 >
                     <Logo className="size-[54px] hover:bg-primary/5 dark:hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl transition-all duration-300 ease-in-out-sine" />
-                    <h1 className="md:text-3xl text-xl font-extrabold transition-all duration-300 ease-in-out-sine dark:shadow-primary/80 shadow-primary/30 sm:block hidden hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] ">
+                    <h1 className="md:text-3xl text-xl font-extrabold transition-all duration-300 ease-in-out-sine dark:shadow-primary/80 shadow-primary/30 sm:block hidden hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] tracking-tight ">
                         Study<span className="text-primary/90">Fliss</span>
                     </h1>
                 </Link>

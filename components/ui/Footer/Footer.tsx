@@ -20,7 +20,7 @@ export default function Footer() {
                         <div className="flex flex-col items-start gap-2">
                             <Link href={"/"} className='flex flex-row items-center gap-2'>
                                 <Logo className="size-[54px] hover:bg-primary/20 bg-transparent border-2 border-primary/50 p-3 rounded-2xl" />
-                                <h1 className="md:text-3xl text-2xl  font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine">
+                                <h1 className="text-3xl font-extrabold dark:shadow-primary/80 shadow-primary/30  hover:[text-shadow:_1px_1px_16px_var(--tw-shadow-color)] transition-all duration-300 ease-in-out-sine tracking-tight">
                                     Study
                                     <span className="text-primary/90">Fliss</span>
                                 </h1>
@@ -154,7 +154,7 @@ export default function Footer() {
                 </div>
                 <div>
                     <span>
-                        Developed with <span className='selection:bg-primary/0 animate-hue'>❤️</span> by{' '}
+                        Developed with <span className='inline-block selection:bg-primary/0 animate-heart'>❤️</span> by{' '}
                         <Link
                             href="https://harjot.pro"
                             target="_blank"

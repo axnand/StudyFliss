@@ -82,12 +82,14 @@ module.exports = {
                         opacity: 90
                     }
                 },
-                hue: {
+                heart: {
                     from: {
-                        filter: 'hue-rotate(0deg)'
+                        filter: 'hue-rotate(0deg)',
+                        transform: 'scale(1)'
                     },
                     to: {
-                        filter: 'hue-rotate(360deg)'
+                        filter: 'hue-rotate(360deg)',
+                        transform: 'scale(1.4)'
                     }
                 }
             },
@@ -96,7 +98,7 @@ module.exports = {
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'pendulum-spin': 'pendulum-spin 3s linear infinite alternate',
                 'move': 'move 4s linear infinite',
-                'hue': 'hue 5s linear infinite'
+                'heart': 'heart 5s ease-in-out infinite alternate'
             },
             fontFamily: {
                 heading: ['var(--font-heading)', ...fontFamily.sans],

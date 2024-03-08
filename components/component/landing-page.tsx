@@ -25,50 +25,50 @@ export default function LandingPage() {
     // }: {
     //     recentEvents: Tables<'events'>[] | [];
     // }
-    const [mounted, setMounted] = useState(false);
-    const [open, setOpen] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    // const [mounted, setMounted] = useState(false);
+    // const [open, setOpen] = useState(false);
+    // useEffect(() => {
+    //     setMounted(true);
+    // }, []);
 
     return (
         <div
             suppressHydrationWarning={true}
             className="flex flex-col mb-96 lg:mb-48"
         >
-            <Dialog defaultOpen={true}>
-                <DialogTrigger></DialogTrigger>
-                <DialogContent className='px-4' onCloseAutoFocus={() => {}}>
-                    <DialogHeader>
-                        <DialogTitle className="text-center lg:text-3xl text-2xl font-semibold tracking-tight">
-                            Welcome to StudyFliss!
-                        </DialogTitle>
-                        <DialogDescription className="flex flex-col items-center justify-center gap-2 text-base text-center text-muted-foreground">
-                            <p>
-                                Join our official WhatsApp group to get the
-                                latest updates and get notified about upcoming
-                                events and features.
-                            </p>
-                            <Link
-                                href={
-                                    'https://chat.whatsapp.com/Inpe3jKMg8eCQmt2v3PvxZ'
-                                }
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Button
-                                    variant={'outline'}
-                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 w-fit text-foreground/80 capitalize focus:ring-0 focus-visible:ring-0"
-                                >
-                                    <MdWhatsapp className="size-6" />
-                                    Join WhatsApp Group
-                                </Button>
-                            </Link>
-                        </DialogDescription>
-                    </DialogHeader>
-                </DialogContent>
-            </Dialog>
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
+                <Dialog defaultOpen={true}>
+                    <DialogTrigger></DialogTrigger>
+                    <DialogContent className="px-4" onCloseAutoFocus={() => {}}>
+                        <DialogHeader>
+                            <DialogTitle className="text-center lg:text-3xl text-2xl font-semibold tracking-tight">
+                                Welcome to StudyFliss!
+                            </DialogTitle>
+                            <DialogDescription className="flex flex-col items-center justify-center gap-2 text-base text-center text-muted-foreground">
+                                <p>
+                                    Join our official WhatsApp group to get the
+                                    latest updates and get notified about
+                                    upcoming events and features.
+                                </p>
+                                <Link
+                                    href={
+                                        'https://chat.whatsapp.com/Inpe3jKMg8eCQmt2v3PvxZ'
+                                    }
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Button
+                                        variant={'outline'}
+                                        className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 w-fit text-foreground/80 capitalize focus:ring-0 focus-visible:ring-0"
+                                    >
+                                        <MdWhatsapp className="size-6" />
+                                        Join WhatsApp Group
+                                    </Button>
+                                </Link>
+                            </DialogDescription>
+                        </DialogHeader>
+                    </DialogContent>
+                </Dialog>
                 <div className="container space-y-10 px-4 md:space-y-16">
                     <div className="flex lg:flex-row justify-between flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-2 grid-cols-3">
                         <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
