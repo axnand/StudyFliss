@@ -160,7 +160,7 @@ export default function TeamPage() {
                                                     Prabhmeet Singh
                                                 </h3>
                                                 <p className="text-md text-foreground/80">
-                                                    Chief Commercial Officer
+                                                    Chief Creative Officer
                                                 </p>
                                                 <div className="flex flex-row mt-4 items-center justify-start divide-x-2 divide-primary/20 [:first-child]:mr-0 [:first-child]:ml-0">
                                                     {/* <Link

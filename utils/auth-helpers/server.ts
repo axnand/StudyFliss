@@ -216,7 +216,7 @@ export async function signUp(formData: FormData) {
     redirectPath = getStatusRedirect(
       '/',
       'Success!',
-      'Please check your email for a confirmation link. You may now close this tab.'
+      'Please check your email for a confirmation link. It can take upto 5 minutes for the email to arrive.'
     );
   } else {
     redirectPath = getErrorRedirect(

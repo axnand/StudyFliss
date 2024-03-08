@@ -101,7 +101,7 @@ export function AboutUsPage() {
                 <section className="w-full max-w-7xl mx-auto lg:px-4 px-4 pt-0 py-4 md:py-6 lg:py-8 xl:py-8 pb-3 md:pb-6 lg:pb-10 xl:pb-12">
                     <div className=" px-4 md:px-6 flex justify-center items-center flex-col gap-0">
                         <h1 className="lg:text-5xl tracking-tight text-4xl font-semibold lg:text-left text-center mb-4">
-                            Know More{' '}
+                            Know More{' '}<br className='lg:hidden'/>
                             <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
                                 About Us
                             </span>
@@ -154,7 +154,7 @@ export function AboutUsPage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mx-auto overflow-hidden rounded-xl h-full lg:block hidden">
+                            <div className="mx-auto overflow-hidden rounded-xl h-full">
                                 <Image
                                     draggable={false}
                                     alt="Image"

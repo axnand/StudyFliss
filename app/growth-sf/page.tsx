@@ -7,7 +7,7 @@ import { MdAutoGraph } from 'react-icons/md';
 export default function GrowthSFPage() {
     return (
         <div className="flex flex-col mb-96 lg:mb-48">
-            <section className="w-full mx-auto max-w-7xl border-b lg:py-24 py-12 border-b-primary/20">
+            <section className="w-full mx-auto max-w-7xl  lg:py-24 py-12 ">
                 <div className="container grid items-center gap-4 px-4 text-center lg:gap-10">
                     <div className="space-y-4">
                         <h2 className="lg:leading-tighter text-4xl font-medium tracking-tighter sm:text-5xl md:text-6xl text-balance">

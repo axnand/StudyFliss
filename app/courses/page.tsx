@@ -24,7 +24,7 @@ export default function NotesPage() {
                                 </Link>
                                 <Link href={'/courses/btech'}>
                                     <Badge variant={"outline"} className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl lg:px-8 px-6 lg:py-2 py-1 lg:text-2xl text-lg font-semibold text-foreground/90">
-                                        B Tech
+                                        B. Tech
                                     </Badge>
                                 </Link>
                             </div>

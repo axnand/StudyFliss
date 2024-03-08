@@ -90,9 +90,9 @@ const growSFFields: { title: string; href: string; description: string }[] = [
         description: 'Find your internships.'
     },
     {
-        title: 'Resume Builder',
+        title: 'Build Your Resume',
         href: '/growth-sf',
-        description: 'Build your resume.'
+        description: 'Build and enhance your resume.'
     }
 ];
 

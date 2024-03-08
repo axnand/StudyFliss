@@ -33,12 +33,12 @@ export default function Footer() {
                 </div>
                 <div className="col-span-1 lg:col-span-2">
                     <ul className="flex flex-col flex-initial md:flex-1">
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <p className="font-bold text-foreground transition-all duration-300 ease-in-out-sine">
                                 NAVIGATION
                             </p>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <Link
                                 href="/about-us"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
@@ -46,7 +46,7 @@ export default function Footer() {
                                 About Us
                             </Link>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <Link
                                 href="/courses"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
@@ -54,7 +54,7 @@ export default function Footer() {
                                 All Courses
                             </Link>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <Link
                                 href="/growth-sf"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
@@ -66,12 +66,12 @@ export default function Footer() {
                 </div>
                 <div className="col-span-1 lg:col-span-2">
                     <ul className="flex flex-col flex-initial md:flex-1">
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <p className="font-bold text-foreground transition-all duration-300 ease-in-out-sine hover:text-foreground">
                                 LEGAL
                             </p>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <Link
                                 href="/"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
@@ -79,7 +79,7 @@ export default function Footer() {
                                 Privacy Policy
                             </Link>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <Link
                                 href="/"
                                 className="text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground"
@@ -89,18 +89,18 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="col-span-1 lg:col-span-2">
+                <div className="col-span-1 lg:col-span-3">
                     <ul className="flex flex-col flex-initial md:flex-1">
-                        <li className="py-3 md:py-0 md:pb-4">
+                        <li className="py-1 md:py-0 md:pb-4">
                             <p className="font-bold text-foreground transition-all duration-300 ease-in-out-sine hover:text-foreground">
                                 CONTACT US
                             </p>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
-                            contact@studyfliss.com
+                        <li className="py-1 md:py-0 md:pb-4 text-foreground/80 transition-all duration-300 ease-in-out-sine hover:text-foreground">
+                            <Link href={"mailto:contact@studyfliss.com"}>contact@studyfliss.com</Link>
                         </li>
-                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">+91 8287028821</li>
-                        <li className="py-3 md:py-0 md:pb-4 text-foreground/80">
+                        <li className="py-1 md:py-0 md:pb-4 text-foreground/80">+91 8287028821</li>
+                        <li className="py-1 md:py-0 md:pb-4 text-foreground/80">
                             New Delhi, India
                         </li>
                     </ul>
@@ -145,7 +145,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-between py-12 space-y-4 md:flex-row bg-background transition-all duration-300 ease-in-out-sine border-t-primary/20 border-t-2 tracking-tight">
+            <div className="flex flex-col items-center justify-between py-12 pb-24 space-y-4 md:flex-row bg-background transition-all duration-300 ease-in-out-sine border-t-primary/20 border-t-2 tracking-tight">
                 <div>
                     <span>
                         &copy; {new Date().getFullYear()} StudyFliss. All rights
@@ -154,7 +154,7 @@ export default function Footer() {
                 </div>
                 <div>
                     <span>
-                        Developed with ❤️ by{' '}
+                        Developed with <span className='selection:bg-primary/0 animate-hue'>❤️</span> by{' '}
                         <Link
                             href="https://harjot.pro"
                             target="_blank"

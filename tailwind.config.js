@@ -81,13 +81,22 @@ module.exports = {
                         transform: 'scale(1.1)',
                         opacity: 90
                     }
+                },
+                hue: {
+                    from: {
+                        filter: 'hue-rotate(0deg)'
+                    },
+                    to: {
+                        filter: 'hue-rotate(360deg)'
+                    }
                 }
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'pendulum-spin': 'pendulum-spin 3s linear infinite alternate',
-                'move': 'move 4s linear infinite'
+                'move': 'move 4s linear infinite',
+                'hue': 'hue 5s linear infinite'
             },
             fontFamily: {
                 heading: ['var(--font-heading)', ...fontFamily.sans],
