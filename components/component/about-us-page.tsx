@@ -101,7 +101,7 @@ export function AboutUsPage() {
                 <section className="w-full max-w-7xl mx-auto lg:px-4 px-4 pt-0 py-4 md:py-6 lg:py-8 xl:py-8 pb-3 md:pb-6 lg:pb-10 xl:pb-12">
                     <div className=" px-4 md:px-6 flex justify-center items-center flex-col gap-0">
                         <h1 className="lg:text-5xl tracking-tight text-4xl font-semibold lg:text-left text-center mb-4">
-                            Know More{' '}<br className='lg:hidden'/>
+                            Know More <br className="lg:hidden" />
                             <span className="underline decoration-primary decoration-[6px] underline-offset-[4px] font-bold">
                                 About Us
                             </span>
@@ -126,7 +126,7 @@ export function AboutUsPage() {
                         </div>
                     </div>
                 </section>
-                <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-7xl mx-auto px-4 rounded-2xl">
+                <section className="dark:bg-foreground/[3%] bg-foreground/[2%] w-full py-8 lg:py-16 max-w-7xl mx-auto px-4 rounded-2xl">
                     <div className=" px-4 md:px-6">
                         <div className="grid items-center gap-10 lg:grid-cols-[600px_1fr]">
                             <div className="space-y-4">
@@ -141,15 +141,14 @@ export function AboutUsPage() {
                                 </h2>
                                 <div className="flex items-center space-x-2">
                                     <div className="font-medium flex flex-col gap-1">
-                                        <h3>— Amitoje Singh Bakshi</h3>
+                                        <h3>Amitoje Singh Bakshi</h3>
                                         <div className="flex flex-col items-start gap-0 text-sm">
                                             <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
-                                                &nbsp;&nbsp;&nbsp;&nbsp; CEO
+                                                CEO, StudyFliss
                                             </span>
-                                            <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                            {/* <span className="hover:text-foreground text-foreground/90 transition-all duration-300 ease-in-out-sine">
                                                 StudyFliss
-                                            </span>
+                                            </span> */}
                                         </div>
                                     </div>
                                 </div>

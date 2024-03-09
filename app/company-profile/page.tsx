@@ -18,7 +18,7 @@ export default function AboutUsPage() {
         <div className="flex flex-col min-h-[100dvh] pt-12 lg:mb-48 mb-96">
             <main className="flex-1">
                 <section className="w-full pt-6 md:pt-12 lg:pt-20 xl:pt-24 max-w-7xl mx-auto lg:px-4 px-4">
-                    <div className="overflow-clip relative  flex lg:flex-col flex-col items-center justify-center px-4 space-y-4 md:px-6 lg:space-y-10">
+                    <div className="overflow-clip relative  flex lg:flex-col flex-col items-center justify-center space-y-4 lg:space-y-10 ">
                         <Link href={'/about-us'} className='w-fit mr-auto text-foreground/90 ml-4 mb-4 hover:text-primary transition-all duration-300 ease-in-out-sine'>
                             <ChevronLeftCircle className="lg:size-12 size-10" />
                         </Link>
