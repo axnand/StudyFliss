@@ -85,6 +85,16 @@ export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
                             />
                         </div>
                         <div>
+                            <Label htmlFor="phone">Phone No.</Label>
+                            <Input
+                                id="phone"
+                                placeholder="+91 9191919191"
+                                type="text"
+                                name="phone"
+                                className="w-full p-3 rounded-md bg-background"
+                            />
+                        </div>
+                        <div>
                             <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"

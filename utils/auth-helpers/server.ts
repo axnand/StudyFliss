@@ -189,7 +189,8 @@ export async function signUp(formData: FormData) {
         semester: formData.get('semester')?.toString().trim(),
         full_name: formData.get('full_name')?.toString().trim(),
         branch: formData.get('branch')?.toString().trim(),
-        email: email
+        email: email,
+        phone: formData.get('phone')?.toString().trim()
       }
     }
   });
