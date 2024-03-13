@@ -99,7 +99,7 @@ export default function LandingPage() {
                             </p>
                             <div className="flex flex-row items-start justify-start lg:gap-6 gap-2">
                                 <Link
-                                    href={'/signin/signup'}
+                                    href={'/courses'}
                                     className="w-fit lg:text-lg text-base"
                                 >
                                     <Button
