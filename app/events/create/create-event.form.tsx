@@ -364,7 +364,7 @@ const CreateEventForm = ({ user }: { user: Tables<'users'> }) => {
                     className="w-full"
                     type="submit"
                     onClick={() => {
-                        console.log(form.getValues());
+                        // console.log(form.getValues());
                         if (form.getValues().images.length === 0) {
                             setMessage(
                                 (message) =>

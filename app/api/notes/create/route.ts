@@ -58,7 +58,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         if (existingNoteError) {
             if (existingNoteError.code !== "PGRST116") {
-                console.log("Error Here 1");
+                // console.log("Error Here 1");
 
                 console.error(existingNoteError);
                 return NextResponse.json({ success: false, error: 'Error adding notes.', message: existingNoteError.message });
@@ -101,9 +101,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
                     }
                 )
                 .eq('id', existingNote.id);
-            console.log(notesData)
+            // console.log(notesData)
             if (error) {
-                console.log("Error Here 2");
+                // console.log("Error Here 2");
 
                 console.error(error);
                 return NextResponse.json({ success: false, error: 'Error adding notes.', message: error.message });

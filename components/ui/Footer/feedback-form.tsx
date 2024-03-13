@@ -32,7 +32,7 @@ const FormSchema = z.object({
         .max(100, { message: 'Full name must be at most 100 characters.' }),
     feedback: z
         .string()
-        .min(30, { message: 'Feedback must be at least 30 characters.' })
+        .min(20, { message: 'Feedback must be at least 20 characters.' })
         .max(500, { message: 'Feedback must be at most 500 characters.' }),
     contact_email: z.string().email('Invalid email address.').min(3, {
         message: 'Email address must be at least 3 characters.'
@@ -47,7 +47,7 @@ export default function FeedbackForm({
         defaultValues: {
             full_name: '',
             contact_email: '',
-            feedback: 'I really liked the website!'
+            feedback: 'I really liked the website! Here are a few suggestions- '
         }
     });
     const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ export default function FeedbackForm({
 
     async function onSubmit() {
         const data = form.getValues();
-        console.log(data);
+        // console.log(data);
         try {
             setLoading(true);
             const { data: feedbackData, error } = await supabase
@@ -66,7 +66,7 @@ export default function FeedbackForm({
                     contact_email: data.contact_email,
                     feedback: data.feedback
                 });
-            console.log(feedbackData, error);
+            // console.log(feedbackData, error);
             if (error) {
                 throw error;
             }
@@ -93,10 +93,7 @@ export default function FeedbackForm({
 
     return (
         <Form {...form}>
-            <form
-                className={cn('space-y-0', props.className)}
-                {...props}
-            >
+            <form className={cn('space-y-0', props.className)} {...props}>
                 {/* <FormField
                     control={form.control}
                     name="full_name"
@@ -125,6 +122,7 @@ export default function FeedbackForm({
                                     disabled={loading}
                                     className="rounded-lg"
                                     placeholder="harjot@studyfliss.com"
+                                    required={true}
                                     {...field}
                                 />
                             </FormControl>
