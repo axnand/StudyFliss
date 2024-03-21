@@ -81,6 +81,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                 space_grotesk.variable
             )}
         >
+            <head>
+                <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="58e69750-f2fd-4bb9-a6ca-7dd3481c999a"></script>
+            </head>
             <body className="font-sans transition-all duration-300 ease-in-out-sine bg-background text-foreground">
                 <Providers>
                     <main
