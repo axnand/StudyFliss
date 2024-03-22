@@ -1,9 +1,5 @@
-// CreateNoteForm.tsx
-
 'use client';
-
 import React, { useState } from 'react';
-
 import {
     Form,
     FormControl,
@@ -13,26 +9,19 @@ import {
     FormLabel,
     FormMessage
 } from '@/components/ui/form';
-
 import { useForm } from 'react-hook-form';
-
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import * as z from 'zod';
-
 import Button from '@/components/ui/Button';
-
 import { Database, Tables } from '@/types_db';
-
-import { branches, getErrorRedirect, getStatusRedirect } from '@/utils/helpers';
-
+import {
+    branches,
+    getContentTypeFromFileName,
+    getErrorRedirect,
+    getStatusRedirect
+} from '@/utils/helpers';
 import { useRouter } from 'next/navigation';
-
-import { Option } from '@/components/ui/mutiple-selector';
-
 import Input from '@/components/ui/Input';
-
-import MultipleSelector from '@/components/ui/mutiple-selector';
 import {
     Select,
     SelectContent,
@@ -41,6 +30,7 @@ import {
     SelectValue
 } from '@/components/ui/select';
 import Spinner from '@/components/ui/spinner';
+import { get } from 'http';
 
 const noteSchema = z.object({
     semester: z
@@ -60,7 +50,7 @@ const defaultValues = {
     semester: '1',
     subject: '',
     branch: undefined,
-    course: "bba" as Database['public']['Enums']['course']
+    course: 'bba' as Database['public']['Enums']['course']
 };
 
 const CreateNoteForm = () => {
@@ -73,46 +63,66 @@ const CreateNoteForm = () => {
         defaultValues: defaultValues
     });
 
+    async function uploadFileToPresignedUrl(presignedUrl: string, file: File) {
+        try {
+            const response = await fetch(presignedUrl, {
+                method: 'POST',
+                body: file,
+                headers: {
+                    'Content-Type': getContentTypeFromFileName(file.name),
+                    'Access-Control-Allow-Origin': '*',
+                    'AccessKey': `Bearer`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to upload file');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            throw error;
+        }
+    }
+
     async function onSubmit(values: z.infer<typeof noteSchema>) {
         try {
             setLoading(true);
-            const formData = new FormData();
-            if (values.files.length === 0) {
-                return form.setError('files', {
-                    message: 'Please select at least one file.'
-                });
-            }
-            formData.set('semester',values.semester);
-            formData.set('subject', values.subject);
-            formData.set('branch', values.branch ?? '');
-            formData.set('course', values.course);
-            Array.from(values.files).forEach((file, index) => {
-                formData.set(`files[${index}]`, file);
-            });
-
+            const filesData = Array.from(values.files).map((file) => ({
+                name: file.name,
+                size: file.size
+            }));
             const res = await fetch('/api/notes/create', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    files: filesData
+                })
             });
-            if (res.ok) {
-                router.push(
-                    getStatusRedirect(
-                        window.location.toString(),
-                        'Notes added successfully.',
-                        `Notes successfully added.`
-                    )
-                );
-            } else {
-                router.push(
-                    getErrorRedirect(
-                        window.location.toString(),
-                        'Error adding notes.',
-                        res.statusText
-                    )
-                );
+
+            if (!res.ok) {
+                throw new Error('Failed to generate presigned URLs');
             }
+            const { presignedUrls } = await res.json();
+            console.log(Array.from(values.files));
+            await Promise.all(
+                Array.from(values.files).map(async (file, index) => { 
+                    await uploadFileToPresignedUrl(
+                        presignedUrls[index],
+                        file
+                    );
+                })
+            );
+            router.push(
+                getStatusRedirect(
+                    window.location.toString(),
+                    'Notes added successfully.',
+                    `Notes successfully added.`
+                )
+            );
         } catch (error: any) {
-            console.error(error);
+            console.error('Error uploading files:', error);
             router.push(
                 getErrorRedirect(
                     window.location.toString(),
@@ -121,7 +131,7 @@ const CreateNoteForm = () => {
                 )
             );
         } finally {
-            form.reset();
+            form.reset(); // Reset the form after submission
             setLoading(false);
         }
     }
@@ -149,12 +159,17 @@ const CreateNoteForm = () => {
                                 <FormLabel className="text-base font-medium">
                                     File(s)
                                 </FormLabel>
-                                <FormDescription className='text-foreground/90 text-sm my-4'>
-                                    Maximum file size is <b>15MB</b>.<br/>
-                                    The name of the file will be used as the <b className='text-base'>title of the note</b>.
+                                <FormDescription className="text-foreground/90 text-sm my-4">
+                                    Maximum file size is <b>15MB</b>.<br />
+                                    The name of the file will be used as the{' '}
+                                    <b className="text-base">
+                                        title of the note
+                                    </b>
+                                    .
                                 </FormDescription>
                                 <FormControl>
-                                    <Input disabled={loading}
+                                    <Input
+                                        disabled={loading}
                                         type="file"
                                         accept="application/pdf, image/gif, image/jpeg, image/png"
                                         multiple={true}
@@ -197,7 +212,8 @@ const CreateNoteForm = () => {
                             </FormLabel>
 
                             <FormControl>
-                                <Input disabled={loading}
+                                <Input
+                                    disabled={loading}
                                     type="number"
                                     min={1}
                                     max={8}
@@ -220,7 +236,11 @@ const CreateNoteForm = () => {
                             </FormLabel>
 
                             <FormControl>
-                                <Input disabled={loading} placeholder="Subject" {...field} />
+                                <Input
+                                    disabled={loading}
+                                    placeholder="Subject"
+                                    {...field}
+                                />
                             </FormControl>
 
                             <FormMessage />
@@ -248,7 +268,11 @@ const CreateNoteForm = () => {
                                         className="rounded-2xl lg:text-lg text-base h-12 lg:px-4 px-3 w-full"
                                         aria-modal={'false'}
                                     >
-                                        {field.value ? <SelectValue placeholder="Select Branch" /> : "Select Branch"}
+                                        {field.value ? (
+                                            <SelectValue placeholder="Select Branch" />
+                                        ) : (
+                                            'Select Branch'
+                                        )}
                                     </SelectTrigger>
                                     <SelectContent
                                         aria-modal={'false'}
@@ -271,23 +295,22 @@ const CreateNoteForm = () => {
                             </FormControl>
 
                             <FormMessage />
-                            <div className='flex flex-row items-end justify-end '>
-                    <Button
-                        variant="outline"
-                        className="rounded-2xl lg:text-base text-sm h-12 lg:px-4 px-6 hover:bg-primary/5 hover:text-primary transition-all duration-300 ease-in-out-sine border-primary/50 border-2"
-                        disabled={form.formState.isSubmitting}
-                        onClick={() => {
-                            form.setValue('branch', undefined);
-                        }}
-                        type="reset"
-                    >
-                        Reset Branch
-                    </Button>
-                </div>
+                            <div className="flex flex-row items-end justify-end ">
+                                <Button
+                                    variant="outline"
+                                    className="rounded-2xl lg:text-base text-sm h-12 lg:px-4 px-6 hover:bg-primary/5 hover:text-primary transition-all duration-300 ease-in-out-sine border-primary/50 border-2"
+                                    disabled={form.formState.isSubmitting}
+                                    onClick={() => {
+                                        form.setValue('branch', undefined);
+                                    }}
+                                    type="reset"
+                                >
+                                    Reset Branch
+                                </Button>
+                            </div>
                         </FormItem>
                     )}
                 />
-                
 
                 <FormField
                     control={form.control}
