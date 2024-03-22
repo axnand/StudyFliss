@@ -31,7 +31,7 @@ const meta = {
     title: 'StudyFliss',
     description:
         'StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.',
-    cardImage: '/logos/circle/svgexport-27.png',
+    cardImage: '/thumbnail.png',
     robots: 'follow, index',
     favicon: '/favicon.ico',
     url: getURL()
