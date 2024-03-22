@@ -10,6 +10,7 @@ import { cn } from '@/utils/cn';
 import { Providers } from './providers';
 import ScrollToTopButton from '@/components/ui/scroll-to-top';
 import Spinner from '@/components/ui/spinner';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const jost = Jost({
     subsets: ['latin', 'latin-ext'],
@@ -27,7 +28,8 @@ const space_grotesk = Space_Grotesk({
 
 const meta = {
     title: 'StudyFliss',
-    description: 'StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.',
+    description:
+        'StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.',
     cardImage: '/logos/circle/svgexport-27.png',
     robots: 'follow, index',
     favicon: '/favicon.ico',
@@ -82,7 +84,11 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             )}
         >
             <head>
-                <script defer src="https://analytics.eu.umami.is/script.js" data-website-id="58e69750-f2fd-4bb9-a6ca-7dd3481c999a"></script>
+                <script
+                    defer
+                    src="https://analytics.eu.umami.is/script.js"
+                    data-website-id="58e69750-f2fd-4bb9-a6ca-7dd3481c999a"
+                ></script>
             </head>
             <body className="font-sans transition-all duration-300 ease-in-out-sine bg-background text-foreground">
                 <Providers>
@@ -96,9 +102,10 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                         <Footer />
                         <ScrollToTopButton />
                     </main>
-                    <Suspense fallback={<Spinner/>}>
+                    <Suspense fallback={<Spinner />}>
                         <Toaster />
                     </Suspense>
+                    <SpeedInsights />
                 </Providers>
             </body>
         </html>
