@@ -154,7 +154,7 @@ export function AboutUsPage() {
                                 </div>
                             </div>
                             <div className="mx-auto overflow-hidden rounded-xl h-full">
-                                <Image
+                                <img
                                     draggable={false}
                                     alt="Image"
                                     className="select-none object-cover object-center h-full w-full"
