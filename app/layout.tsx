@@ -112,7 +112,7 @@ export async function generateMetadata(): Promise<Metadata> {
             description: meta.description,
             images: [{secureUrl: meta.cardImage, url: meta.cardImage, alt:"StudyFliss Banner/Thumbnail", type:"image/png"}]
         },
-        themeColor: '#E84545'
+        // themeColor: '#E84545'
     };
 }
 

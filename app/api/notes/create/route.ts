@@ -129,6 +129,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 }
 
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: "1024mb"
+        }
+    },
+    runtime: "edge",
+    maxDuration: 1000 * 60 * 60 * 3,
+}
+
 function getContentTypeFromFileName(fileName: string): string {
     const extension = fileName.split('.').pop()?.toLowerCase();
 
