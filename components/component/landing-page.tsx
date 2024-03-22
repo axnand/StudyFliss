@@ -135,23 +135,21 @@ export default function LandingPage() {
                             </div>
                         </div>
                         <div className="flex items-center justify-center lg:w-fit w-full h-full">
-                            <Image
+                            <img
                                 alt="StudyFliss home page GIF"
                                 className="transition-all duration-300 ease-in-out-sine fade-in fade-out dark:block hidden select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
                                 height="310"
                                 src="https://files.studyfliss.com/dark-bg-landing-page-optimized.webp"
                                 width="550"
                                 draggable={false}
-                                unoptimized
                             />
-                            <Image
+                            <img
                                 alt="StudyFliss home page GIF"
                                 className="transition-all duration-300 ease-in-out-sine fade-in fade-out dark:hidden block select-none aspect-video overflow-hidden rounded-xl object-scale-down object-center"
                                 height="310"
                                 src="https://files.studyfliss.com/light-bg-landing-page-optimized.webp"
                                 width="550"
                                 draggable={false}
-                                unoptimized
                             />
                         </div>
                     </div>
