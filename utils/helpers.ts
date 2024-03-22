@@ -192,3 +192,25 @@ export const branches: Object = {
   EE: 'Electrical Engineering',
   ITE: 'Information Technology Engineering',
 };
+
+export function getContentTypeFromFileName(fileName: string): string {
+  const extension = fileName.split('.').pop()?.toLowerCase();
+
+  if (extension) {
+      switch (extension) {
+          case 'pdf':
+              return 'application/pdf';
+          case 'gif':
+              return 'image/gif';
+          case 'jpeg':
+          case 'jpg':
+              return 'image/jpeg';
+          case 'png':
+              return 'image/png';
+          default:
+              return "";
+      }
+  }
+
+  return "";
+}

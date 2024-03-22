@@ -24,7 +24,8 @@
     "supabase:pull": "npx supabase pull"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.521.0",
+    "@aws-sdk/client-s3": "^3.537.0",
+    "@aws-sdk/s3-request-presigner": "^3.537.0",
     "@cyntler/react-doc-viewer": "^1.14.1",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-dialog": "^1.0.5",
