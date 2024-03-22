@@ -11,6 +11,7 @@ import { Providers } from './providers';
 import ScrollToTopButton from '@/components/ui/scroll-to-top';
 import Spinner from '@/components/ui/spinner';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script';
 
 const jost = Jost({
     subsets: ['latin', 'latin-ext'],
@@ -84,11 +85,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
             )}
         >
             <head>
+                <link rel="manifest" href="/manifest.json" />
                 <script
                     defer
                     src="https://analytics.eu.umami.is/script.js"
                     data-website-id="58e69750-f2fd-4bb9-a6ca-7dd3481c999a"
                 ></script>
+                <Script src="/swScript.js" defer></Script>
             </head>
             <body className="font-sans transition-all duration-300 ease-in-out-sine bg-background text-foreground">
                 <Providers>
