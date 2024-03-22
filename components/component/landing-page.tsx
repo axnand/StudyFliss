@@ -30,16 +30,19 @@ export default function LandingPage() {
     // useEffect(() => {
     //     setMounted(true);
     // }, []);
-
+    const [isMounted, setIsMounted] = useState(false);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     return (
-        <div
-            suppressHydrationWarning={true}
-            className="flex flex-col mb-96 lg:mb-48"
-        >
+        <div className="flex flex-col mb-96 lg:mb-48">
             <section className="w-full max-w-7xl border-b mx-auto lg:py-24 py-12 border-b-primary/20 ">
-                <Dialog defaultOpen={true}>
-                    <DialogTrigger></DialogTrigger>
-                    <DialogContent className="px-4 border-2 border-primary/50 lg:rounded-2xl rounded-2xl" onCloseAutoFocus={() => {}}>
+                {isMounted && (<Dialog defaultOpen={true}>
+                    <DialogTrigger hidden={true}></DialogTrigger>
+                    <DialogContent
+                        className="px-4 border-2 border-primary/50 lg:rounded-2xl rounded-2xl"
+                        onCloseAutoFocus={() => {}}
+                    >
                         <DialogHeader>
                             <DialogTitle className="text-center lg:text-3xl text-2xl font-semibold tracking-tight">
                                 Welcome to StudyFliss!
@@ -68,7 +71,7 @@ export default function LandingPage() {
                             </DialogDescription>
                         </DialogHeader>
                     </DialogContent>
-                </Dialog>
+                </Dialog>)}
                 <div className="container space-y-10 px-4 md:space-y-16">
                     <div className="flex lg:flex-row justify-between flex-col max-w-7xl mx-auto gap-4 lg:grid-cols-2 md:gap-2 grid-cols-3">
                         <div className="flex flex-col justify-center gap-6 lg:w-[calc(40%+90px)] w-full">
