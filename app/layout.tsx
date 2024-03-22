@@ -39,7 +39,10 @@ const meta = {
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: meta.title,
+        title: {
+            default: "StudyFliss",
+            template: `%s | StudyFliss`
+        },
         description: meta.description,
         referrer: 'origin-when-cross-origin',
         keywords: [
@@ -47,7 +50,43 @@ export async function generateMetadata(): Promise<Metadata> {
             'StudyFliss website',
             'IPU Notes',
             'IPU',
-            'Notes'
+            'Notes',
+            'IPU Notes',
+            'StudyFlix',
+            'StudyFlix website',
+            'StudyBliss',
+            'StudyBliss website',
+            'B. Tech',
+            'BTech',
+            'B. Tech Notes',
+            'BTech Notes',
+            'BBA Notes',
+            'BBA',
+            'BBA Notes',
+            'Bachelors of Business Administration',
+            'Bachelors of Business Administration Notes',
+            'Business Administration',
+            'Business Administration Notes',
+            'Business Administration Notes',
+            'GGSIPU',
+            'GGSIPU Notes',
+            'Guru Gobind Singh Indraprastha',
+            'Guru Gobind Singh Indraprastha University',
+            'Guru Gobind Singh Indraprastha University Notes',
+            'Guru Tegh Bahadur Institute of Technology',
+            'Guru Tegh Bahadur Institute of Technology Notes',
+            'Indraprastha University',
+            'Indraprastha University Notes',
+            'Indraprastha Institute of Technology and Management',
+            'Indraprastha Institute of Technology and Management Notes',
+            'Institute of Technology and Management',
+            'GTBIT',
+            'GTBIT Notes',
+            'IITM',
+            'IITM Notes',
+            'StudyFliss Notes',
+            'StudyFliss Events',
+            'StudyFliss Growth SF',
         ],
         authors: [{ name: 'Harjot Singh', url: 'https://harjot.pro/' }],
         creator: 'Harjot Singh',
@@ -70,7 +109,8 @@ export async function generateMetadata(): Promise<Metadata> {
             title: meta.title,
             description: meta.description,
             images: [meta.cardImage]
-        }
+        },
+        themeColor: '#E84545'
     };
 }
 
