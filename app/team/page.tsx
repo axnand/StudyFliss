@@ -42,7 +42,7 @@ export default function TeamPage() {
                                                 alt="Avatar"
                                                 className="select-none mx-auto shadow-xl shadow-primary/20 hover:shadow-primary/35 transition-all duration-300 ease-in-out-sine aspect-square overflow-hidden rounded-full object-cover object-center border-primary border-2 md:size-80 sm:size-56 size-full"
                                                 height="500"
-                                                src="/amitoje.png"
+                                                src="https://files.studyfliss.com/amitoje.png"
                                                 width="500"
                                             />
                                             <div className="flex flex-col gap-0 items-center">
@@ -97,7 +97,7 @@ export default function TeamPage() {
                                                 alt="Avatar"
                                                 className="select-none mx-auto shadow-xl shadow-primary/20 hover:shadow-primary/35 transition-all duration-300 ease-in-out-sine aspect-square overflow-hidden rounded-full object-cover object-center border-primary border-2 md:size-80 sm:size-56 size-full"
                                                 height="500"
-                                                src="/harjot.webp"
+                                                src="https://files.studyfliss.com/harjot.webp"
                                                 width="500"
                                             />
                                             <div className="flex flex-col gap-0 items-center">
@@ -152,7 +152,7 @@ export default function TeamPage() {
                                                 alt="Avatar"
                                                 className="select-none mx-auto shadow-xl shadow-primary/20 hover:shadow-primary/35 transition-all duration-300 ease-in-out-sine aspect-square overflow-hidden rounded-full object-cover object-center border-primary border-2 md:size-80 sm:size-56 size-full"
                                                 height="500"
-                                                src="/meet.png"
+                                                src="https://files.studyfliss.com/meet.png"
                                                 width="500"
                                             />
                                             <div className="flex flex-col gap-0 items-center">

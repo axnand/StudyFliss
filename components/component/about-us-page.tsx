@@ -159,7 +159,7 @@ export function AboutUsPage() {
                                     alt="Image"
                                     className="select-none object-cover object-center h-full w-full"
                                     height="500"
-                                    src="/amitoje-quote.webp"
+                                    src="https://files.studyfliss.com/amitoje-quote.webp"
                                     width="600"
                                 />
                             </div>
