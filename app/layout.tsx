@@ -31,7 +31,7 @@ const meta = {
     title: 'StudyFliss',
     description:
         'StudyFliss is a platform consisting of all the resources a student might need in order to live their college years to the fullest.',
-    cardImage: '/thumbnail.png',
+    cardImage: 'https://files.studyfliss.com/thumbnail.png',
     robots: 'follow, index',
     favicon: '/favicon.ico',
     url: getURL()
@@ -98,7 +98,9 @@ export async function generateMetadata(): Promise<Metadata> {
             url: meta.url,
             title: meta.title,
             description: meta.description,
-            images: [meta.cardImage],
+            images: [
+                {secureUrl: meta.cardImage, url: meta.cardImage, alt:"StudyFliss Banner/Thumbnail", type:"image/png"}
+            ],
             type: 'website',
             siteName: meta.title
         },
@@ -108,7 +110,7 @@ export async function generateMetadata(): Promise<Metadata> {
             creator: '@HarjjotSinghh',
             title: meta.title,
             description: meta.description,
-            images: [meta.cardImage]
+            images: [{secureUrl: meta.cardImage, url: meta.cardImage, alt:"StudyFliss Banner/Thumbnail", type:"image/png"}]
         },
         themeColor: '#E84545'
     };
