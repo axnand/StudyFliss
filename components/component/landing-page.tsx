@@ -2,11 +2,8 @@
 import { CardContent, Card } from '../ui/card';
 import Button from '../ui/Button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa6';
-import { Briefcase, Calendar, InfoIcon, MapPinIcon } from 'lucide-react';
-import { Tables } from '@/types_db';
-import { useRouter } from 'next/navigation';
+import { BookIcon, Calendar, Files } from 'lucide-react';
 import { MdAutoGraph, MdWhatsapp } from 'react-icons/md';
 import { Typewriter } from 'react-simple-typewriter';
 import {
@@ -25,11 +22,8 @@ export default function LandingPage() {
     // }: {
     //     recentEvents: Tables<'events'>[] | [];
     // }
-    // const [mounted, setMounted] = useState(false);
     // const [open, setOpen] = useState(false);
-    // useEffect(() => {
-    //     setMounted(true);
-    // }, []);
+
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
@@ -121,7 +115,7 @@ export default function LandingPage() {
                                     </Button>
                                 </Link>
                                 <Link
-                                    href="/about-us"
+                                    href="/courses"
                                     className="font-medium lg:text-lg text-base tracking-tighter w-fit"
                                 >
                                     <Button
@@ -132,7 +126,7 @@ export default function LandingPage() {
                                         }
                                     >
                                         <span className="inline-flex flex-row gap-2 items-center justify-center">
-                                            Know More
+                                            Browse Notes
                                             <FaArrowRight className="size-4 transition-all duration-300 ease-in-out-sine group-hover:-rotate-[45deg] mt-1" />
                                         </span>
                                     </Button>
@@ -171,11 +165,13 @@ export default function LandingPage() {
                 <div className=" grid items-center gap-8 text-center lg:grid-cols-[1fr_1fr] lg:gap-8 xl:grid-cols-[1fr_1fr]">
                     <Card className="lg:p-0 p-6">
                         <CardContent className="space-y-4 lg:p-12 p-0">
-                            <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                            <Files className="mx-auto lg:size-16 size-12 mb-4" />
                             <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    Up-To-Date Notes
-                                </h2>
+                                <Link href={'/courses'}>
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                        Up-To-Date Notes
+                                    </h2>
+                                </Link>
                                 <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     Notes available across all domain of
                                     subjects and all branches offered by IPU,
@@ -186,11 +182,13 @@ export default function LandingPage() {
                     </Card>
                     <Card className="lg:p-0 p-6">
                         <CardContent className="space-y-4 lg:p-12 p-0">
-                            <InfoIcon className="mx-auto lg:size-16 size-12 mb-4" />
+                            <BookIcon className="mx-auto lg:size-16 size-12 mb-4" />
                             <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    Up-To-Date Syllabus
-                                </h2>
+                                <Link href={'/courses'}>
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                        Up-To-Date Syllabus
+                                    </h2>
+                                </Link>
                                 <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     Stay updated with what’s coming in the exam
                                     papers. The syllabus is updated based on IPU
@@ -203,9 +201,11 @@ export default function LandingPage() {
                         <CardContent className="space-y-4 lg:p-12 p-0">
                             <MdAutoGraph className="mx-auto lg:size-16 size-12 mb-4" />
                             <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    IPU Exams Analysis
-                                </h2>
+                                <Link href={'/growth-sf'}>
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                        IPU Exams Analysis
+                                    </h2>
+                                </Link>
                                 <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     Our website offers analysis of previous year
                                     IPU External Exam Papers and provides a list
@@ -219,9 +219,11 @@ export default function LandingPage() {
                         <CardContent className="space-y-4 lg:p-12 p-0">
                             <Calendar className="mx-auto lg:size-16 size-12 mb-4" />
                             <div className="space-y-2">
-                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
-                                    College Events Info
-                                </h2>
+                                <Link href={'/growth-sf'}>
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                        College Events Info
+                                    </h2>
+                                </Link>
                                 <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                                     We'll keep you updated on upcoming events
                                     held in all IPU colleges, ensuring you never
