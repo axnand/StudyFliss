@@ -18,7 +18,12 @@ import NotesPDFViewer from './notes-pdf-viewer';
 import { branches } from '@/utils/helpers';
 import NotesDocViewer from './notes-doc-viewer';
 import Button from '@/components/ui/Button';
-import { DownloadCloudIcon, FileBadge, PaperclipIcon } from 'lucide-react';
+import {
+    Download,
+    DownloadCloudIcon,
+    FileBadge,
+    PaperclipIcon
+} from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Spinner from '@/components/ui/spinner';
@@ -55,7 +60,7 @@ export default function CoursePageClient({ course }: { course: string }) {
         const note = notes.filter((n) => n.subject === subject)[index];
 
         return (
-            <div style={style} className='flex flex-wrap flex-row gap-4'>
+            <div style={style} className="flex flex-wrap flex-row gap-4">
                 {Boolean(JSON.parse(JSON.stringify(note.notes))) === true && (
                     <Suspense fallback={<Spinner />}>
                         <>
@@ -80,12 +85,15 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                                 className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
                                                             >
                                                                 <FileIcon className="h-5 w-5 text-foreground" />{' '}
-                                                                {note.name.slice(0,-4)}
+                                                                {note.name.slice(
+                                                                    0,
+                                                                    -4
+                                                                )}
                                                             </Button>
                                                         </DialogTrigger>
                                                         <DialogContent className="overflow-auto min-w-[calc(100dvw-100px)] h-[calc(100dvh-100px)]">
                                                             <DialogHeader>
-                                                                <DialogTitle className='mb-4 text-center'>
+                                                                <DialogTitle className="mb-4 text-center">
                                                                     {course ===
                                                                     'bba'
                                                                         ? 'BBA'
@@ -185,6 +193,33 @@ export default function CoursePageClient({ course }: { course: string }) {
         <div className="flex flex-col min-h-[100dvh] pt-12 lg:px-4 px-4 lg:mb-48 mb-96">
             <main className="flex-1">
                 <section className="w-full py-6 md:py-12 lg:py-20 xl:py-24 max-w-5xl mx-auto flex flex-col gap-12 pt-0 pb-0 ">
+                    <div className="flex flex-col items-start justify-start gap-8">
+                        <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
+                            Syllabus for{' '}
+                            <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
+                                {course === 'bba' ? 'BBA' : `B. Tech`}
+                            </span>
+                        </h1>
+                        <Link
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={
+                                course === 'bba'
+                                    ? 'https://files.studyfliss.com/BBA%20Syllabus.pdf'
+                                    : 'https://files.studyfliss.com/B.Tech%20Syllabus.pdf'
+                            }
+                        >
+                            <Button
+                                variant={'outline'}
+                                className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-6 capitalize"
+                            >
+                                <Download className="h-5 w-5 text-foreground" />
+                                <span className="lg:text-lg text-sm">
+                                    Download Syllabus
+                                </span>
+                            </Button>
+                        </Link>
+                    </div>
                     <div className="flex flex-col gap-6">
                         <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                             Select{' '}
@@ -389,10 +424,8 @@ export default function CoursePageClient({ course }: { course: string }) {
                                                 ).length
                                             }
                                             width={'100%'}
-                                            itemSize={
-                                                50
-                                            }
-                                            className='w-full flex flex-row flex-wrap gap-4'
+                                            itemSize={50}
+                                            className="w-full flex flex-row flex-wrap gap-4"
                                         >
                                             {Row}
                                         </List>
