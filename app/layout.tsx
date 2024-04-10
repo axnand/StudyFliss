@@ -12,6 +12,7 @@ import ScrollToTopButton from '@/components/ui/scroll-to-top';
 import Spinner from '@/components/ui/spinner';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const jost = Jost({
     subsets: ['latin', 'latin-ext'],
@@ -153,6 +154,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
                     <SpeedInsights />
                 </Providers>
             </body>
+            <GoogleAnalytics gaId="G-LLEXVVQ7QD" />
         </html>
     );
 }
