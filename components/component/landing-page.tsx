@@ -3,7 +3,14 @@ import { CardContent, Card } from '../ui/card';
 import Button from '../ui/Button';
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa6';
-import { BookIcon, Calendar, Files } from 'lucide-react';
+import {
+    BookIcon,
+    Calendar,
+    CircleDollarSign,
+    File,
+    Files,
+    Package
+} from 'lucide-react';
 import { MdAutoGraph, MdWhatsapp } from 'react-icons/md';
 import { Typewriter } from 'react-simple-typewriter';
 import {
@@ -228,6 +235,54 @@ export default function LandingPage() {
                                     We'll keep you updated on upcoming events
                                     held in all IPU colleges, ensuring you never
                                     miss out on any opportunities to have fun.
+                                </p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="lg:p-0 p-6">
+                        <CardContent className="space-y-4 lg:p-12 p-0">
+                            <File className="mx-auto lg:size-16 size-12 mb-4" />
+                            <div className="space-y-2">
+                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                    Build Your Resume
+                                </h2>
+                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                    Out website provides detailed examination
+                                    analysis which helps students understand
+                                    exam patterns and prepare for the exam.
+                                </p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="lg:p-0 p-6">
+                        <CardContent className="space-y-4 lg:p-12 p-0">
+                            <CircleDollarSign className="mx-auto lg:size-16 size-12 mb-4" />
+                            <div className="space-y-2">
+                                <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                    Paid Interships
+                                </h2>
+                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                    Our website provides the latest events'
+                                    details for students to stay updated about
+                                    all the upcoming events amd not miss any
+                                    opportunity.
+                                </p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card className="lg:p-0 p-6">
+                        <CardContent className="space-y-4 lg:p-12 p-0">
+                            <Package className="mx-auto lg:size-16 size-12 mb-4" />
+                            <div className="space-y-2">
+                                <Link href={'/growth-sf'}>
+                                    <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl underline decoration-primary decoration-[2px] underline-offset-[4px]">
+                                        IPU Notices Explained
+                                    </h2>
+                                </Link>
+                                <p className="mx-auto max-w-[600px] text-foreground/80 dark:text-foreground/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                                    Every student tends to ignore the notices
+                                    sent by IPU regarding our curriculum, so
+                                    will explain it within 75 words.
                                 </p>
                             </div>
                         </CardContent>
