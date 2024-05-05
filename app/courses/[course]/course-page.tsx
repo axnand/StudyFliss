@@ -13,23 +13,16 @@ import {
 import { Suspense, lazy, useCallback, useEffect, useState } from 'react';
 import { Tables } from '@/types_db';
 import { Badge } from '@/components/ui/badge';
-import { CardContent, CardTitle } from '@/components/ui/card';
-import NotesPDFViewer from './notes-pdf-viewer';
+import { CardTitle } from '@/components/ui/card';
 import { branches } from '@/utils/helpers';
 import NotesDocViewer from './notes-doc-viewer';
 import Button from '@/components/ui/Button';
-import {
-    Download,
-    DownloadCloudIcon,
-    FileBadge,
-    PaperclipIcon
-} from 'lucide-react';
+import { Download, Eye } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Spinner from '@/components/ui/spinner';
 import { FixedSizeList as List } from 'react-window';
 import { motion } from 'framer-motion';
-import { json } from 'stream/consumers';
 import {
     Dialog,
     DialogContent,
@@ -45,7 +38,6 @@ const Card = dynamic(() =>
 );
 
 export default function CoursePageClient({ course }: { course: string }) {
-    // console.log(Object.keys(branches));
     const supabase = createClient();
     const router = useRouter();
     const pathname = usePathname();
@@ -55,6 +47,8 @@ export default function CoursePageClient({ course }: { course: string }) {
     const subject = searchParams.get('subject');
     const [notes, setNotes] = useState<Tables<'notes'>[]>([]);
     const [errorMessage, setErrorMessage] = useState('');
+    const [viewInternalExamQuestions, setViewInternalExamQuestions] =
+        useState(false);
 
     const Row = ({ index, style }: { index: number; style: any }) => {
         const note = notes.filter((n) => n.subject === subject)[index];
@@ -197,7 +191,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                         <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                             Syllabus for{' '}
                             <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
-                                {course === 'bba' ? 'BBA' : `B. Tech`}
+                                {course.toUpperCase()}
                             </span>
                         </h1>
                         <Link
@@ -220,6 +214,44 @@ export default function CoursePageClient({ course }: { course: string }) {
                             </Button>
                         </Link>
                     </div>
+                    {course === 'bba' && (
+                        <div className="flex flex-col items-start justify-start gap-8">
+                            <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
+                                BBA Internal{' '}
+                                <span className="underline decoration-primary underline-offset-4 font-bold decoration-[6px] transition-all duration-300 ease-in-out-sine">
+                                    Exam Questions{' '}
+                                </span>
+                            </h1>
+                            <Dialog>
+                                <DialogTrigger>
+                                    <Button
+                                        variant={'outline'}
+                                        className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
+                                    >
+                                        <Eye className="h-5 w-5 text-foreground" />
+                                        View Internal Exam Questions
+                                    </Button>
+                                </DialogTrigger>
+                                <DialogContent className="overflow-auto min-w-[calc(100dvw-100px)] h-[calc(100dvh-100px)]">
+                                    <DialogHeader>
+                                        <DialogTitle className="mb-4 text-center">
+                                            {course === 'bba'
+                                                ? 'BBA'
+                                                : 'B. Tech'}{' '}
+                                            | Semester {semester} | {subject}{' '}
+                                            Notes
+                                        </DialogTitle>
+                                        <DialogDescription className="w-full px-4 overflow-hidden">
+                                            <NotesDocViewer
+                                                link={`
+                                                        https://files.studyfliss.com/BBA%20Internal%20Exam%20Questions.pdf`}
+                                            />
+                                        </DialogDescription>
+                                    </DialogHeader>
+                                </DialogContent>
+                            </Dialog>
+                        </div>
+                    )}
                     <div className="flex flex-col gap-6">
                         <h1 className="lg:text-6xl text-5xl tracking-tighter font-medium transition-all duration-300 ease-in-out-sine">
                             Select{' '}
