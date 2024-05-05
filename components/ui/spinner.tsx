@@ -1,6 +1,6 @@
 export default function Spinner() {
     return (
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center py-16">
             <svg
                 version="1.1"
                 id="Layer_1"
@@ -12,7 +12,10 @@ export default function Spinner() {
                 stroke="hsl(var(--primary)/0.8)"
                 strokeWidth={0.5}
             >
-                <g transform="translate(0, -69.16029099675677) scale(3.331619901699667)" className="">
+                <g
+                    transform="translate(0, -69.16029099675677) scale(3.331619901699667)"
+                    className=""
+                >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"

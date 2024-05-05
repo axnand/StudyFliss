@@ -222,14 +222,27 @@ export default function CoursePageClient({ course }: { course: string }) {
                                     Exam Questions{' '}
                                 </span>
                             </h1>
-                            <Dialog>
+                            <Link
+                                href={`https://files.studyfliss.com/BBA%20Internal%20Exam%20Questions.pdf`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Button
+                                    variant={'outline'}
+                                    className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
+                                >
+                                    <Eye className="h-5 w-5 text-foreground" />
+                                    Download Internal Exam Questions
+                                </Button>
+                            </Link>
+                            {/* <Dialog>
                                 <DialogTrigger>
                                     <Button
                                         variant={'outline'}
                                         className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
                                     >
                                         <Eye className="h-5 w-5 text-foreground" />
-                                        View Internal Exam Questions
+                                        Download Internal Exam Questions
                                     </Button>
                                 </DialogTrigger>
                                 <DialogContent className="overflow-auto min-w-[calc(100dvw-100px)] h-[calc(100dvh-100px)]">
@@ -249,7 +262,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                                         </DialogDescription>
                                     </DialogHeader>
                                 </DialogContent>
-                            </Dialog>
+                            </Dialog> */}
                         </div>
                     )}
                     <div className="flex flex-col gap-6">
