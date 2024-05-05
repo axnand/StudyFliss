@@ -231,7 +231,7 @@ export default function CoursePageClient({ course }: { course: string }) {
                                     variant={'outline'}
                                     className="border-2 border-primary/50 hover:bg-primary/10 transition-all duration-300 ease-in-out-sine rounded-2xl flex justify-center items-center gap-1 px-6 lg:text-base text-sm py-5 capitalize"
                                 >
-                                    <Eye className="h-5 w-5 text-foreground" />
+                                    <Download className="h-5 w-5 text-foreground" />
                                     Download Internal Exam Questions
                                 </Button>
                             </Link>
