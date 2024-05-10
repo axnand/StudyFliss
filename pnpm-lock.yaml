@@ -129,8 +129,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1
   react-pdf:
-    specifier: ^7.7.1
-    version: 7.7.1(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^7.7.3
+    version: 7.7.3(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
   react-simple-typewriter:
     specifier: ^5.0.1
     version: 5.0.1(react-dom@18.2.0)(react@18.2.0)
@@ -6876,8 +6876,8 @@ packages:
       - supports-color
     dev: false
 
-  /react-pdf@7.7.1(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-cbbf/PuRtGcPPw+HLhMI1f6NSka8OJgg+j/yPWTe95Owf0fK6gmVY7OXpTxMeh92O3T3K3EzfE0ML0eXPGwR5g==}
+  /react-pdf@7.7.3(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-a2VfDl8hiGjugpqezBTUzJHYLNB7IS7a2t7GD52xMI9xHg8LdVaTMsnM9ZlNmKadnStT/tvX5IfV0yLn+JvYmw==}
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
