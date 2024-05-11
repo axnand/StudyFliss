@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 261.4 261.4" style="enable-background:new 0 0 261.4 261.4;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#E84545;}
-	.st1{fill:#111111;}
-</style>
-<g id="SvgjsG21113" transform="matrix(2.734375,0,0,2.734375,0,0)">
-	<path class="st0" d="M0,0h95.6v95.6H0V0z"/>
-</g>
-<g id="SvgjsG21114" transform="matrix(3.331619901699667,0,0,3.331619901699667,41.00411350683293,-2.160290996756771)">
-	<path class="st1" d="M16.5,36.8c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3H2.6l6.1-12.5h5.1l-3.9,7.9h6.6
-		c3.2,0,5.7-2.5,5.7-5.7c0-3.2-2.5-5.7-5.7-5.7h-5.1c-5.3,0-9.6-4.4-9.6-9.6s4.3-9.6,9.6-9.6v4.6c-2.8,0-5,2.2-5,5s2.2,5,5,5
-		L16.5,36.8L16.5,36.8z M14.7,33.7l3.4-6.9h-4.6v-4.6h11.9l-5.6,11.5C19.8,33.7,14.7,33.7,14.7,33.7z M39.9,35.9l4.6-9.1H30.5v-4.6
-		H52L45,35.9H39.9z M35.1,29.6v9.7H49v4.6H35.1v13.4h-4.6V29.6H35.1L35.1,29.6z"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Layer_1" x="0" y="0" version="1.1" viewBox="0 0 261.4 261.4" style="enable-background:new 0 0 261.4 261.4" xml:space="preserve"><style type="text/css">.st0{fill:#e84545}.st1{fill:#111}</style><g id="SvgjsG21113"><path d="M0,0h95.6v95.6H0V0z" class="st0" transform="matrix(2.734375,0,0,2.734375,0,0)"/></g><g id="SvgjsG21114"><path d="M16.5,36.8c5.7,0,10.3,4.6,10.3,10.3s-4.6,10.3-10.3,10.3H2.6l6.1-12.5h5.1l-3.9,7.9h6.6 c3.2,0,5.7-2.5,5.7-5.7c0-3.2-2.5-5.7-5.7-5.7h-5.1c-5.3,0-9.6-4.4-9.6-9.6s4.3-9.6,9.6-9.6v4.6c-2.8,0-5,2.2-5,5s2.2,5,5,5 L16.5,36.8L16.5,36.8z M14.7,33.7l3.4-6.9h-4.6v-4.6h11.9l-5.6,11.5C19.8,33.7,14.7,33.7,14.7,33.7z M39.9,35.9l4.6-9.1H30.5v-4.6 H52L45,35.9H39.9z M35.1,29.6v9.7H49v4.6H35.1v13.4h-4.6V29.6H35.1L35.1,29.6z" class="st1" transform="matrix(3.331619901699667,0,0,3.331619901699667,41.00411350683293,-2.160290996756771)"/></g></svg>
